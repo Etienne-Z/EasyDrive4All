@@ -3,6 +3,7 @@ $body-bg: #ffffff;
 $light-blue: #68CEF9;
 $black: #000000;
 $blue: #14223A;
+$oak: #F6BE3B;
 
 //fonts
 
@@ -15,8 +16,11 @@ $blue: #14223A;
         font-style: normal;
     }
 
+    @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap');
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+$rounded: 'M PLUS Rounded 1c', sans-serif;
