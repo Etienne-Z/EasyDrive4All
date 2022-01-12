@@ -1,5 +1,20 @@
 // Body
-$body-bg: #f8fafc;
+$body-bg: #ffffff;
+$light-blue: #68CEF9;
+$black: #000000;
+$blue: #14223A;
+
+//fonts
+
+    //secular
+    @font-face {
+        font-family: 'secular';
+        src: url('/fonts/secularone/secularone-regular-webfont.woff2') format('woff2'),
+            url('/fonts/secularone/secularone-regular-webfont.woff2') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
