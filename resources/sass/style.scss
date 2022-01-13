@@ -1,5 +1,5 @@
 //style homepage//
-.title-homepage{
+.title{
     color: $blue;
     font-size: 62px;
     font-family: $rounded;
@@ -15,6 +15,14 @@
         color: #FFFFFF !important;
     }
 }
+///alert messages//
+.alert{
+    color: $red;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0;
+}
+
 
 .homepage-container{
     background-image: url('/image/stock/download.jpeg');
@@ -79,7 +87,165 @@
     letter-spacing: 1px;
 }
 
+//About us page//
+.about-us-container{
+    background-color: $blue;
+    color: $white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    .col-md-6{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h2{
+        font-size: 32px;
+    }
+    p{
+        letter-spacing: 1px;
+    }
+    .image{
+        margin-top: auto;
+        margin-bottom: auto;
+        border: none;
+        border-radius: 55%;
+        background-size: cover;
+        max-width: 350px;
+        height: 300px;
+        background-position: right;
+    }
 
+}
+
+.about-us-container-white{
+    background-color: $white;
+    color: $blue;
+    padding: 40px 20px;
+    border-radius: 10px;
+    .col-md-6{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h2{
+        font-size: 32px;
+    }
+    p{
+        letter-spacing: 1px;
+    }
+    .image{
+        margin-top: auto;
+        margin-bottom: auto;
+        border: none;
+        border-radius: 55%;
+        background-size: cover;
+        max-width: 350px;
+        height: 300px;
+        background-position: left;
+    }
+    img{
+        border: none;
+        border-radius: 50%;
+    }
+    .name-instructor{
+        font-weight: 900;
+        font-size: 25px;
+    }
+}
+//photo's about us page
+.team{
+    background-image: url('/image/stock/team.jpeg');
+}
+
+.building{
+    background-image: url('/image/stock/rijschool.jpeg');
+}
+
+.owner{
+    background-image: url('/image/stock/eigenaar.jpeg');
+    background-position: top !important;
+}
+
+//end photo's about us page/
+
+
+//contact page//
+.contact-form-container{
+    background-color: $blue;
+    color: white;
+    padding: 40px 0px;
+    .contact-form{
+        margin-left: auto;
+        margin-right: auto;
+        text-align:center;
+        input{
+            width: 300px;
+            height: 40px;
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 2px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 0.05rem solid black;
+            padding-left: 10px;
+        }
+        textarea{
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px 20px;
+        }
+        button{
+            display: block;
+            margin-left: auto;
+            margin-right: 130px;
+            padding: 10px 20px;
+            letter-spacing: 1px;
+            border: none;
+            background-color: $oak;
+            color: white;
+            font-weight: 900;
+        }
+        button:hover{
+            background-color: #D7A31A;
+
+        }
+    }
+}
+
+.container-contact-gegevens{
+    a{
+        text-decoration: none;
+    }
+    .col-md-6{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    iframe{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    h2{
+        color: $blue;
+        font-weight: 900;
+    }
+    .contact-details{
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+}
+
+.succes-message{
+    background-image: url(/image/stock/done.png);
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    background-size: cover;
+    margin-right: auto;
+}
+.succes-text{
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-top: 20px
+}
 ///footer//
 footer{
     background-color: $oak;
