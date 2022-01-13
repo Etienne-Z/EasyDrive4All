@@ -13,4 +13,9 @@ class instructor_has_users extends Model
         'User_ID',
         'Instructor_ID'
     ];
+
+    public function scopePopular($query)
+    {
+        return $query->where('votes', '>', 100);
+    }
 }
