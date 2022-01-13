@@ -11348,6 +11348,20 @@ textarea.form-control-lg {
   border-radius: 25px;
 }
 
+.subtitle-algemene-voorwaarden {
+  color: #F6BE3B;
+  font-size: 25px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.algemene-voorwaarden {
+  letter-spacing: 1px;
+}
+
 footer {
   background-color: #F6BE3B;
   padding: 40px 20px;

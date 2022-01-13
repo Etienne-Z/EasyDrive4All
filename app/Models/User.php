@@ -51,7 +51,6 @@ class User extends Authenticatable
     ];
 
 
-
     /**
      *
      * Scopes for filtering on role
