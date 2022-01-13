@@ -11289,7 +11289,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.title-homepage {
+.title {
   color: #14223A;
   font-size: 62px;
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -11346,6 +11346,81 @@ textarea.form-control-lg {
   margin-right: auto;
   border: 1px solid black;
   border-radius: 25px;
+}
+
+.about-us-container {
+  background-color: #14223A;
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+.about-us-container .col-md-6 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.about-us-container h2, .about-us-container .h2 {
+  font-size: 32px;
+}
+.about-us-container p {
+  letter-spacing: 1px;
+}
+.about-us-container .image {
+  margin-top: auto;
+  margin-bottom: auto;
+  border: none;
+  border-radius: 55%;
+  background-size: cover;
+  max-width: 350px;
+  height: 300px;
+  background-position: right;
+}
+
+.about-us-container-white {
+  background-color: #fff;
+  color: #14223A;
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+.about-us-container-white .col-md-6 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.about-us-container-white h2, .about-us-container-white .h2 {
+  font-size: 32px;
+}
+.about-us-container-white p {
+  letter-spacing: 1px;
+}
+.about-us-container-white .image {
+  margin-top: auto;
+  margin-bottom: auto;
+  border: none;
+  border-radius: 55%;
+  background-size: cover;
+  max-width: 350px;
+  height: 300px;
+  background-position: left;
+}
+.about-us-container-white img {
+  border: none;
+  border-radius: 50%;
+}
+.about-us-container-white .name-instructor {
+  font-weight: 900;
+  font-size: 25px;
+}
+
+.team {
+  background-image: url("/image/stock/team.jpeg");
+}
+
+.building {
+  background-image: url("/image/stock/rijschool.jpeg");
+}
+
+.owner {
+  background-image: url("/image/stock/eigenaar.jpeg");
+  background-position: top !important;
 }
 
 footer {

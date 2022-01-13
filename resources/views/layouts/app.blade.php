@@ -33,7 +33,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                            <li class="nav-item">
+                                    <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="/about-us">Over ons</a>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -84,7 +89,7 @@
             <div class="row">
                 <div class="col-md-3 links-footer">
                     <h3 class="footer-titles">Links</h3>
-                    <a href="/overons">Over ons</a><br>
+                    <a href="/about-us">Over ons</a><br>
                     <a href="/login">Login</a><br>
                     <a href="/inschrijven">inschrijven</a><br>
                     <a href="/contact">Contact ons</a><br>
