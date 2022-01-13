@@ -7,7 +7,8 @@
     <h2 class="text-center mb-5">Neem contact met ons op</h2>
         <form id="contact-form-id" class="contact-form" method="POST">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
 
                         <div id="voornaamErrorMsg" class="alert"></div>
                         <input id="voornaam" type="text" name="voornaam" placeholder="Voornaam">
@@ -22,7 +23,7 @@
                         <input id="email" type="email" name="email" placeholder="E-mail">
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div id="vraagErrorMsg" class="alert"></div>
                     <textarea id="vraag" name="vraag" cols="30" rows="10" placeholder="Vul hier uw vraag in..."></textarea>
                     <button>Versturen</button>
