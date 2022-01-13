@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/about-us', [AboutUsController::class, 'index']);
+Route::get('/contact', [ContactController::class,'index']);
+Route::post('/contact', [ContactController::class,'contactForm']);
+
 
 Auth::routes();
 

@@ -11306,6 +11306,13 @@ textarea.form-control-lg {
   color: #FFFFFF !important;
 }
 
+.alert {
+  color: #dc3545;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0;
+}
+
 .homepage-container {
   background-image: url("/image/stock/download.jpeg");
   background-size: cover;
@@ -11421,6 +11428,83 @@ textarea.form-control-lg {
 .owner {
   background-image: url("/image/stock/eigenaar.jpeg");
   background-position: top !important;
+}
+
+.contact-form-container {
+  background-color: #14223A;
+  color: white;
+  padding: 40px 0px;
+}
+.contact-form-container .contact-form {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.contact-form-container .contact-form input {
+  width: 300px;
+  height: 40px;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0.05rem solid black;
+  padding-left: 10px;
+}
+.contact-form-container .contact-form textarea {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 20px;
+}
+.contact-form-container .contact-form button {
+  display: block;
+  margin-left: auto;
+  margin-right: 130px;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  border: none;
+  background-color: #F6BE3B;
+  color: white;
+  font-weight: 900;
+}
+.contact-form-container .contact-form button:hover {
+  background-color: #D7A31A;
+}
+
+.container-contact-gegevens a {
+  text-decoration: none;
+}
+.container-contact-gegevens .col-md-6 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-contact-gegevens iframe {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.container-contact-gegevens h2, .container-contact-gegevens .h2 {
+  color: #14223A;
+  font-weight: 900;
+}
+.container-contact-gegevens .contact-details {
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.succes-message {
+  background-image: url(/image/stock/done.png);
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  background-size: cover;
+  margin-right: auto;
+}
+
+.succes-text {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-top: 20px;
 }
 
 footer {
