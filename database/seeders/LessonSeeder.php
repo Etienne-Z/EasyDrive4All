@@ -20,7 +20,7 @@ class LessonSeeder extends Seeder
         for($i = 0; $i<=50; $i++){
             $start = time() + rand(86400, 259200);
             DB::table('lessons')->insert([
-                'User_ID' => User::inRandomOrder()->notInstructor()->first()->id,
+                'User_ID' => User::inRandomOrder()->Student()->first()->id,
                 'Instructor_ID' => Instructors::all()->random()->id,
                 'pickup_address' => Str::random(10),
                 'Pickup_city' => Str::random(10),

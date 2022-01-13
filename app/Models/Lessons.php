@@ -20,4 +20,20 @@ class lessons extends Model
         'Exam',
         'Exam_success'
     ];
+
+    /**
+     *
+     * Scopes for filtering on student / instructor ID
+     *
+     */
+
+    public function scopeStudent($query, $student){
+        return $query->select()
+        ->where('User_ID', '=', $student);
+    }
+
+    public function scopeInstructor($query, $instructor){
+        return $query->select()
+        ->where('Instructor_ID', '=', $instructor);
+    }
 }

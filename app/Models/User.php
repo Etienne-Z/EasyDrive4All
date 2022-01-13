@@ -50,18 +50,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function scopeNotInstructor($query){
+
+
+    /**
+     *
+     * Scopes for filtering on role
+     *
+     */
+
+    public function scopeStudent($query){
         return $query->select()
-        ->where('users.role', '!=', 1);
+        ->where('users.role', '==', 0);
     }
 
-    public function scopeTest($query)
-    {
-        return $query->join('instructor_has_users', 'users.id', 'instructor_has_users.User_ID')
-        ->select();
+    public function scopeInstructor($query){
+        return $query->select()
+        ->where('users.role', '==', 1);
+    }
 
-        // ->join('stores', 'products.Store_ID', 'stores.id')
-        // ->join('user_carts', 'cart_items.User_cart_ID', 'user_carts.id')
-        // ->select('stores.Store', 'cart_items.Amount', 'cart_items.product_id', 'products.Product_name', 'products.Product_image', 'products.Product_price', 'user_carts.Cart_name', 'user_carts.id');
+    public function scopeAdmin($query){
+        return $query->select()
+        ->where('users.role', '==', 2);
     }
 }
