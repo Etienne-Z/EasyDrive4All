@@ -151,6 +151,11 @@
         font-size: 25px;
     }
 }
+
+.delete-button{
+    border: none;
+    background-color: white;
+}
 //photo's about us page
 .team{
     background-image: url('/image/stock/team.jpeg');
@@ -281,12 +286,30 @@
 ///Owner CSS//
 
 //Student overview//
-.button-add-user{
-    position: absolute;
-    margin-right: 100px;
-    background-color: $oak;
-    padding: 20px 40px;
+.overview_header{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    h1 {
+        text-align: center;
+    }
+    .button-add-user{
+        position: fixed;
+        z-index: 1;
+        top: 23%;
+        right: 5%;
+        background-color: $oak;
+        padding: 10px 20px;
+        color: $white;
+        font-weight: 900;
+        letter-spacing: 1px;
+        &:hover{
+            background-color: #D7A31A;
+            cursor: pointer;
+        }
+    }
 }
+
 .overview{
     td{
         border: 1px solid black;
@@ -306,6 +329,13 @@
         color:white;
     }
 }
+
+.fa-user-edit,.fa-trash{
+    font-size: 45px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 
 ///footer//
 footer{
@@ -334,7 +364,7 @@ footer{
     padding: 10px;
     z-index: 10;
     position: fixed;
-    top: 5%; 
+    top: 5%;
     left: calc(50% - 250px);
     margin-left: auto;
     margin-right: auto;
@@ -352,7 +382,7 @@ footer{
     padding: 10px 20px;
     border: none;
     display: inline-block;
-    margin-top: 20px;   
+    margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
 }

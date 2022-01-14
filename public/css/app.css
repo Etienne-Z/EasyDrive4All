@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@import url(https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
 @charset "UTF-8";
 @font-face {
   font-family: "secular";
@@ -11431,6 +11431,11 @@ textarea.form-control-lg {
   font-size: 25px;
 }
 
+.delete-button {
+  border: none;
+  background-color: white;
+}
+
 .team {
   background-image: url("/image/stock/team.jpeg");
 }
@@ -11547,11 +11552,28 @@ textarea.form-control-lg {
   margin-top: 20px;
 }
 
-.button-add-user {
-  position: absolute;
-  margin-right: 100px;
+.overview_header {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.overview_header h1, .overview_header .h1 {
+  text-align: center;
+}
+.overview_header .button-add-user {
+  position: fixed;
+  z-index: 1;
+  top: 23%;
+  right: 5%;
   background-color: #F6BE3B;
-  padding: 20px 40px;
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+.overview_header .button-add-user:hover {
+  background-color: #D7A31A;
+  cursor: pointer;
 }
 
 .overview td {
@@ -11570,6 +11592,12 @@ textarea.form-control-lg {
 .overview td:nth-child(even) {
   background-color: #14223A;
   color: white;
+}
+
+.fa-user-edit, .fa-trash {
+  font-size: 45px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 footer {

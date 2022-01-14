@@ -32,6 +32,7 @@ Route::get('/contact', [ContactController::class,'index']);
 Route::post('/contact', [ContactController::class,'contactForm']);
 Route::get('/students_overview', [InstructorsController::class, 'studentOverview']);
 Route::get('/profile', [ProfileController::class, 'index']);
+Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
 
 Auth::routes();
 

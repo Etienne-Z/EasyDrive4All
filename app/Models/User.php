@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\instructor_has_users;
 
 class User extends Authenticatable
 {
@@ -53,6 +54,12 @@ class User extends Authenticatable
     public function scopeWhereID($query, $id){
         return $query->where('users.id', '=', $id);
     }
+    public function instructor_has_users()
+    {
+        return $this->hasOne(instructor_has_users::class);
+    }
+
+
 
     /**
      *
@@ -61,17 +68,18 @@ class User extends Authenticatable
      */
 
     public function scopeStudent($query){
-        return $query->select()
-        ->where('users.role', '==', 0);
+        return $query->where('users.role', '==', 0);
     }
 
     public function scopeInstructor($query){
-        return $query->select()
-        ->where('users.role', '==', 1);
+        return $query->where('users.role', '==', 1);
     }
 
     public function scopeAdmin($query){
-        return $query->select()
-        ->where('users.role', '==', 2);
+        return $query->where('users.role', '==', 2);
+    }
+
+    public function scopeId($query, $id){
+        return $query->where('users.id', '=', $id);
     }
 }
