@@ -11472,6 +11472,26 @@ textarea.form-control-lg {
   color: white;
 }
 
+.lessons-overview th {
+  width: 145px;
+}
+.lessons-overview td, .lessons-overview th {
+  padding: 5px 10px;
+  border: 1px solid black;
+  letter-spacing: 0.1rem;
+  margin-left: 45px;
+}
+.lessons-overview tr:nth-child(odd) {
+  background-color: #F6BE3B !important;
+  color: #14223A !important;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+.lessons-overview tr:nth-child(even) {
+  background-color: #14223A;
+  color: white;
+}
+
 .contact-form-container {
   background-color: #14223A;
   color: white;
