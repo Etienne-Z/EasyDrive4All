@@ -11289,7 +11289,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.title {
+.title-homepage {
   color: #14223A;
   font-size: 62px;
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -11584,8 +11584,45 @@ footer .col-md {
 }
 footer h3, footer .h3 {
   color: #14223A;
+  color: black;
   font-weight: 900;
 }
 footer .links-footer a {
   color: #fff;
+}
+
+.logout-dialog {
+  padding: 10px;
+  z-index: 10;
+  position: fixed;
+  top: 5%;
+  left: calc(50% - 250px);
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  background: #14223A;
+  font-size: 20px;
+  width: 500px;
+  height: 131px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.button-cancel, .button-yes {
+  font-size: 15px;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.button-cancel {
+  background-color: red;
+}
+
+.button-yes {
+  background-color: #00C9A7;
 }
