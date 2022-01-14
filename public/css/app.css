@@ -11289,7 +11289,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.title-homepage {
+.title {
   color: #14223A;
   font-size: 62px;
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -11304,6 +11304,13 @@ textarea.form-control-lg {
 }
 .navbar-expand-md a {
   color: #FFFFFF !important;
+}
+
+.alert {
+  color: #dc3545;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0;
 }
 
 .homepage-container {
@@ -11362,6 +11369,186 @@ textarea.form-control-lg {
   letter-spacing: 1px;
 }
 
+.about-us-container {
+  background-color: #14223A;
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+.about-us-container .col-md-6 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.about-us-container h2, .about-us-container .h2 {
+  font-size: 32px;
+}
+.about-us-container p {
+  letter-spacing: 1px;
+}
+.about-us-container .image {
+  margin-top: auto;
+  margin-bottom: auto;
+  border: none;
+  border-radius: 55%;
+  background-size: cover;
+  max-width: 350px;
+  height: 300px;
+  background-position: right;
+}
+
+.about-us-container-white {
+  background-color: #fff;
+  color: #14223A;
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+.about-us-container-white .col-md-6 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.about-us-container-white h2, .about-us-container-white .h2 {
+  font-size: 32px;
+}
+.about-us-container-white p {
+  letter-spacing: 1px;
+}
+.about-us-container-white .image {
+  margin-top: auto;
+  margin-bottom: auto;
+  border: none;
+  border-radius: 55%;
+  background-size: cover;
+  max-width: 350px;
+  height: 300px;
+  background-position: left;
+}
+.about-us-container-white img {
+  border: none;
+  border-radius: 50%;
+}
+.about-us-container-white .name-instructor {
+  font-weight: 900;
+  font-size: 25px;
+}
+
+.team {
+  background-image: url("/image/stock/team.jpeg");
+}
+
+.building {
+  background-image: url("/image/stock/rijschool.jpeg");
+}
+
+.owner {
+  background-image: url("/image/stock/eigenaar.jpeg");
+  background-position: top !important;
+}
+
+.contact-form-container {
+  background-color: #14223A;
+  color: white;
+  padding: 40px 0px;
+}
+.contact-form-container .contact-form {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.contact-form-container .contact-form input {
+  width: 300px;
+  height: 40px;
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 26px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0.05rem solid black;
+  padding-left: 10px;
+}
+.contact-form-container .contact-form textarea {
+  margin-left: auto;
+  margin-right: 100px;
+  padding: 10px 20px;
+  max-width: 80%;
+}
+.contact-form-container .contact-form button {
+  display: block;
+  margin-left: auto;
+  margin-right: 40%;
+  margin-top: 10px;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  border: none;
+  background-color: #F6BE3B;
+  color: white;
+  font-weight: 900;
+  width: 200px;
+}
+.contact-form-container .contact-form button:hover {
+  background-color: #D7A31A;
+}
+
+.container-contact-gegevens a {
+  text-decoration: none;
+}
+.container-contact-gegevens .col-md-6 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-contact-gegevens iframe {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.container-contact-gegevens h2, .container-contact-gegevens .h2 {
+  color: #14223A;
+  font-weight: 900;
+}
+.container-contact-gegevens .contact-details {
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.succes-message {
+  background-image: url(/image/stock/done.png);
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  background-size: cover;
+  margin-right: auto;
+}
+
+.succes-text {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-top: 20px;
+}
+
+.button-add-user {
+  position: absolute;
+  margin-right: 100px;
+  background-color: #F6BE3B;
+  padding: 20px 40px;
+}
+
+.overview td {
+  border: 1px solid black;
+}
+.overview thead td {
+  background-color: #F6BE3B !important;
+  color: #14223A !important;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+.overview td {
+  letter-spacing: 1px;
+  margin-left: 5px;
+}
+.overview td:nth-child(even) {
+  background-color: #14223A;
+  color: white;
+}
+
 footer {
   background-color: #F6BE3B;
   padding: 40px 20px;
@@ -11373,7 +11560,7 @@ footer .col-md {
   margin-right: 20px;
 }
 footer h3, footer .h3 {
-  color: black;
+  color: #14223A;
   font-weight: 900;
 }
 footer .links-footer a {

@@ -180,8 +180,8 @@
             width: 300px;
             height: 40px;
             display: block;
-            margin-top: 10px;
-            margin-bottom: 2px;
+            margin-top: 0px;
+            margin-bottom: 26px;
             margin-left: auto;
             margin-right: auto;
             border: 0.05rem solid black;
@@ -189,19 +189,22 @@
         }
         textarea{
             margin-left: auto;
-            margin-right: auto;
+            margin-right: 100px;
             padding: 10px 20px;
+            max-width: 80%;
         }
         button{
             display: block;
             margin-left: auto;
-            margin-right: 130px;
+            margin-right: 40%;
+            margin-top: 10px;
             padding: 10px 20px;
             letter-spacing: 1px;
             border: none;
             background-color: $oak;
             color: white;
             font-weight: 900;
+            width: 200px;
         }
         button:hover{
             background-color: #D7A31A;
@@ -246,6 +249,36 @@
     letter-spacing: 1px;
     margin-top: 20px
 }
+
+
+///Owner CSS//
+
+//Student overview//
+.button-add-user{
+    position: absolute;
+    margin-right: 100px;
+    background-color: $oak;
+    padding: 20px 40px;
+}
+.overview{
+    td{
+        border: 1px solid black;
+    }
+    thead td{
+        background-color: $oak !important;
+        color: $blue !important;
+        letter-spacing: 1px;
+        font-weight: 900;
+    }
+    td{
+        letter-spacing: 1px;
+        margin-left: 5px;
+    }
+    td:nth-child(even){
+        background-color:$blue;
+        color:white;
+    }
+}
 ///footer//
 footer{
     background-color: $oak;
@@ -257,7 +290,7 @@ footer{
         margin-right: 20px;
     }
     h3{
-        color: black;
+        color: $blue;
         font-weight: 900;
     }
     .links-footer{
