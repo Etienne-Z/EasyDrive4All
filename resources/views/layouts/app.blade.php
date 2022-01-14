@@ -45,6 +45,12 @@
                             <li class="nav-item">
                                     <a class="nav-link" href="/contact">Contact</a>
                             </li>
+
+                            @if(Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/lessons">Lessen</a>
+                                </li>
+                            @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

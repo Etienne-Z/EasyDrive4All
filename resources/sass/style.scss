@@ -202,24 +202,33 @@
 
 .lessons-overview{
     // Andere font om bolder te maken, kan nog niet
-    th{
-        width: 145px;
-    }
+
     td,th{
         padding: 5px 10px;
         border: 1px solid black;
         letter-spacing: 0.1rem;
         margin-left: 45px;
+        font-weight: 400;
+    }
+    th{
+        width: 145px;
+        font-weight: 900;
     }
     tr:nth-child(odd){
         background-color: $oak !important;
         color: $blue !important;
         letter-spacing: 1px;
         font-weight: 900;
+        text-decoration: none;
     }
     tr:nth-child(even){
         background-color:$blue;
+        text-decoration: none;
         color:white;
+        // Color reset omdat !important niet werkt
+        td a{
+            color:white;
+        }
     }
 }
 
