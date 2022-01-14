@@ -35,3 +35,6 @@ Route::get('/profile', [ProfileController::class, 'index']);
 
 Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
+Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
