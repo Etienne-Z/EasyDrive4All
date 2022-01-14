@@ -17,4 +17,10 @@ class instructors extends Model
     protected $fillable = [
         'User_ID'
     ];
+
+    //Nog niet gechecked of het werkt
+
+    // public function students(){
+    //     return $this->hasMany(User::class);
+    // }
 }

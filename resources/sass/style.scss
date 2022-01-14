@@ -1,6 +1,5 @@
 //style homepage//
 .title{
-.title-homepage{
     color: $blue;
     font-size: 62px;
     font-family: $rounded;
@@ -193,6 +192,31 @@
     }
 }
 
+//lessons page//
+
+.lessons-overview{
+    // Andere font om bolder te maken, kan nog niet
+    th{
+        width: 145px;
+    }
+    td,th{
+        padding: 5px 10px;
+        border: 1px solid black;
+        letter-spacing: 0.1rem;
+        margin-left: 45px;
+    }
+    tr:nth-child(odd){
+        background-color: $oak !important;
+        color: $blue !important;
+        letter-spacing: 1px;
+        font-weight: 900;
+    }
+    tr:nth-child(even){
+        background-color:$blue;
+        color:white;
+    }
+}
+
 
 //contact page//
 .contact-form-container{
@@ -334,7 +358,7 @@ footer{
     padding: 10px;
     z-index: 10;
     position: fixed;
-    top: 5%; 
+    top: 5%;
     left: calc(50% - 250px);
     margin-left: auto;
     margin-right: auto;
@@ -352,7 +376,7 @@ footer{
     padding: 10px 20px;
     border: none;
     display: inline-block;
-    margin-top: 20px;   
+    margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
 }

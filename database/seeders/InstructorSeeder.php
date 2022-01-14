@@ -25,5 +25,12 @@ class InstructorSeeder extends Seeder
                 where('id', '=', $user_ID)
                 ->update(['role' => 1]);
     }
+    instructors::
+    insert([
+        'User_ID' => 27
+    ]);
+ User::
+    where('id', '=', 27)
+    ->update(['role' => 1]);
     }
 }
