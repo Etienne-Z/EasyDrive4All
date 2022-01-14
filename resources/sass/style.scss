@@ -1,5 +1,6 @@
 //style homepage//
 .title{
+.title-homepage{
     color: $blue;
     font-size: 62px;
     font-family: $rounded;
@@ -305,6 +306,7 @@
         color:white;
     }
 }
+
 ///footer//
 footer{
     background-color: $oak;
@@ -317,6 +319,7 @@ footer{
     }
     h3{
         color: $blue;
+        color: black;
         font-weight: 900;
     }
     .links-footer{
@@ -325,4 +328,39 @@ footer{
         }
     }
 
+}
+
+.logout-dialog{
+    padding: 10px;
+    z-index: 10;
+    position: fixed;
+    top: 5%; 
+    left: calc(50% - 250px);
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background: #14223A;
+    font-size: 20px;
+    width: 500px;
+    height: 131px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.button-cancel,.button-yes{
+    font-size: 15px;
+    color:$white;
+    padding: 10px 20px;
+    border: none;
+    display: inline-block;
+    margin-top: 20px;   
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button-cancel{
+    background-color: red;
+}
+
+.button-yes{
+    background-color: #00C9A7;
 }

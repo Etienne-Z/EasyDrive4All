@@ -18,4 +18,5 @@ class instructor_has_users extends Model
     {
         return $query->where('votes', '>', 100);
     }
+
 }

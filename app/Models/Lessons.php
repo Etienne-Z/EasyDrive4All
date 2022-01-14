@@ -21,6 +21,7 @@ class lessons extends Model
         'Exam_success'
     ];
 
+
     /**
      *
      * Scopes for filtering on student / instructor ID

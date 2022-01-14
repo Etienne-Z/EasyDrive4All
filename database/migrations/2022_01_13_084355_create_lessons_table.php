@@ -19,10 +19,13 @@ class CreateLessonsTable extends Migration
             $table->foreignId('Instructor_ID')->constrained('instructors');
             $table->string("pickup_address");
             $table->string("pickup_city");
+
             $table->datetime("starting_time");
             $table->datetime("finishing_time");
             $table->string("lesson_type");
             $table->string("comment")->nullable();
+            $table->timestamps();
+
         });
     }
 
