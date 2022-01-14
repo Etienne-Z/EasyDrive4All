@@ -22,4 +22,9 @@ class instructors extends Model
     {
         return $this->hasOne(instructor_has_users::class);
     }
+    //Nog niet gechecked of het werkt
+
+    // public function students(){
+    //     return $this->hasMany(User::class);
+    // }
 }

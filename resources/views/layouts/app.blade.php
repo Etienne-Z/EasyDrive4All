@@ -62,7 +62,11 @@
                                     {{ Auth::user()->first_name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                               
+
+                                    <a class="dropdown-item" href="/profile">
+                                        <div style="color: black;">Profiel</div>
+                                    </a>
+
                                     {{--  onclick="document.getElementById("logout").className = "logout-dialog-open""  --}}
                                     <a class="dropdown-item"
                                     onclick=" document.getElementById('logout').style.display='block'"><div style="color: black;">logout</div></a>
@@ -109,21 +113,21 @@
     </footer>
 
 
-        <div id="logout" class="logout-dialog" style="display: none; "> 
+        <div id="logout" class="logout-dialog" style="display: none; ">
             <b class="m-4">Weet u zeker dat u wilt uitloggen?</b>
 
             <div class="button-yes-cancel">
                 <button class="button-yes" href="{{route('logout')}}"
                 onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">JA</button>
-                                   <button class="button-cancel" 
+                                   <button class="button-cancel"
             onclick=" document.getElementById('logout').style.display='none'">CANCEL</button>
-        
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
-            </form> 
+            </form>
             </div>
-  
+
         </div>
 
 </body>
