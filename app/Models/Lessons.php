@@ -21,7 +21,10 @@ class lessons extends Model
         'Exam_success'
     ];
 
-
+    public function instructor_has_users()
+    {
+        return $this->hasOne(instructor_has_users::class);
+    }
     /**
      *
      * Scopes for filtering on student / instructor ID
