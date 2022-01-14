@@ -28,8 +28,6 @@ class LessonSeeder extends Seeder
                 'Finishing_time' => date('Y/m/d H:i', $start + 3600),
                 'Lesson_type' => Str::random(10),
                 'Comment' => Str::random(10),
-                'Exam' => 0,
-                'Exam_success' => 0
             ]);
     }
 }

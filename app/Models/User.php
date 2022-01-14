@@ -50,6 +50,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function scopeWhereID($query, $id){
+        return $query->where('users.id', '=', $id);
+    }
 
     /**
      *

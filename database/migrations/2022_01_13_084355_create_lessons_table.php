@@ -23,9 +23,6 @@ class CreateLessonsTable extends Migration
             $table->datetime("finishing_time");
             $table->string("lesson_type");
             $table->string("comment")->nullable();
-            $table->boolean("exam")->nullable();
-            $table->boolean("exam_success")->nullable();
-
         });
     }
 

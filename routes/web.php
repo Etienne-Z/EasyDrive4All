@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContactController;
@@ -31,6 +31,7 @@ Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/contact', [ContactController::class,'index']);
 Route::post('/contact', [ContactController::class,'contactForm']);
 Route::get('/students_overview', [InstructorsController::class, 'studentOverview']);
+Route::get('/profile', [ProfileController::class, 'index']);
 
 Auth::routes();
 

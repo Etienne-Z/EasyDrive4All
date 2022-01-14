@@ -11444,6 +11444,29 @@ textarea.form-control-lg {
   background-position: top !important;
 }
 
+.profile-overview {
+  width: 450px;
+}
+.profile-overview th {
+  width: 145px;
+}
+.profile-overview td, .profile-overview th {
+  padding: 10px 20px;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  margin-left: 45px;
+}
+.profile-overview tr:nth-child(odd) {
+  background-color: #F6BE3B !important;
+  color: #14223A !important;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+.profile-overview tr:nth-child(even) {
+  background-color: #14223A;
+  color: white;
+}
+
 .contact-form-container {
   background-color: #14223A;
   color: white;
