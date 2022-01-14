@@ -319,7 +319,7 @@
         text-align: center;
     }
     .button-add-user{
-        position: fixed;
+        position: absolute;
         z-index: 1;
         top: 23%;
         right: 5%;
@@ -418,4 +418,9 @@ footer{
 
 .button-yes{
     background-color: #00C9A7;
+}
+
+.delete-user{
+    height: 200px;
+    top: calc(50% - 100px);
 }

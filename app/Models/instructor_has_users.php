@@ -32,7 +32,7 @@ class instructor_has_users extends Model
     }
 
     public function scopeUser($query, $id){
-        return $query->where('User_ID', '=' , $id);
+        return $query->where('User_ID',$id);
 
     }
 }

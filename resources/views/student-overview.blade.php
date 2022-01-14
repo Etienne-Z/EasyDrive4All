@@ -39,4 +39,13 @@
             </table>
         </div>
     </div>
+
+    <div class="logout-dialog delete-user" style="display:none">
+        <p>Weet u zeker dat u de gebruiker wilt verwijderen?</p>
+        <form action="">
+            <button class="button-yes">Ja</button>
+            <button class="button-cancel">Nee</button>
+        </form>
+    </div>
 @endsection
+

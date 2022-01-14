@@ -16,15 +16,14 @@ class InstructorsController extends Controller
 
     public function deleteUser(Request $request)
     {
-
         $id = $request->id;
-        $id = intval($id);
-        instructor_has_users::where('User_id', $id)->delete();
-        $lessen = lessons::where('User_id', $id)->get();
+        instructor_has_users::User($id)->delete();
+        $lessen = lessons::WhereStudent($id)->get();
         foreach($lessen as $les){
             $les->delete();
         }
-        dd(User::Id($id)->first()->delete());
+        User::Id($id)->delete();
+        return redirect()->back();
 
     }
 
