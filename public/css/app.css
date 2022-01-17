@@ -11595,7 +11595,7 @@ textarea.form-control-lg {
 .overview_header .button-add-user {
   position: absolute;
   z-index: 1;
-  top: 23%;
+  top: 143px;
   right: 5%;
   background-color: #F6BE3B;
   padding: 10px 20px;
@@ -11606,6 +11606,10 @@ textarea.form-control-lg {
 .overview_header .button-add-user:hover {
   background-color: #D7A31A;
   cursor: pointer;
+}
+
+#delete-user {
+  display: inline;
 }
 
 .overview td {
@@ -11707,8 +11711,4 @@ footer .links-footer a {
 }
 .sign-up-container button:hover {
   background-color: #D7A31A;
-}
-
-#delete-user {
-  display: inline;
 }

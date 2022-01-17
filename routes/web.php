@@ -39,6 +39,8 @@ Route::get('/students_overview', [InstructorsController::class, 'studentOverview
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
 
+Route::get('/instructors_overview', [InstructorsController::class, 'studentOverview']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

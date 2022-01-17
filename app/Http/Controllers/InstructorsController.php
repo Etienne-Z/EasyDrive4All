@@ -14,6 +14,11 @@ class InstructorsController extends Controller
         return view('student-overview',compact('students'));
     }
 
+    public function instructorOverview(){
+        $instructor = User::Instructor()->get();
+        return view('instructor-overview',compact('instructors'));
+    }
+
     public function deleteUser(Request $request)
     {
         $id = $request->id;

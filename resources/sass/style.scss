@@ -332,7 +332,7 @@
     .button-add-user{
         position: absolute;
         z-index: 1;
-        top: 23%;
+        top: 143px;
         right: 5%;
         background-color: $oak;
         padding: 10px 20px;
@@ -346,6 +346,11 @@
     }
 }
 
+//form student overview yes or no
+#delete-user{
+    display: inline;
+}
+//table overviews
 .overview{
     td{
         border: 1px solid black;
@@ -454,7 +459,3 @@ footer{
 }
 
 
-//form student overview yes or no
-#delete-user{
-    display: inline;
-}
