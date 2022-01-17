@@ -56,6 +56,23 @@
                     <button>Versturen</button>
                 </form>
             </div>
+        @else
+        <div class="w-50 text-center lesson-form-container">
+            <h2 class="text-center mb-2">Lestijden aanpassen</h2>
+            <form action="/lesson/date" method="POST">
+                <input type="hidden" value="{{$lesson->id}}" name="id">
+                <div class="error">{{ $errors->first('date') }}</div>
+                <div class="form-group">
+                    <label for="date">Datum</label>
+                    @php
+                        $lesson->starting_time = str_replace(' ', 'T', $lesson->starting_time);
+                    @endphp
+                    <input class="form-control" type="datetime-local" id="date" name="date" value="{{$lesson->starting_time}}">
+                </div>
+                @csrf
+                <button>Aanpassen</button>
+            </form>
+        </div>
         @endif
     </div>
 </div>

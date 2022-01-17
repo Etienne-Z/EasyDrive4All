@@ -26,7 +26,7 @@ class LessonsController extends Controller
         return view('/lesson', compact('lesson'));
     }
 
-    public function Postresult(Request $request){
+    public function PostResult(Request $request){
         if(Auth::user()->instructor){
             $request->validate([
                 "id" => "required",
@@ -42,5 +42,18 @@ class LessonsController extends Controller
     }else{
         return $this->index();
     }
+    }
+    public function ChangeDate(Request $request){
+        echo $request->date;
+        echo "<br>". date("Y-m-d\TH:i:s", time());
+        // dd("test");
+        dd(gettype($request->date));
+        $request->validate([
+            "id" => "required",
+            "date" => "required|date|date_format:Y-m-d\TH:i:s|after:now"
+        ]);
+        $lesson = lessons::WhereId($request->id)->first();
+        $lesson->starting_time = $request->date;
+        $request->ending_time = $lesson->startingtime->modify('+ 1 hour');
     }
 }
