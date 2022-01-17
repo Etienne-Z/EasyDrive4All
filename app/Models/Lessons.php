@@ -39,7 +39,7 @@ class lessons extends Model
 
     public function scopeLessonInformation($query){
         return $query
-        ->select('users.first_name','lessons.pickup_address', 'lessons.pickup_city', 'lessons.starting_time', 'lessons.finishing_time', 'lessons.lesson_type','lessons.result', 'lessons.comment');
+        ->select('users.first_name', 'lessons.id', 'lessons.pickup_address', 'lessons.pickup_city', 'lessons.starting_time', 'lessons.finishing_time', 'lessons.lesson_type','lessons.result', 'lessons.comment');
     }
 
 
@@ -57,5 +57,10 @@ class lessons extends Model
     public function scopeWhereInstructor($query, $instructor){
         return $query
         ->where('Instructor_ID', '=', $instructor);
+    }
+
+    public function scopeWhereId($query, $id){
+        return $query
+        ->where('lessons.id', '=', $id);
     }
 }

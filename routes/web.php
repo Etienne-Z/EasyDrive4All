@@ -34,10 +34,12 @@ Route::get('/contact', [ContactController::class,'index']);
 Route::post('/contact', [ContactController::class,'contactForm']);
 
 Route::get('/lessons', [LessonsController::class, 'index']);
+Route::get('/lesson/{id}', [LessonsController::class, 'lesson']);
+route::post('/lesson/result', [LessonsController::class, 'Postresult']);
 
 Route::get('/students_overview', [InstructorsController::class, 'studentOverview']);
 Route::get('/profile', [ProfileController::class, 'index']);
-Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
+Route::post('/students_overview', [InstructorsController::class, 'deleteUser']);
 
 Auth::routes();
 

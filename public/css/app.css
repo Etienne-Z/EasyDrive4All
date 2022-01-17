@@ -11499,6 +11499,39 @@ textarea.form-control-lg {
   color: white;
 }
 
+.lesson-form-container {
+  color: white;
+  background-color: #14223A;
+  padding: 30px 0px 40px 0;
+  margin-top: 45px;
+}
+.lesson-form-container label {
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin: 10px 0;
+}
+.lesson-form-container .form-group {
+  margin: 0 auto;
+  width: 450px;
+  border: none;
+}
+.lesson-form-container button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  border: none;
+  background-color: #F6BE3B;
+  color: white;
+  font-weight: 900;
+  width: 200px;
+}
+.lesson-form-container button:hover {
+  background-color: #D7A31A;
+}
+
 .contact-form-container {
   background-color: #14223A;
   color: white;

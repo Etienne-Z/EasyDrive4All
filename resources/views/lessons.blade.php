@@ -19,8 +19,6 @@
                     <th>Begintijd</th>
                     <th>Eindtijd</th>
                     <th>Les type</th>
-                    <th>Resultaat</th>
-                    <th>Commentaar</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,14 +29,12 @@
                 @endphp
                     @if($difference_in_seconds < 0)
                         <tr>
-                            <td><a href="#">{{$lesson->first_name}}</a></td>
-                            <td><a href="#">{{$lesson->pickup_address}}</a></td>
-                            <td><a href="#">{{$lesson->pickup_city}}</a></td>
-                            <td><a href="#">{{$lesson->starting_time}}</a></td>
-                            <td><a href="#">{{$lesson->finishing_time}}</a></td>
-                            <td><a href="#">{{$lesson->lesson_type}}</a></td>
-                            <td><a href="#">{{$lesson->result}}</a></td>
-                            <td><a href="#">{{$lesson->comment}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->first_name}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->pickup_address}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->pickup_city}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->starting_time}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->finishing_time}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->lesson_type}}</a></td>
                         </tr>
                     @endif
             @endforeach
@@ -59,8 +55,6 @@
                     <th>Begintijd</th>
                     <th>Eindtijd</th>
                     <th>Les type</th>
-                    <th>Resultaat</th>
-                    <th>Commentaar</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,14 +65,12 @@
                 @endphp
                     @if($difference_in_seconds >= 0)
                         <tr>
-                            <td><a href="#">{{$lesson->first_name}}</a></td>
-                            <td><a href="#">{{$lesson->pickup_address}}</a></td>
-                            <td><a href="#">{{$lesson->pickup_city}}</a></td>
-                            <td><a href="#">{{$lesson->starting_time}}</a></td>
-                            <td><a href="#">{{$lesson->finishing_time}}</a></td>
-                            <td><a href="#">{{$lesson->lesson_type}}</a></td>
-                            <td><a href="#">{{$lesson->result}}</a></td>
-                            <td><a href="#">{{$lesson->comment}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->first_name}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->pickup_address}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->pickup_city}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->starting_time}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->finishing_time}}</a></td>
+                            <td><a href="/lesson/{{$lesson->id}}">{{$lesson->lesson_type}}</a></td>
                         </tr>
                     @endif
             @endforeach
