@@ -1,5 +1,6 @@
 //style homepage//
-.title-homepage{
+
+.title{
     color: $blue;
     font-size: 62px;
     font-family: $rounded;
@@ -14,6 +15,25 @@
     a{
         color: #FFFFFF !important;
     }
+}
+///alert messages//
+.alert{
+    color: $red;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0;
+}
+
+#wait{
+    display: none;
+    width: 100%;
+    height: 96px;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
 }
 
 .homepage-container{
@@ -62,6 +82,296 @@
     }
 }
 
+//Algemene voorwaarden page//
+
+
+.subtitle-algemene-voorwaarden{
+    color: $oak;
+    font-size: 25px;
+    font-family: $rounded;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.algemene-voorwaarden{
+    letter-spacing: 1px;
+}
+
+//About us page//
+.about-us-container{
+    background-color: $blue;
+    color: $white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    .col-md-6{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h2{
+        font-size: 32px;
+    }
+    p{
+        letter-spacing: 1px;
+    }
+    .image{
+        margin-top: auto;
+        margin-bottom: auto;
+        border: none;
+        border-radius: 55%;
+        background-size: cover;
+        max-width: 350px;
+        height: 300px;
+        background-position: right;
+    }
+
+}
+
+.about-us-container-white{
+    background-color: $white;
+    color: $blue;
+    padding: 40px 20px;
+    border-radius: 10px;
+    .col-md-6{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h2{
+        font-size: 32px;
+    }
+    p{
+        letter-spacing: 1px;
+    }
+    .image{
+        margin-top: auto;
+        margin-bottom: auto;
+        border: none;
+        border-radius: 55%;
+        background-size: cover;
+        max-width: 350px;
+        height: 300px;
+        background-position: left;
+    }
+    img{
+        border: none;
+        border-radius: 50%;
+    }
+    .name-instructor{
+        font-weight: 900;
+        font-size: 25px;
+    }
+}
+
+.delete-button{
+    border: none;
+    background-color: white;
+}
+//photo's about us page
+.team{
+    background-image: url('/image/stock/team.jpeg');
+}
+
+.building{
+    background-image: url('/image/stock/rijschool.jpeg');
+}
+
+.owner{
+    background-image: url('/image/stock/eigenaar.jpeg');
+    background-position: top !important;
+}
+
+//end photo's about us page/
+
+
+//profile page//
+
+.profile-overview{
+    width: 450px;
+    th{
+        width: 145px;
+    }
+    td,th{
+        padding: 10px 20px;
+        border: 1px solid black;
+        letter-spacing: 0.2rem;
+        margin-left: 45px;
+    }
+    tr:nth-child(odd){
+        background-color: $oak !important;
+        color: $blue !important;
+        letter-spacing: 1px;
+        font-weight: 900;
+    }
+    tr:nth-child(even){
+        background-color:$blue;
+        color:white;
+    }
+}
+
+//lessons page//
+
+.lessons-overview{
+    // Andere font om bolder te maken, kan nog niet
+    th{
+        width: 145px;
+    }
+    td,th{
+        padding: 5px 10px;
+        border: 1px solid black;
+        letter-spacing: 0.1rem;
+        margin-left: 45px;
+    }
+    tr:nth-child(odd){
+        background-color: $oak !important;
+        color: $blue !important;
+        letter-spacing: 1px;
+        font-weight: 900;
+    }
+    tr:nth-child(even){
+        background-color:$blue;
+        color:white;
+    }
+}
+
+
+//contact page//
+.contact-form-container{
+    background-color: $blue;
+    color: white;
+    padding: 40px 0px;
+    .contact-form{
+        margin-left: auto;
+        margin-right: auto;
+        text-align:center;
+        input{
+            width: 300px;
+            height: 40px;
+            display: block;
+            margin-top: 0px;
+            margin-bottom: 26px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 0.05rem solid black;
+            padding-left: 10px;
+        }
+        textarea{
+            margin-left: auto;
+            margin-right: 100px;
+            padding: 10px 20px;
+            max-width: 80%;
+        }
+        button{
+            display: block;
+            margin-left: auto;
+            margin-right: 40%;
+            margin-top: 10px;
+            padding: 10px 20px;
+            letter-spacing: 1px;
+            border: none;
+            background-color: $oak;
+            color: white;
+            font-weight: 900;
+            width: 200px;
+        }
+        button:hover{
+            background-color: #D7A31A;
+
+        }
+    }
+}
+
+.container-contact-gegevens{
+    a{
+        text-decoration: none;
+    }
+    .col-md-6{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    iframe{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    h2{
+        color: $blue;
+        font-weight: 900;
+    }
+    .contact-details{
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+}
+
+.succes-message{
+    background-image: url(/image/stock/done.png);
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    background-size: cover;
+    margin-right: auto;
+}
+.succes-text{
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-top: 20px
+}
+
+
+///Owner CSS//
+
+//Student overview//
+.overview_header{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    h1 {
+        text-align: center;
+    }
+    .button-add-user{
+        position: absolute;
+        z-index: 1;
+        top: 23%;
+        right: 5%;
+        background-color: $oak;
+        padding: 10px 20px;
+        color: $white;
+        font-weight: 900;
+        letter-spacing: 1px;
+        &:hover{
+            background-color: #D7A31A;
+            cursor: pointer;
+        }
+    }
+}
+
+.overview{
+    td{
+        border: 1px solid black;
+    }
+    thead td{
+        background-color: $oak !important;
+        color: $blue !important;
+        letter-spacing: 1px;
+        font-weight: 900;
+    }
+    td{
+        letter-spacing: 1px;
+        margin-left: 5px;
+    }
+    td:nth-child(even){
+        background-color:$blue;
+        color:white;
+    }
+}
+
+.fa-user-edit,.fa-trash{
+    font-size: 45px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 
 ///footer//
 footer{
@@ -74,6 +384,7 @@ footer{
         margin-right: 20px;
     }
     h3{
+        color: $blue;
         color: black;
         font-weight: 900;
     }
@@ -89,7 +400,7 @@ footer{
     padding: 10px;
     z-index: 10;
     position: fixed;
-    top: 5%; 
+    top: 5%;
     left: calc(50% - 250px);
     margin-left: auto;
     margin-right: auto;
@@ -107,7 +418,7 @@ footer{
     padding: 10px 20px;
     border: none;
     display: inline-block;
-    margin-top: 20px;   
+    margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -118,4 +429,26 @@ footer{
 
 .button-yes{
     background-color: #00C9A7;
+}
+
+.delete-user{
+    height: 200px;
+    top: calc(50% - 100px);
+}
+
+.sign-up-container{
+    background-color: $blue;
+    color: white;
+    padding: 20px 30px;
+    letter-spacing: 1px;
+    button{
+        letter-spacing: 1px;
+        background-color: $oak;
+        color: $white;
+        padding: 10px 20px;
+        font-weight: 900;
+        &:hover{
+            background-color: #D7A31A;
+        }
+    }
 }

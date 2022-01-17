@@ -11,11 +11,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <!-- Font awsome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -33,20 +36,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('over ons') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Inschrijven') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Contact') }}</a>
-                        </li>                        
-
-
+                            <li class="nav-item">
+                                    <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="/about-us">Over ons</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="/contact">Contact</a>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -64,7 +62,11 @@
                                     {{ Auth::user()->first_name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                               
+
+                                    <a class="dropdown-item" href="/profile">
+                                        <div style="color: black;">Profiel</div>
+                                    </a>
+
                                     {{--  onclick="document.getElementById("logout").className = "logout-dialog-open""  --}}
                                     <a class="dropdown-item"
                                     onclick=" document.getElementById('logout').style.display='block'"><div style="color: black;">logout</div></a>
@@ -89,7 +91,7 @@
             <div class="row">
                 <div class="col-md-3 links-footer">
                     <h3 class="footer-titles">Links</h3>
-                    <a href="/overons">Over ons</a><br>
+                    <a href="/about-us">Over ons</a><br>
                     <a href="/login">Login</a><br>
                     <a href="/inschrijven">inschrijven</a><br>
                     <a href="/contact">Contact ons</a><br>
@@ -111,21 +113,21 @@
     </footer>
 
 
-        <div id="logout" class="logout-dialog" style="display: none; "> 
+        <div id="logout" class="logout-dialog" style="display: none; ">
             <b class="m-4">Weet u zeker dat u wilt uitloggen?</b>
 
             <div class="button-yes-cancel">
                 <button class="button-yes" href="{{route('logout')}}"
                 onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">JA</button>
-                                   <button class="button-cancel" 
+                                   <button class="button-cancel"
             onclick=" document.getElementById('logout').style.display='none'">CANCEL</button>
-        
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
-            </form> 
+            </form>
             </div>
-  
+
         </div>
 
 </body>

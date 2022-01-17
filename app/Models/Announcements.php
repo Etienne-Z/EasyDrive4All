@@ -13,4 +13,15 @@ class Announcements extends Model
         'Title',
         'Description'
     ];
+
+    public function scopeStudent($query){
+        return $query->select()
+        ->where('Announcements.role', '=', 0);
+    }
+
+    public function scopeInstructor($query){
+        return $query->select()
+        ->where('Announcements.role', '=', 1);
+    }
+
 }
