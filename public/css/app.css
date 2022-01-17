@@ -11695,8 +11695,7 @@ footer .links-footer a {
   letter-spacing: 1px;
   text-align: center;
 }
-
-.button-cancel, .button-yes {
+.logout-dialog .button-cancel, .logout-dialog .button-yes {
   font-size: 15px;
   color: #fff;
   padding: 10px 20px;
@@ -11706,11 +11705,9 @@ footer .links-footer a {
   margin-left: 10px;
   margin-right: 10px;
 }
-
-.button-cancel {
-  background-color: red;
+.logout-dialog .button-cancel {
+  background-color: red !important;
 }
-
-.button-yes {
-  background-color: #00C9A7;
+.logout-dialog .button-yes {
+  background-color: #00C9A7 !important;
 }

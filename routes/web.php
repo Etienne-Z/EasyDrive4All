@@ -35,9 +35,9 @@ Route::post('/contact', [ContactController::class,'contactForm']);
 
 Route::get('/lessons', [LessonsController::class, 'index']);
 Route::get('/lesson/{id}', [LessonsController::class, 'lesson']);
-route::post('/lesson/result', [LessonsController::class, 'PostResult']);
-route::post('/lesson/date', [LessonsController::class, 'ChangeDate']);
-route::post('/lesson/cancel', [LessonsController::class, 'CancelLesson']);
+Route::post('/lesson/result', [LessonsController::class, 'PostResult']);
+Route::post('/lesson/date', [LessonsController::class, 'ChangeDate']);
+Route::post('/lesson/cancel', [LessonsController::class, 'CancelLesson']);
 
 Route::get('/students_overview', [InstructorsController::class, 'studentOverview']);
 Route::get('/profile', [ProfileController::class, 'index']);

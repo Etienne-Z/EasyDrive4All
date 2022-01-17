@@ -442,22 +442,23 @@ footer{
     height: 131px;
     letter-spacing: 1px;
     text-align: center;
-}
-.button-cancel,.button-yes{
-    font-size: 15px;
-    color:$white;
-    padding: 10px 20px;
-    border: none;
-    display: inline-block;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
 
-.button-cancel{
-    background-color: red;
-}
+    .button-cancel,.button-yes{
+        font-size: 15px;
+        color:$white;
+        padding: 10px 20px;
+        border: none;
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
-.button-yes{
-    background-color: #00C9A7;
+    .button-cancel{
+        background-color: red !important;
+    }
+
+    .button-yes{
+        background-color: #00C9A7 !important;
+    }
 }

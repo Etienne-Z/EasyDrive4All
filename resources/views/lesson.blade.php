@@ -72,17 +72,26 @@
                 @csrf
                 <button>Aanpassen</button>
             </form>
-            <form action="/lesson/cancel" method="post">
-                <input type="hidden" name="id" value={{$lesson->id}}>
-                <button>annuleren</button>
-                @csrf
-            </form>
-{{-- 
-            <form action="/lesson/cancel" method="get">
-                <input type="hidden" value="{{$lesson->id}}" name="id">
-                @csrf
-                <button>Les annuleren</button>
-            </form> --}}
+
+                <button onclick="document.getElementById('cancel-lesson').style.display='block'">annuleren</button>
+
+            <div id="cancel-lesson" class="logout-dialog" style="display: none; ">
+                <b class="m-4">Weet u zeker dat u de les wilt annuleren?</b>
+
+                <div class="button-yes-cancel">
+                    <button class="button-yes"
+                    onclick="event.preventDefault();
+                             document.getElementById('cancel-form').submit();">JA</button>
+                                       <button class="button-cancel"
+                onclick=" document.getElementById('cancel-lesson').style.display='none'">ANNULEER</button>
+
+                <form action="/lesson/cancel" id="cancel-form" method="post">
+                    <input type="hidden" name="id" value={{$lesson->id}}>
+                    @csrf
+                </form>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>

@@ -63,12 +63,10 @@ class LessonsController extends Controller
     }
 
     public function CancelLesson(Request $request){
-    
         $request->validate([
             "id" => "required"
         ]);
-        // Moet nog confirm box komen met zeker zijn om een les te verwijderen
-        $lesson = lessons::WhereId($request->id)->get();
+        $lesson = lessons::WhereId($request->id)->first();
         if(strtotime($lesson->starting_time) >= strtotime(date("now") + 60*60*24)){
             $lesson->delete();
         }
