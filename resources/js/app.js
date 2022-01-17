@@ -8,6 +8,7 @@ $.ajaxSetup({
 
 $('#contact-form-id').on('submit',function(e){
     e.preventDefault();
+    
 
     let voornaam = $('#voornaam').val();
     let tussenvoegsel = $('#tussenvoegsel').val();
@@ -18,6 +19,11 @@ $('#contact-form-id').on('submit',function(e){
 
 
     $.ajax({
+      beforeSend : function () {  
+        // before send, show the loading gif
+        $('#contact-form-id').hide();
+        $('#wait').show(); 
+      },
       url: "/contact",
       type:"POST",
       data:{
@@ -27,6 +33,12 @@ $('#contact-form-id').on('submit',function(e){
         achternaam, achternaam,
         email:email,
         vraag:vraag,
+      },
+      complete : function () { 
+        // or hide here
+        // this callback called either success or failed
+        $('#wait').hide();
+        $('#contact-form-id').show();
       },
       success:function(response){
         $('#container-contact-form').html(
