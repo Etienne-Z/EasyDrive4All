@@ -72,12 +72,17 @@
                 @csrf
                 <button>Aanpassen</button>
             </form>
-
+            <form action="/lesson/cancel" method="post">
+                <input type="hidden" name="id" value={{$lesson->id}}>
+                <button>annuleren</button>
+                @csrf
+            </form>
+{{-- 
             <form action="/lesson/cancel" method="get">
                 <input type="hidden" value="{{$lesson->id}}" name="id">
                 @csrf
                 <button>Les annuleren</button>
-            </form>
+            </form> --}}
         </div>
     </div>
 </div>

@@ -14,7 +14,7 @@ class LessonsController extends Controller
         }else{
             $lessons = lessons::Instructor()->whereStudent(Auth::user()->id)->LessonInformation()->get();
         }
-        return view('/lessons', compact('lessons'));
+        return view('lessons', compact('lessons'));
     }
 
     public function lesson($id){
@@ -23,7 +23,7 @@ class LessonsController extends Controller
         }else{
             $lesson = lessons::Instructor()->whereStudent(Auth::user()->id)->LessonInformation()->WhereId($id)->first();
         }
-        return view('/lesson', compact('lesson'));
+        return view('lesson', compact('lesson'));
     }
 
     public function PostResult(Request $request){
@@ -63,6 +63,7 @@ class LessonsController extends Controller
     }
 
     public function CancelLesson(Request $request){
+    
         $request->validate([
             "id" => "required"
         ]);
