@@ -56,9 +56,9 @@
                     <button>Versturen</button>
                 </form>
             </div>
-        @else
+        @endif
         <div class="w-50 text-center lesson-form-container">
-            <h2 class="text-center mb-2">Lestijden aanpassen</h2>
+            <h2 class="text-center mb-2">Les wijzigen</h2>
             <form action="/lesson/date" method="POST">
                 <input type="hidden" value="{{$lesson->id}}" name="id">
                 <div class="error">{{ $errors->first('date') }}</div>
@@ -72,8 +72,13 @@
                 @csrf
                 <button>Aanpassen</button>
             </form>
+
+            <form action="/lesson/cancel" method="get">
+                <input type="hidden" value="{{$lesson->id}}" name="id">
+                @csrf
+                <button>Les annuleren</button>
+            </form>
         </div>
-        @endif
     </div>
 </div>
 @endsection

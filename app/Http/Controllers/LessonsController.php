@@ -39,21 +39,38 @@ class LessonsController extends Controller
             $lesson->comment = $request->comment;
 
             return $this->lesson($id);
-    }else{
-        return $this->index();
+        }else{
+            return $this->index();
+        }
     }
-    }
+
     public function ChangeDate(Request $request){
-        echo $request->date;
-        echo "<br>". date("Y-m-d\TH:i:s", time());
-        // dd("test");
-        dd(gettype($request->date));
+        // Validation error fix voor engelse tijd
+        $request->merge(["date" => str_replace("/", "-", $request->date)]);
+        if(!str_ends_with($request->date, ":00")){
+            $request->merge(['date' => $request->date . ":00"]);
+        }
         $request->validate([
             "id" => "required",
             "date" => "required|date|date_format:Y-m-d\TH:i:s|after:now"
         ]);
         $lesson = lessons::WhereId($request->id)->first();
-        $lesson->starting_time = $request->date;
-        $request->ending_time = $lesson->startingtime->modify('+ 1 hour');
+        $lesson->starting_time = str_replace("T", " ", $request->date);
+        $lesson->finishing_time = date("Y-m-d H:i:s", (strtotime($request->date) + 60*60));
+        $lesson->save();
+
+        return $this->lesson($request->id);
+    }
+
+    public function CancelLesson(Request $request){
+        $request->validate([
+            "id" => "required"
+        ]);
+        // Moet nog confirm box komen met zeker zijn om een les te verwijderen
+        $lesson = lessons::WhereId($request->id)->get();
+        if(strtotime($lesson->starting_time) >= strtotime(date("now") + 60*60*24)){
+            $lesson->delete();
+        }
+        return $this->index();
     }
 }
