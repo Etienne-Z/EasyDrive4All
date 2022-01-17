@@ -41,3 +41,60 @@ $('#contact-form-id').on('submit',function(e){
       },
       });
     });
+
+
+    $('#sign-up-form').on('submit',function(e){
+      e.preventDefault();
+      let first_name = $('#first_name').val();
+      let insertion = $('#insertion').val();
+      let last_name = $('#last_name').val();
+      let email = $('#email').val();
+      let address = $('#address').val();
+      let city = $('#city').val();
+      let zipcode = $('#zipcode').val();
+      let _token  = $('meta[name="csrf-token"]').attr('content');
+  
+  
+      $.ajax({
+        beforeSend : function () {  
+          // before send, show the loading gif
+          $('#wait').show(); 
+          $('#sign-up-form').hide();
+        },
+        url: "/inschrijven/versturen",
+        type:"POST",
+        data:{
+          first_name:first_name,
+          insertion,insertion,
+          last_name, last_name,
+          email:email,
+          address:address,
+          zipcode:zipcode,
+          city:city,
+          _token: _token,
+        },
+        complete : function () { 
+          // or hide here
+          // this callback called either success or failed
+          $('#wait').hide();
+          $('#sign-up-form').show();
+        },
+        success:function(response){
+          $('.sign-up-container').html(
+              '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p>'
+          );
+        },
+        
+        error: function(response) {
+          $('#voornaamErrorMsg').text(response.responseJSON.errors.first_name);
+          $('#achternaamErrorMsg').text(response.responseJSON.errors.last_name);
+          $('#emailErrorMsg').text(response.responseJSON.errors.email);
+          $('#adresErrorMsg').text(response.responseJSON.errors.address);
+          $('#postcodeErrorMsg').text(response.responseJSON.errors.zipcode)
+          $('#stadErrorMsg').text(response.responseJSON.errors.city)
+
+
+        },
+        });
+      });
+  

@@ -50,6 +50,6 @@ class FormController extends Controller
         );
 
         Mail::to('owner@easydrive4all.nl')->send(new SendForm($data));
-        return back()->with('success', 'Bedankt voor uw inschrijving, we zullen u zo snel mogelijk mailen met extra informatie!');
+        return response()->json(['success'=>'Successfully']);
     }
 }
