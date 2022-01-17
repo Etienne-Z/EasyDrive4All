@@ -63,7 +63,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Inschrijven!</button>
             </div>
-        </div>
+        </div> 
         </form>
         <div id="wait"><img src="/image/stock/loading.gif" alt="loading-icon"></div>
         </div>
