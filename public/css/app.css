@@ -11712,3 +11712,21 @@ footer .links-footer a {
 .sign-up-container button:hover {
   background-color: #D7A31A;
 }
+
+.dashboard .col-lg {
+  text-decoration: none;
+  padding: 80px 60px;
+  text-align: center;
+  background-color: #14223A;
+  color: #fff;
+  font-size: 100px;
+  width: 96%;
+  margin: 10px 2%;
+}
+.dashboard .col-lg p {
+  font-size: 30px;
+  font-weight: 700;
+}
+.dashboard .col-lg:hover {
+  background-color: #000B24;
+}

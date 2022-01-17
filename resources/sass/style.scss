@@ -458,4 +458,24 @@ footer{
     }
 }
 
+//dashboard scss inlog
+.dashboard{
+    .col-lg{
+        text-decoration: none;
+        padding: 80px 60px;
+        text-align: center;
+        background-color: $blue;
+        color: $white;
+        font-size: 100px;
+        width: 96%;
+        margin: 10px 2%;
+        p{
+            font-size: 30px;
+            font-weight: 700;
+        }
 
+        &:hover{
+            background-color: $hover-blue;
+        }
+    }
+}
