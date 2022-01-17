@@ -110,3 +110,13 @@ $('#contact-form-id').on('submit',function(e){
         });
       });
   
+      //delet user form invullen en id doorgeven
+      $('.delete-button').on('click',function(e){
+        e.preventDefault();
+        // slaat id op van user
+        let id = $(this).attr("value");
+        $('#dialog-delete-user').show();
+        //zet id in user in de form
+        $('#deleting-user-id').val(id);
+      });
+

@@ -43,6 +43,9 @@
                                     <a class="nav-link" href="/about-us">Over ons</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/inschrijven">Inschrijven</a>
+                            </li>
+                            <li class="nav-item">
                                     <a class="nav-link" href="/contact">Contact</a>
                             </li>
                     </ul>

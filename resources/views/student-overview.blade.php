@@ -25,13 +25,8 @@
                             <td>{{$student->email}}</td>
                             <td class="text-center"><i class="fas fa-user-edit"></i></td>
                             <td class="text-center">
-                                <form action="/students_overview" method="POST">
-                                    <input type="hidden" name="id" value="{{$student->id}}">
-                                    @csrf
-                                    <button class="delete-button"><i class="fas fa-trash"></i></button>
-                                </form>
-
-                                </td>
+                                    <button id="delete-user_button" class="delete-button" value="{{$student->id}}"><i class="fas fa-trash"></i></button>
+                            </td>
                         </tr>
                     @endforeach
 
@@ -40,12 +35,16 @@
         </div>
     </div>
 
-    <div class="logout-dialog delete-user" style="display:none">
+    <div id="dialog-delete-user" class="logout-dialog delete-user" style="display:none">
         <p>Weet u zeker dat u de gebruiker wilt verwijderen?</p>
-        <form action="">
-            <button class="button-yes">Ja</button>
-            <button class="button-cancel">Nee</button>
+        <form id="delete-user"  method="post" action="/students_overview">
+            <input type="hidden" name='id' id="deleting-user-id">
+            @csrf
+            <button class="button-yes inline-block">Ja</button>
+
         </form>
+        <button id="no-close" onclick="document.getElementById('dialog-delete-user').style.display='none'" class="button-cancel">Nee</button>
     </div>
+
 @endsection
 
