@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 class SickController extends Controller
 {
     public function index(){
-        return view('sickform');
+        return view('instructeur/instructeur_sickform');
     }
     public function sendMail(Request $request){
         $request->validate([
