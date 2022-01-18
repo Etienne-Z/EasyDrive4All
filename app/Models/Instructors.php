@@ -23,6 +23,12 @@ class instructors extends Model
         return $this->hasOne(instructor_has_users::class);
     }
 
+    public function scopeName($query){
+        return $query
+        ->join('users', 'instructors.User_ID', 'users.id')
+        ->select('instructors.id', 'users.first_name', 'users.insertion', 'users.last_name');
+    }
+
     public function scopeInstructors($query){
         return $query->select('Users')->where('Instructors.id','==','users.id');
     }

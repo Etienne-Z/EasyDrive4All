@@ -22,7 +22,7 @@ class InstructorSeeder extends Seeder
                     'User_ID' => $user_ID
                 ]);
              User::
-                where('id', '=', $user_ID)
+             WhereStudent($user_ID)
                 ->update(['role' => 1]);
     }
     instructors::
@@ -30,7 +30,7 @@ class InstructorSeeder extends Seeder
         'User_ID' => 27
     ]);
  User::
-    where('id', '=', 27)
+ WhereStudent(27)
     ->update(['role' => 1]);
     }
 }

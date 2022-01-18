@@ -26,7 +26,7 @@ class InstructorsController extends Controller
     }
 
     public function studentRegister(){
-        $instructors = User::WhereInstructor()->get();
+        $instructors = Instructors::Name()->get();
         return view('admin.student-register',compact('instructors'));
     }
 
@@ -54,7 +54,7 @@ class InstructorsController extends Controller
         ]);
 
         $password = $this->password_maker();
-        
+
         $user = new User();
         $user->first_name = $request->first_name;
         $user->insertion = $request->insertion;
@@ -65,14 +65,24 @@ class InstructorsController extends Controller
         $user->zipcode = $request->zipcode;
         $user->role = $request->roll;
         $user->sick = 0;
+        $user->lesson_hours = 0;
         $user->password = Hash::make($password);
         $user->save();
 
-        $id = $user->id;
-        $instructor  = intval($request->instructor);
-        $this->userHasInstructor($id,$instructor);
 
-        Mail::to($request->email)->send(new RegisterMail($request,$password));
+
+        dd($request->instructor);
+        $id = $user->id;
+        // $instructor  = intval($request->instructor);
+
+
+        // $instructor_has_users = new instructor_has_users();
+        // $instructor_has_users->User_ID = $id;
+        // $instructor_has_users->Instructor_ID = $instructor_id;
+
+        // $this->userHasInstructor($id,$instructor);
+
+        // Mail::to($request->email)->send(new RegisterMail($request,$password));
         return redirect()->back();
     }
 
