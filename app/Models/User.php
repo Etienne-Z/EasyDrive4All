@@ -70,14 +70,14 @@ class User extends Authenticatable
      */
 
     public function scopeWhereStudent($query){
-        return $query->where('users.role', '==', 0);
+        return $query->where('users.role', '=', 0);
     }
 
     public function scopeWhereInstructor($query){
-        return $query->where('users.role', '==', 1);
+        return $query->where('users.role', '=', 1);
     }
 
     public function scopeWhereAdmin($query){
-        return $query->where('users.role', '==', 2);
+        return $query->where('users.role', '=', 2);
     }
 }

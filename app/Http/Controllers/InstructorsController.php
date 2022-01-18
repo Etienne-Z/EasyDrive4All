@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 
-
 class InstructorsController extends Controller
 {
     public function studentOverview(){
@@ -22,13 +21,13 @@ class InstructorsController extends Controller
     }
 
     public function instructorOverview(){
-        $instructor = User::WhereInstructor()->get();
+        $instructors = User::WhereInstructor()->get();
         return view('instructor-overview',compact('instructors'));
     }
 
     public function studentRegister(){
-        dd(User::WhereInstructor()->get());
-        return view('admin.student-register',compact('instructor'));
+        $instructors = User::WhereInstructor()->get();
+        return view('admin.student-register',compact('instructors'));
     }
 
     public function deleteUser(Request $request)
@@ -55,7 +54,7 @@ class InstructorsController extends Controller
         ]);
 
         $password = $this->password_maker();
-
+        
         $user = new User();
         $user->first_name = $request->first_name;
         $user->insertion = $request->insertion;
@@ -68,6 +67,11 @@ class InstructorsController extends Controller
         $user->sick = 0;
         $user->password = Hash::make($password);
         $user->save();
+
+        $id = $user->id;
+        $instructor  = intval($request->instructor);
+        $this->userHasInstructor($id,$instructor);
+
         Mail::to($request->email)->send(new RegisterMail($request,$password));
         return redirect()->back();
     }
@@ -76,6 +80,13 @@ class InstructorsController extends Controller
         $bytes = random_bytes(4);
         $bytes = bin2hex($bytes);
         return $bytes;
+    }
+
+    public function userHasInstructor($user_id, $instructor_id){
+        $new = new instructor_has_users();
+        $new->User_ID = $user_id;
+        $new->Instructor_ID = $instructor_id;
+        $new->save();
     }
 
 

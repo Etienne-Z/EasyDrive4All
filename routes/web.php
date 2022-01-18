@@ -41,7 +41,7 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
 Route::get('/student_register', [InstructorsController::class, 'studentRegister']);
 Route::POST('/student_register', [InstructorsController::class, 'register']);
 
-Route::get('/instructors_overview', [InstructorsController::class, 'studentOverview']);
+Route::get('/instructors_overview', [InstructorsController::class, 'InstructorOverview']);
 
 Auth::routes();
 

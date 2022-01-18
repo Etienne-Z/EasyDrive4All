@@ -32,9 +32,10 @@
                     <input type="hidden" name="roll" id="roll" value="0">
                 </div>
                 <div class="col-md">
-                    <select name="instructor" id="instructor">
+                    <select name="instructor" id="instructor" class="form-control mb-3" value="Kies de instructeur">
+                        <option disabled selected >Kies de instructeur</option>
                         @foreach ($instructors as $instructor)
-                            
+                            <option value="{{$instructor->id}}">{{$instructor->first_name }} {{$instructor->insertion}} {{ $instructor->last_name }}</option>
                         @endforeach
                     </select>
                 </div>
