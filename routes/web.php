@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\InstructorsController;
+use App\Http\Controllers\AnnouncementsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,7 @@ Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/contact', [ContactController::class,'index']);
 Route::post('/contact', [ContactController::class,'contactForm']);
 Route::get('/students_overview', [InstructorsController::class, 'studentOverview']);
+Route::get('/announcements', [AnnouncementsController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
 
