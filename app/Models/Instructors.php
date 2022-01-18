@@ -26,9 +26,4 @@ class instructors extends Model
     public function scopeInstructors($query){
         return $query->select('Users')->where('Instructors.id','==','users.id');
     }
-    //Nog niet gechecked of het werkt
-
-    // public function students(){
-    //     return $this->hasMany(User::class);
-    // }
 }

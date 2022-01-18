@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\instructor_has_users;
 use App\Models\instructors;
+use Illuminate\Support\Facades\Auth;
 use App\Models\lessons;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -16,17 +17,17 @@ use Illuminate\Support\Facades\Mail;
 class InstructorsController extends Controller
 {
     public function studentOverview(){
-        $students = User::Student()->get();
+        $students = User::WhereStudent()->get();
         return view('student-overview',compact('students'));
     }
 
     public function instructorOverview(){
-        $instructor = User::Instructor()->get();
+        $instructor = User::WhereInstructor()->get();
         return view('instructor-overview',compact('instructors'));
     }
 
     public function studentRegister(){
-        $instructor = Instructors::all();
+        dd(User::WhereInstructor()->get());
         return view('admin.student-register',compact('instructor'));
     }
 
@@ -38,7 +39,7 @@ class InstructorsController extends Controller
         foreach($lessen as $les){
             $les->delete();
         }
-        User::Id($id)->delete();
+        User::WhereId($id)->delete();
         return redirect()->back();
     }
 
