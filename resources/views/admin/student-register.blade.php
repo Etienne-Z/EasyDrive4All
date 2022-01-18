@@ -31,6 +31,13 @@
                 <div class="col-md">
                     <input type="hidden" name="roll" id="roll" value="0">
                 </div>
+                <div class="col-md">
+                    <select name="instructor" id="instructor">
+                        @foreach ($instructors as $instructor)
+                            
+                        @endforeach
+                    </select>
+                </div>
                 <div class="col-md text-center">
                     <button class="btn btn-primary">Maak student aan</button>
                 </div>
