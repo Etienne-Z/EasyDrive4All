@@ -29,6 +29,7 @@
                 </div>
             </div>
         </form>
+    <div id="wait"><img src="/image/stock/loading.gif" alt="loading-icon"></div>
 </div>
 <div class="container container-contact-gegevens mt-5 mb-5">
     <div class="row">

@@ -15,14 +15,14 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('User_ID')->constrained('users');
+            $table->foreignId('Student_ID')->constrained('users');
             $table->foreignId('Instructor_ID')->constrained('instructors');
             $table->string("pickup_address");
             $table->string("pickup_city");
-
             $table->datetime("starting_time");
             $table->datetime("finishing_time");
             $table->string("lesson_type");
+            $table->string("result")->nullable();
             $table->string("comment")->nullable();
             $table->timestamps();
 

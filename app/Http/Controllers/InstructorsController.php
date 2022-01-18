@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\instructor_has_users;
+use App\Models\lessons;
 
 class InstructorsController extends Controller
 {
@@ -13,14 +14,21 @@ class InstructorsController extends Controller
         return view('student-overview',compact('students'));
     }
 
-    public function deleteUser(Request $request, User $user)
-    {
+    public function instructorOverview(){
+        $instructor = User::Instructor()->get();
+        return view('instructor-overview',compact('instructors'));
+    }
 
+    public function deleteUser(Request $request)
+    {
         $id = $request->id;
-        $id = intval($id);
-        dd($user->instructor_has_users);
-        // dd(instructor_has_users::User($id)->first()->delete());
-        dd(User::Id($id)->first());
+        instructor_has_users::User($id)->delete();
+        $lessen = lessons::WhereStudent($id)->get();
+        foreach($lessen as $les){
+            $les->delete();
+        }
+        User::Id($id)->delete();
+        return redirect()->back();
 
     }
 

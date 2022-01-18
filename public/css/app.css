@@ -11289,7 +11289,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.title-homepage {
+.title {
   color: #14223A;
   font-size: 62px;
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -11311,6 +11311,18 @@ textarea.form-control-lg {
   margin-top: 0px;
   margin-bottom: 0px;
   padding: 0;
+}
+
+#wait {
+  display: none;
+  width: 100%;
+  height: 96px;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
 }
 
 .homepage-container {
@@ -11472,6 +11484,26 @@ textarea.form-control-lg {
   color: white;
 }
 
+.lessons-overview th {
+  width: 145px;
+}
+.lessons-overview td, .lessons-overview th {
+  padding: 5px 10px;
+  border: 1px solid black;
+  letter-spacing: 0.1rem;
+  margin-left: 45px;
+}
+.lessons-overview tr:nth-child(odd) {
+  background-color: #F6BE3B !important;
+  color: #14223A !important;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+.lessons-overview tr:nth-child(even) {
+  background-color: #14223A;
+  color: white;
+}
+
 .contact-form-container {
   background-color: #14223A;
   color: white;
@@ -11561,9 +11593,9 @@ textarea.form-control-lg {
   text-align: center;
 }
 .overview_header .button-add-user {
-  position: fixed;
+  position: absolute;
   z-index: 1;
-  top: 23%;
+  top: 143px;
   right: 5%;
   background-color: #F6BE3B;
   padding: 10px 20px;
@@ -11574,6 +11606,10 @@ textarea.form-control-lg {
 .overview_header .button-add-user:hover {
   background-color: #D7A31A;
   cursor: pointer;
+}
+
+#delete-user {
+  display: inline;
 }
 
 .overview td {
@@ -11653,4 +11689,26 @@ footer .links-footer a {
 
 .button-yes {
   background-color: #00C9A7;
+}
+
+.delete-user {
+  height: 200px;
+  top: calc(50% - 100px);
+}
+
+.sign-up-container {
+  background-color: #14223A;
+  color: white;
+  padding: 20px 30px;
+  letter-spacing: 1px;
+}
+.sign-up-container button {
+  letter-spacing: 1px;
+  background-color: #F6BE3B;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 900;
+}
+.sign-up-container button:hover {
+  background-color: #D7A31A;
 }
