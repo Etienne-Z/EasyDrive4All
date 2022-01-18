@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\instructor_has_users;
 use App\Models\lessons;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,12 @@ class LessonsController extends Controller
         }else{
             $lessons = lessons::Instructor()->whereStudent(Auth::user()->id)->LessonInformation()->get();
         }
-        return view('lessons', compact('lessons'));
+        $students = instructor_has_users::WhereInstructor()->name()->get();
+        $info = [
+            0 => $students,
+            1 => $lessons
+        ];
+        return view('lessons', compact('info'));
     }
 
     public function lesson($id){
@@ -44,7 +50,8 @@ class LessonsController extends Controller
         }
     }
 
-    public function ChangeDate(Request $request){
+    public function ChangeLesson(Request $request){
+        // Moet nog 24h van te voren worden gedaan
         // Validation error fix voor engelse tijd
         $request->merge(["date" => str_replace("/", "-", $request->date)]);
         if(!str_ends_with($request->date, ":00")){
@@ -52,11 +59,15 @@ class LessonsController extends Controller
         }
         $request->validate([
             "id" => "required",
-            "date" => "required|date|date_format:Y-m-d\TH:i:s|after:now"
+            "date" => "required|date|date_format:Y-m-d\TH:i:s|after:now",
+            "address" => "required",
+            "city" => "required"
         ]);
         $lesson = lessons::WhereId($request->id)->first();
         $lesson->starting_time = str_replace("T", " ", $request->date);
         $lesson->finishing_time = date("Y-m-d H:i:s", (strtotime($request->date) + 60*60));
+        $lesson->pickup_address = $request->address;
+        $lesson->pickup_city = $request->city;
         $lesson->save();
 
         return $this->lesson($request->id);
@@ -71,5 +82,9 @@ class LessonsController extends Controller
             $lesson->delete();
         }
         return $this->index();
+    }
+
+    public function CreateLesson(Request $request){
+
     }
 }

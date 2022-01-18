@@ -18,10 +18,13 @@ class instructors extends Model
         'User_ID'
     ];
 
-    public function instructor_has_users()
-    {
+    public function instructor_has_users(){
         return $this->hasOne(instructor_has_users::class);
     }
+    public function user(){
+        return $this->hasOne(User::class);
+    }
+
     //Nog niet gechecked of het werkt
 
     // public function students(){

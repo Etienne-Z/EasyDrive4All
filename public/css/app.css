@@ -11499,6 +11499,10 @@ textarea.form-control-lg {
   color: white;
 }
 
+.exam-check {
+  margin: 15px 10px 0 0;
+}
+
 .lesson-form-container {
   color: white;
   background-color: #14223A;

@@ -26,7 +26,7 @@ class LessonSeeder extends Seeder
                 'Pickup_city' => Str::random(10),
                 'Starting_time' => date('Y/m/d H:i', $start),
                 'Finishing_time' => date('Y/m/d H:i', $start + 3600),
-                'Lesson_type' => Str::random(10),
+                'Goal' => Str::random(10),
                 'result' => "O",
                 'Comment' => Str::random(10),
             ]);

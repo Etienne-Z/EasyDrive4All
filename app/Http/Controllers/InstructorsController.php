@@ -19,8 +19,8 @@ class InstructorsController extends Controller
 
         $id = $request->id;
         $id = intval($id);
-        instructor_has_users::where('User_id', $id)->delete();
-        $lessen = lessons::where('User_id', $id)->get();
+        instructor_has_users::WhereUser($id)->delete();
+        $lessen = lessons::WhereStudent($id)->get();
         foreach($lessen as $les){
             $les->delete();
         }

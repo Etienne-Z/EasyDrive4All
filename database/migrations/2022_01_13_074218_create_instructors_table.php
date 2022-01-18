@@ -16,7 +16,7 @@ class CreateInstructorsTable extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('User_ID')->constrained('users');
+            $table->foreignId('User_ID')->unique()->constrained('users');
         });
     }
 
