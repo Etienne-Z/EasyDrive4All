@@ -85,6 +85,6 @@ class LessonsController extends Controller
     }
 
     public function CreateLesson(Request $request){
-
+        //Kijken of de instructeur dan wel vrij is.
     }
 }

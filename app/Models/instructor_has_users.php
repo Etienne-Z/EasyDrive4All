@@ -38,6 +38,6 @@ class instructor_has_users extends Model
     public function scopeName($query){
         return $query
         ->join('users', 'instructor_has_users.User_ID', 'users.id')
-        ->select('users.first_name', 'users.insertion', 'users.last_name', 'users.id');
+        ->select('users.first_name', 'users.insertion', 'users.last_name', 'users.id', 'users.email');
     }
 }

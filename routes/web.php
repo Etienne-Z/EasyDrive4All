@@ -5,9 +5,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\InstructorHasUsersController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\InstructorsController;
 use App\Http\Controllers\LessonsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +40,8 @@ Route::get('/lesson/{id}', [LessonsController::class, 'lesson']);
 Route::post('/lesson/result', [LessonsController::class, 'PostResult']);
 Route::post('/lesson/change', [LessonsController::class, 'ChangeLesson']);
 Route::post('/lesson/cancel', [LessonsController::class, 'CancelLesson']);
+
+Route::get('/students', [InstructorHasUsersController::class, 'index']);
 
 Route::get('/students_overview', [InstructorsController::class, 'studentOverview']);
 Route::get('/profile', [ProfileController::class, 'index']);
