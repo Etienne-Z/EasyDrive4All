@@ -7,7 +7,7 @@
         </a>
         <a class="col-lg" href="/instructors_overview">
             <i class="fas fa-chalkboard-teacher"></i>
-            <p>Insructeuren</p>
+            <p>Instructeuren</p>
         </a>
         <a href="/students_overview" class="col-lg">
             <i class="fas fa-user-graduate"></i>

@@ -19,6 +19,10 @@ class InstructorsController extends Controller
         return view('instructor-overview',compact('instructors'));
     }
 
+    public function studentRegister(){
+        return view('admin.student-register');
+    }
+
     public function deleteUser(Request $request)
     {
         $id = $request->id;
@@ -29,7 +33,10 @@ class InstructorsController extends Controller
         }
         User::Id($id)->delete();
         return redirect()->back();
+    }
 
+    public function register(){
+        dd("Hello world");
     }
 
 }

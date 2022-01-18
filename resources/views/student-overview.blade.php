@@ -3,7 +3,7 @@
 @section('content')
     <div class="overview_header">
         <h1 class="title text-center">Leerlingen</h1>
-        <div class="button-add-user">Leerling toevoegen</div>
+        <a href="/student_register" class="button-add-user">Leerling toevoegen</a>
     </div>
     <div class="container">
         <div class="row">
