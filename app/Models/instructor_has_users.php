@@ -39,6 +39,11 @@ class instructor_has_users extends Model
         return $query->where('Instructor_ID', '=', Auth::user()->instructor->id);
     }
 
+    public function scopeWhereInstructorId($query,$id){
+        return $query->where('Instructor_ID', '=', $id);
+    }
+
+
     public function scopeName($query){
         return $query
         ->join('users', 'instructor_has_users.User_ID', 'users.id')

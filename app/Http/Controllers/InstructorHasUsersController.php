@@ -14,4 +14,6 @@ class InstructorHasUsersController extends Controller
             return view('students', compact('students'));
         }
     }
+
+
 }
