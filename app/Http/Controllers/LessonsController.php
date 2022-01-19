@@ -51,7 +51,6 @@ class LessonsController extends Controller
     }
 
     public function ChangeLesson(Request $request){
-        // Moet nog 24h van te voren worden gedaan
         // Validation error fix voor engelse tijd
         $request->merge(["date" => str_replace("/", "-", $request->date)]);
         if(!str_ends_with($request->date, ":00")){
@@ -64,12 +63,22 @@ class LessonsController extends Controller
             "city" => "required"
         ]);
         $lesson = lessons::WhereId($request->id)->first();
-        $lesson->starting_time = str_replace("T", " ", $request->date);
-        $lesson->finishing_time = date("Y-m-d H:i:s", (strtotime($request->date) + 60*60));
-        $lesson->pickup_address = $request->address;
-        $lesson->pickup_city = $request->city;
-        $lesson->save();
-
+        // *25 omdat hij somehow op UTC staat, aanpassen werkt niet.
+        if(strtotime($lesson->starting_time) > time() + (60*60*25)){
+            $lesson->starting_time = date("Y-m-d H:i:s", (strtotime(str_replace("T", " ", $request->date))));
+            if($lesson->type == 0){
+                $lesson->finishing_time = date("Y-m-d H:i:s", (strtotime($request->date) + 60*60));
+            }elseif($lesson->type == 1){
+                $lesson->finishing_time = date("Y-m-d H:i:s", (strtotime($request->date) + 60*60*2));
+            }
+            $lesson->pickup_address = $request->address;
+            $lesson->pickup_city = $request->city;
+            $lesson->save();
+            $message = "";
+        }else{
+            $message = "U mag niet binnen 24 uur de afspraak wijzigen";
+        }
+        // return redirect back met error message van maken.
         return $this->lesson($request->id);
     }
 
@@ -86,5 +95,28 @@ class LessonsController extends Controller
 
     public function CreateLesson(Request $request){
         //Kijken of de instructeur dan wel vrij is.
+        $request->validate([
+            "student" => "required",
+            "date" => "required|date|date_format:Y-m-d\TH:i|after:now",
+            "address" => "required|max:255",
+            "city" => "required|max:255",
+            "type" => "required|max:1",
+            "goal" => "required|max:255"
+        ]);
+        $lesson = new lessons();
+        $lesson->Student_ID = intval($request->student);
+        $lesson->Instructor_ID = Auth::user()->instructor->id;
+        $lesson->pickup_address = $request->address;
+        $lesson->pickup_city = $request->city;
+        $lesson->starting_time = date("Y-m-d H:i:s", (strtotime(str_replace("T", " ", $request->date))));
+        if($request->type == 0){
+            $lesson->finishing_time = date("Y-m-d H:i:s", (strtotime($request->date) + 60*60));
+        }elseif($request->type == 1){
+            $lesson->finishing_time = date("Y-m-d H:i:s", (strtotime($request->date) + 60*60*2));
+        }
+        $lesson->lesson_type = $request->type;
+        $lesson->Goal = $request->goal;
+        $lesson->save();
+        return $this->index();
     }
 }

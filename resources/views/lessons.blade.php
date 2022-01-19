@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Type">Examens</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" name="type" id="type">
                             <option value="0">Nee</option>
                             <option value="1">Ja</option>
                           </select>
@@ -37,8 +37,8 @@
                         <input type="text" class="form-control" id="city" name="city">
                     </div>
                     <div class="form-group">
-                        <label for="type">Doel</label>
-                        <input type="text" class="form-control" id="type" name="type">
+                        <label for="goal">Doel</label>
+                        <input type="text" class="form-control" id="goal" name="goal">
                     </div>
                     @csrf
                     <button>Les aanmaken</button>

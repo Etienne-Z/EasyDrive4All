@@ -10,7 +10,7 @@ use App\Models\lessons;
 class InstructorsController extends Controller
 {
     public function studentOverview(){
-        $students = User::Student()->get();
+        $students = User::WhereStudent()->get();
         return view('student-overview',compact('students'));
     }
 

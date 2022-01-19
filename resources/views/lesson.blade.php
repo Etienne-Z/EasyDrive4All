@@ -48,15 +48,25 @@
                 <h2 class="text-center mb-2">Les resultaat invoeren</h2>
                 <form action="/lesson/result" method="POST">
                     <input type="hidden" value="{{$lesson->id}}" name="id">
-                    <div class="form-group">
-                        <label for="result">Resultaat</label>
-                        <select class="form-control text-center" id="result" name="result">
-                            <option value="H">Herhalen</option>
-                            <option value="O">Onvoldoende</option>
-                            <option value="V">Voldoende</option>
-                            <option value="G">Goed</option>
-                        </select>
-                    </div>
+                    @if ($lesson->lesson_type = "Rijles")
+                        <div class="form-group">
+                            <label for="result">Resultaat</label>
+                            <select class="form-control text-center" id="result" name="result">
+                                <option value="H">Herhalen</option>
+                                <option value="O">Onvoldoende</option>
+                                <option value="V">Voldoende</option>
+                                <option value="G">Goed</option>
+                            </select>
+                        </div>
+                    @elseif ($lesson->lesson_type = "Examen")
+                        <div class="form-group">
+                            <label for="result">Resultaat</label>
+                            <select class="form-control text-center" id="result" name="result">
+                                <option value="0">Gezakt</option>
+                                <option value="1">Geslaagd</option>
+                            </select>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label for="comment">Commentaar</label>
                         <textarea class="form-control" id="comment" rows="3" name="comment"></textarea>

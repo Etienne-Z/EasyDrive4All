@@ -19,15 +19,9 @@ class instructors extends Model
     ];
 
     public function instructor_has_users(){
-        return $this->hasOne(instructor_has_users::class);
+        return $this->hasMany(instructor_has_users::class);
     }
     public function user(){
         return $this->hasOne(User::class);
     }
-
-    //Nog niet gechecked of het werkt
-
-    // public function students(){
-    //     return $this->hasMany(User::class);
-    // }
 }
