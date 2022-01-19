@@ -11493,24 +11493,68 @@ textarea.form-control-lg {
   color: white;
 }
 
-.lessons-overview th {
-  width: 145px;
-}
 .lessons-overview td, .lessons-overview th {
   padding: 5px 10px;
   border: 1px solid black;
   letter-spacing: 0.1rem;
   margin-left: 45px;
+  font-weight: 400;
+}
+.lessons-overview th {
+  width: 145px;
+  font-weight: 900;
 }
 .lessons-overview tr:nth-child(odd) {
   background-color: #F6BE3B !important;
   color: #14223A !important;
   letter-spacing: 1px;
   font-weight: 900;
+  text-decoration: none;
 }
 .lessons-overview tr:nth-child(even) {
   background-color: #14223A;
+  text-decoration: none;
   color: white;
+}
+.lessons-overview tr:nth-child(even) td a {
+  color: white;
+}
+
+.exam-check {
+  margin: 15px 10px 0 0;
+}
+
+.lesson-form-container {
+  color: white;
+  background-color: #14223A;
+  padding: 30px 0px 40px 0;
+  margin-top: 45px;
+}
+.lesson-form-container label {
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin: 10px 0;
+}
+.lesson-form-container .form-group {
+  margin: 0 auto;
+  width: 450px;
+  border: none;
+}
+.lesson-form-container button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  border: none;
+  background-color: #F6BE3B;
+  color: white;
+  font-weight: 900;
+  width: 200px;
+}
+.lesson-form-container button:hover {
+  background-color: #D7A31A;
 }
 
 .contact-form-container {
@@ -11680,8 +11724,7 @@ footer .links-footer a {
   letter-spacing: 1px;
   text-align: center;
 }
-
-.button-cancel, .button-yes {
+.logout-dialog .button-cancel, .logout-dialog .button-yes {
   font-size: 15px;
   color: #fff;
   padding: 10px 20px;
@@ -11691,13 +11734,11 @@ footer .links-footer a {
   margin-left: 10px;
   margin-right: 10px;
 }
-
-.button-cancel {
-  background-color: red;
+.logout-dialog .button-cancel {
+  background-color: red !important;
 }
-
-.button-yes {
-  background-color: #00C9A7;
+.logout-dialog .button-yes {
+  background-color: #00C9A7 !important;
 }
 
 .delete-user {

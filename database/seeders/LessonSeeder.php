@@ -20,13 +20,13 @@ class LessonSeeder extends Seeder
         for($i = 0; $i<=50; $i++){
             $start = time() + rand(86400, 259200);
             DB::table('lessons')->insert([
-                'Student_ID' => User::inRandomOrder()->Student()->first()->id,
+                'Student_ID' => User::inRandomOrder()->WhereStudent()->first()->id,
                 'Instructor_ID' => Instructors::all()->random()->id,
                 'pickup_address' => Str::random(10),
                 'Pickup_city' => Str::random(10),
                 'Starting_time' => date('Y/m/d H:i', $start),
                 'Finishing_time' => date('Y/m/d H:i', $start + 3600),
-                'Lesson_type' => Str::random(10),
+                'Goal' => Str::random(10),
                 'result' => "O",
                 'Comment' => Str::random(10),
             ]);

@@ -59,14 +59,14 @@ class InstructorsController extends Controller
             // Verwijderd instructor=
             $instructor->delete();
         }
-        
+
         User::WhereId($id)->delete();
         return redirect()->back();
     }
 
 
 
-    
+
     public function register(Request $request){
         $request->validate([
             'first_name' => 'required',
@@ -88,7 +88,7 @@ class InstructorsController extends Controller
         }else{
             $this->createInstructor($id);
         }
-        
+
         Mail::to($request->email)->send(new RegisterMail($request,$password));
         return response()->json(['success'=>'Successfully']);
     }
