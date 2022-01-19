@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
 
-            <table class="lessons-overview">
+            <table class="announcement-page">
                 <thead>
                         <td>Type Mededeling</td>
                         <td>Titel</td>
@@ -16,7 +16,7 @@
                         <tr>
                             <td>{{$announcement->role}}</td>
                             <td>{{$announcement->title}}</td>
-                            <td>{{$announcement->description}}</td>
+                            <td class="announcement-block">{{$announcement->description}}</td>
                         </tr>
                     @endforeach
 
