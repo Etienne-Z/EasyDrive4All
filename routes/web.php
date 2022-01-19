@@ -85,10 +85,3 @@ Route::get('/', [HomeController::class,'Landing']);
 
 // terms of conditions page for users
 Route::get('/algemene_voorwaarden', [HomeController::class,'terms_conditions']);
-
-
-
-
-
-
-
