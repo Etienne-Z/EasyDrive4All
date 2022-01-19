@@ -11708,3 +11708,8 @@ footer .links-footer a {
 .sign-up-container button:hover {
   background-color: #D7A31A;
 }
+
+.sickform_labels {
+  letter-spacing: 2px;
+  font-size: 10px;
+}

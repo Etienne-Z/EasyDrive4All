@@ -66,41 +66,7 @@ $('#contact-form-id').on('submit',function(e){
       let zipcode = $('#zipcode').val();
       let _token  = $('meta[name="csrf-token"]').attr('content');
   
- // instructor sickform ajax 
-      $.ajax({
-        beforeSend : function () {  
-          // before send, show the loading gif
-          $('#wait').show(); 
-          $('#sign-up-form').hide();
-        },
-        url: "/instructeur/ziekmelding",
-        type:"POST",
-        data:{
-          first_name:first_name,
-          start_date:start_date,
-          end_date:end_date,
-          reason:reason,
-        },
-        complete : function () { 
-          // or hide here
-          // this callback called either success or failed
-          $('#wait').hide();
-          $('#sign-up-form').show();
-        },  
-        success:function(response){
-          $('.sign-up-container').html(
-              '<div class="succes-message"></div><p class="text-center succes-text">U bent ziekgemeld.</p>'
-          );
-        },
-        
-        error: function(response) {
-          $('#first_nameErrorMsg').text(response.responseJSON.errors.first_name);
-          $('#start_dateErrorMsg').text(response.responseJSON.errors.start_date);
-          $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
-        },
-        });
-      });
-
+  
       $.ajax({
         beforeSend : function () {  
           // before send, show the loading gif
@@ -142,3 +108,189 @@ $('#contact-form-id').on('submit',function(e){
 
         },
         });
+      });
+  
+      //delet user form invullen en id doorgeven
+      $('.delete-button').on('click',function(e){
+        e.preventDefault();
+        // slaat id op van user
+        let id = $(this).attr("value");
+        $('#dialog-delete-user').show();
+        //zet id in user in de form
+        $('#deleting-user-id').val(id);
+      });
+
+
+      //Register form
+
+      $('#register').on('submit',function(e){
+        e.preventDefault();
+        let first_name = $('#first_name').val();
+        let insertion = $('#insertion').val();
+        let last_name = $('#last_name').val();
+        let email = $('#email').val();
+        let address = $('#address').val();
+        let city = $('#city').val();
+        let zipcode = $('#zipcode').val();
+        let roll = $('#roll').val();
+        
+        if(roll > 0){
+          var instructor = 0;
+        }else{
+          var instructor = $("#instructor").find(':selected').val();
+        }
+        console.log(instructor);
+        let _token  = $('meta[name="csrf-token"]').attr('content');
+    
+    
+        $.ajax({
+          beforeSend : function () {  
+            // before send, show the loading gif
+            $('#wait').show(); 
+            $('#register').hide();
+          },
+          url: "/student_register",
+          type:"POST",
+          data:{
+            first_name:first_name,
+            insertion,insertion,
+            last_name, last_name,
+            email:email,
+            address:address,
+            zipcode:zipcode,
+            city:city,
+            roll, roll,
+            instructor,instructor,
+            _token: _token,
+          },
+          complete : function () { 
+            // or hide here
+            // this callback called either success or failed
+            $('#wait').hide();
+            $('#register').show();
+          },
+          success:function(response){
+            $('.sign-up-container').html(
+                '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
+            );
+          },
+          
+          error: function(response) {
+            $('#firstNameErrorMsg').text(response.responseJSON.errors.first_name);
+            $('#insertionErrorMsg').text(response.responseJSON.errors.insertion);
+            $('#lastNameErrorMsg').text(response.responseJSON.errors.last_name);
+            $('#emailErrorMsg').text(response.responseJSON.errors.email);
+            $('#addressErrorMsg').text(response.responseJSON.errors.address);
+            $('#cityErrorMsg').text(response.responseJSON.errors.zipcode);
+            $('#zipcodeErrorMsg').text(response.responseJSON.errors.city);
+            $('#instructorErrorMsg').text(response.responseJSON.errors.instructor);
+          },
+          });
+        });
+
+
+
+
+        
+
+      $('#register-instructor').on('submit',function(e){
+        e.preventDefault();
+        let first_name = $('#first_name').val()
+        console.log(first_name);
+        let insertion = $('#insertion').val();
+        let last_name = $('#last_name').val();
+        let email = $('#email').val();
+        let address = $('#address').val();
+        let city = $('#city').val();
+        let zipcode = $('#zipcode').val();
+        let roll = $('#roll').val();
+        let _token  = $('meta[name="csrf-token"]').attr('content');
+    
+    
+        $.ajax({
+          // beforeSend : function () {  
+          //   // before send, show the loading gif
+          //   $('#wait').show(); 
+          //   $('#register').hide();
+          // },
+          url: "/instructors_register",
+          type:"POST",
+          data:{
+            first_name:first_name,
+            insertion,insertion,
+            last_name, last_name,
+            email:email,
+            address:address,
+            zipcode:zipcode,
+            city:city,
+            roll, roll,
+            _token: _token,
+          },
+          complete : function () { 
+            // or hide here
+            // this callback called either success or failed
+            $('#wait').hide();
+            $('#register').show();
+          },
+          success:function(response){
+            $('.sign-up-container').html(
+                '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
+            );
+          },
+          
+          error: function(response) {
+            $('#firstNameErrorMsg').text(response.responseJSON.errors.first_name);
+            $('#insertionErrorMsg').text(response.responseJSON.errors.insertion);
+            $('#lastNameErrorMsg').text(response.responseJSON.errors.last_name);
+            $('#emailErrorMsg').text(response.responseJSON.errors.email);
+            $('#addressErrorMsg').text(response.responseJSON.errors.address);
+            $('#cityErrorMsg').text(response.responseJSON.errors.zipcode);
+            $('#zipcodeErrorMsg').text(response.responseJSON.errors.city);
+          },
+          });
+        });
+
+
+
+      $('#ziekmelden').on('submit',function(e){
+        e.preventDefault();
+        let start_date = $('#start_date').val()
+        let end_date = $('#end_date').val()
+        let reason = $('#reason').val()
+        let _token  = $('meta[name="csrf-token"]').attr('content');
+    
+    
+        $.ajax({
+          beforeSend : function () {  
+            // before send, show the loading gif
+            $('#wait').show(); 
+            $('#ziekmelden').hide();
+          },
+          url: "/instructeur/ziekmelding",
+          type:"POST",
+          data:{
+              start_date:start_date,
+              end_date:end_date,
+              reason:reason,
+              _token: _token,
+          },
+          complete : function () { 
+            // or hide here
+            // this callback called either success or failed
+            $('#wait').hide();
+            $('#ziekmelden').show();
+          },
+          success:function(response){
+            $('.sign-up-container').html(
+                '<div class="succes-message"></div><p class="text-center succes-text">U heeft u ziekgemeld</p>'
+            );
+          },
+          
+          error: function(response) {
+            $('#start_dateErrorMsg').text(response.responseJSON.errors.start_date);
+            $('#end_dateErrorMsg').text(response.responseJSON.errors.end_date);
+            $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
+          },
+          });
+        });
+
