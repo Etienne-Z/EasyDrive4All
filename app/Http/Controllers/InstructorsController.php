@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\RegisterMail;
-use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\instructor_has_users;
+use App\Models\User;
 use App\Models\instructors;
-use Illuminate\Support\Facades\Auth;
+use App\Models\instructor_has_users;
 use App\Models\lessons;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-
+use App\Mail\RegisterMail;
+use Illuminate\Support\Facades\Hash;
 
 class InstructorsController extends Controller
 {
