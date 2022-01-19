@@ -37,7 +37,8 @@ class InstructorsController extends Controller
     public function deleteUser(Request $request)
     {
         $id = $request->id;
-        instructor_has_users::User($id)->delete();
+        $id = intval($id);
+        instructor_has_users::WhereUser($id)->delete();
         $lessen = lessons::WhereStudent($id)->get();
         foreach($lessen as $les){
             $les->delete();
@@ -48,7 +49,7 @@ class InstructorsController extends Controller
 
 
 
-    
+
     public function register(Request $request){
         $request->validate([
             'first_name' => 'required',
@@ -70,7 +71,7 @@ class InstructorsController extends Controller
         }else{
             $this->createInstructor($id);
         }
-        
+
         Mail::to($request->email)->send(new RegisterMail($request,$password));
         return response()->json(['success'=>'Successfully']);
     }

@@ -18,9 +18,11 @@ class instructors extends Model
         'User_ID'
     ];
 
-    public function instructor_has_users()
-    {
-        return $this->hasOne(instructor_has_users::class);
+    public function instructor_has_users(){
+        return $this->hasMany(instructor_has_users::class);
+    }
+    public function user(){
+        return $this->hasOne(User::class);
     }
 
     public function scopeName($query){

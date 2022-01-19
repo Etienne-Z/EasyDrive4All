@@ -222,24 +222,70 @@
 
 .lessons-overview{
     // Andere font om bolder te maken, kan nog niet
-    th{
-        width: 145px;
-    }
+
     td,th{
         padding: 5px 10px;
         border: 1px solid black;
         letter-spacing: 0.1rem;
         margin-left: 45px;
+        font-weight: 400;
+    }
+    th{
+        width: 145px;
+        font-weight: 900;
     }
     tr:nth-child(odd){
         background-color: $oak !important;
         color: $blue !important;
         letter-spacing: 1px;
         font-weight: 900;
+        text-decoration: none;
     }
     tr:nth-child(even){
         background-color:$blue;
+        text-decoration: none;
         color:white;
+        // Color reset omdat !important niet werkt
+        td a{
+            color:white;
+        }
+    }
+}
+.exam-check{
+    margin:15px 10px 0 0;
+}
+
+//lesson page//
+.lesson-form-container{
+    color: white;
+    background-color: $blue;
+    padding: 30px 0px 40px 0;
+    margin-top: 45px;
+    label{
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: 2px;
+        margin: 10px 0;
+    }
+    .form-group{
+        margin: 0 auto;
+        width: 450px;
+        border: none;
+    }
+    button{
+        display: block;
+        margin: 0 auto;
+        margin-top: 40px;
+        padding: 10px 20px;
+        letter-spacing: 1px;
+        border: none;
+        background-color: $oak;
+        color: white;
+        font-weight: 900;
+        width: 200px;
+    }
+    button:hover{
+        background-color: $dark-oak;
     }
 }
 
@@ -284,8 +330,7 @@
             width: 200px;
         }
         button:hover{
-            background-color: #D7A31A;
-
+            background-color: $dark-oak;
         }
     }
 }
@@ -349,7 +394,7 @@
         font-weight: 900;
         letter-spacing: 1px;
         &:hover{
-            background-color: #D7A31A;
+            background-color: $dark-oak;
             cursor: pointer;
         }
     }
@@ -425,24 +470,25 @@ footer{
     height: 131px;
     letter-spacing: 1px;
     text-align: center;
-}
-.button-cancel,.button-yes{
-    font-size: 15px;
-    color:$white;
-    padding: 10px 20px;
-    border: none;
-    display: inline-block;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
 
-.button-cancel{
-    background-color: red;
-}
+    .button-cancel,.button-yes{
+        font-size: 15px;
+        color:$white;
+        padding: 10px 20px;
+        border: none;
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
-.button-yes{
-    background-color: #00C9A7;
+    .button-cancel{
+        background-color: red !important;
+    }
+
+    .button-yes{
+        background-color: #00C9A7 !important;
+    }
 }
 
 .delete-user{
