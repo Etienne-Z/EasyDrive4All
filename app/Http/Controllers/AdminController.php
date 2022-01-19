@@ -14,9 +14,17 @@ use App\Models\lessons;
 
 use App\Mail\RegisterMail;
 
-if(Auth::user()->role){
+
     class AdminController extends Controller
     {
+
+    // authentication for being logged in
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
         public function studentOverview(){
             $students = User::WhereStudent()->get();
             return view('student-overview',compact('students'));
@@ -115,5 +123,4 @@ if(Auth::user()->role){
             $instructor->save();
         }
     }
-}
 

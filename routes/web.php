@@ -25,52 +25,50 @@ use App\Http\Controllers\LessonsController;
 
 Auth::routes();
 
-Auth::routes();
-
-Route::group(array('before' => 'auth'), function(){
+Route::group(['middleware' => ['auth']], function(){
 
     //Profile of the logged in user
     Route::get('/profile', [ProfileController::class, 'index']);
 
-    // Geeft instructor = null error weer als je niet bent ingelogd
     //Lessons CRUD actions for instructor & student
     Route::get('/lessons', [LessonsController::class, 'index']);
     Route::get('/lesson/{id}', [LessonsController::class, 'lesson']);
     Route::post('/lesson/cancel', [LessonsController::class, 'CancelLesson']);
     Route::post('/lesson/change', [LessonsController::class, 'ChangeLesson']);
 
-    //role = 1
-    Route::post('/lesson/result', [LessonsController::class, 'PostResult']);
-    Route::post('/lesson/create', [LessonsController::class, 'CreateLesson']);
-    Route::get('/students', [InstructorHasUsersController::class, 'index']);
+    Route::group(['middleware' => ['Instructor']], function(){
 
-    // call in sick for instructors
-    Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
-    Route::post('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@sendMail');
+        Route::post('/lesson/result', [LessonsController::class, 'PostResult']);
+        Route::post('/lesson/create', [LessonsController::class, 'CreateLesson']);
+        Route::get('/students', [InstructorHasUsersController::class, 'index']);
 
-    //role = 2
-
-    //Student overview for the owner with CRUD actions
-    Route::get('/students_overview', [AdminController::class, 'studentOverview']);
-    Route::POST('/students_overview', [AdminController::class, 'deleteUser']);
-    Route::get('/student_register', [AdminController::class, 'studentRegister']);
-    Route::POST('/student_register', [AdminController::class, 'register']);
-
-    //Instructor overview for the owner with CRUD actions
-    Route::get('/instructors_overview', [AdminController::class, 'InstructorOverview']);
-    Route::get('/instructors_register', [AdminController::class, 'InstructorRegister']);
-    Route::post('/instructors_register', [AdminController::class, 'register']);
-
-    // tot hier is de error.
+        // call in sick for instructors
+        Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
+        Route::post('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@sendMail');
     });
 
-    Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
-    Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/about-us', [AboutUsController::class, 'index']);
+    //role = 2
+    Route::group(['middleware' => ['Admin']], function(){
 
-    Route::get('/contact', [ContactController::class,'index']);
-    Route::post('/contact', [ContactController::class,'contactForm']);
+        //Student overview for the owner with CRUD actions
+        Route::get('/students_overview', [AdminController::class, 'studentOverview']);
+        Route::POST('/students_overview', [AdminController::class, 'deleteUser']);
+        Route::get('/student_register', [AdminController::class, 'studentRegister']);
+        Route::POST('/student_register', [AdminController::class, 'register']);
+
+        //Instructor overview for the owner with CRUD actions
+        Route::get('/instructors_overview', [AdminController::class, 'InstructorOverview']);
+        Route::get('/instructors_register', [AdminController::class, 'InstructorRegister']);
+        Route::post('/instructors_register', [AdminController::class, 'register']);
+    });
+});
+
+Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
+Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/about-us', [AboutUsController::class, 'index']);
+Route::get('/contact', [ContactController::class,'index']);
+Route::post('/contact', [ContactController::class,'contactForm']);
 
 
 
