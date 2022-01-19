@@ -30,6 +30,8 @@ class SickController extends Controller
         );
 
         Mail::to('owner@easydrive4all.nl')->send(new sickform($data));
-        return back()->with('success', 'u bent succesvol ziekgemeld.');
+        // return back()->with('success', 'u bent succesvol ziekgemeld.');
+        return response()->json(['success'=>'Successfully']);
+
     }
 }

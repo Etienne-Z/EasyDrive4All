@@ -66,7 +66,41 @@ $('#contact-form-id').on('submit',function(e){
       let zipcode = $('#zipcode').val();
       let _token  = $('meta[name="csrf-token"]').attr('content');
   
-  
+ // instructor sickform ajax 
+      $.ajax({
+        beforeSend : function () {  
+          // before send, show the loading gif
+          $('#wait').show(); 
+          $('#sign-up-form').hide();
+        },
+        url: "/instructeur/ziekmelding",
+        type:"POST",
+        data:{
+          first_name:first_name,
+          start_date:start_date,
+          end_date:end_date,
+          reason:reason,
+        },
+        complete : function () { 
+          // or hide here
+          // this callback called either success or failed
+          $('#wait').hide();
+          $('#sign-up-form').show();
+        },  
+        success:function(response){
+          $('.sign-up-container').html(
+              '<div class="succes-message"></div><p class="text-center succes-text">U bent ziekgemeld.</p>'
+          );
+        },
+        
+        error: function(response) {
+          $('#first_nameErrorMsg').text(response.responseJSON.errors.first_name);
+          $('#start_dateErrorMsg').text(response.responseJSON.errors.start_date);
+          $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
+        },
+        });
+      });
+
       $.ajax({
         beforeSend : function () {  
           // before send, show the loading gif
@@ -108,5 +142,3 @@ $('#contact-form-id').on('submit',function(e){
 
         },
         });
-      });
-  
