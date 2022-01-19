@@ -41,7 +41,6 @@
             <input type="hidden" name='id' id="deleting-user-id">
             @csrf
             <button class="button-yes inline-block">Ja</button>
-
         </form>
         <button id="no-close" onclick="document.getElementById('dialog-delete-user').style.display='none'" class="button-cancel">Nee</button>
     </div>

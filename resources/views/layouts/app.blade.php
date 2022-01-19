@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" type="image/x-icon" href="/image/clean-car-y.png">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -22,7 +22,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar">
             <div class="container">
@@ -89,7 +89,7 @@
             @yield('content')
         </main>
     </div>
-    <footer>
+    <footer class="mt-auto">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 links-footer">
