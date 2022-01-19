@@ -28,8 +28,7 @@ class sickform extends Mailable
      */
     public function build()
     {
-        return $this->from('info@easydrive4all.nl')->subject('ziekmelding instructeur')->view('SickForm.blade.php
-        ')->with('data', $this->data);
+        return $this->from('info@easydrive4all.nl')->subject('ziekmelding instructeur')->view('SickForm')->with('data', $this->data);
 
     }
 }
