@@ -38,12 +38,26 @@ class InstructorsController extends Controller
     {
         $id = $request->id;
         $user = User::WhereID($id)->first();
+        
         if($user->role == 0){
             instructor_has_users::User($id)->delete();
             $lessen = lessons::WhereStudent($id)->get();
             foreach($lessen as $les){
                 $les->delete();
             }
+        }else{
+            // Zoekt instructor op
+            $instructor = Instructors::Instructor($user->id);
+            // haalt de id op
+            $id = $instructor->first()->id;
+            // Haalt alle lessen op van de instructeur
+            $lessons = lessons::WhereInstructor($id)->get();
+            //Verwijderdt deze
+            foreach($lessons as $lesson){
+                $lesson->delete();
+            }
+            // Verwijderd instructor=
+            $instructor->delete();
         }
         
         User::WhereId($id)->delete();
