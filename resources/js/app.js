@@ -171,7 +171,7 @@ $('#contact-form-id').on('submit',function(e){
           },
           success:function(response){
             $('.sign-up-container').html(
-                '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
+                '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
             );
           },
           
@@ -187,3 +187,65 @@ $('#contact-form-id').on('submit',function(e){
           },
           });
         });
+
+
+
+
+        
+
+      $('#register-instructor').on('submit',function(e){
+        e.preventDefault();
+        let first_name = $('#first_name').val()
+        let insertion = $('#insertion').val();
+        let last_name = $('#last_name').val();
+        let email = $('#email').val();
+        let address = $('#address').val();
+        let city = $('#city').val();
+        let zipcode = $('#zipcode').val();
+        let roll = $('#roll').val();
+        let _token  = $('meta[name="csrf-token"]').attr('content');
+    
+    
+        $.ajax({
+          beforeSend : function () {  
+            // before send, show the loading gif
+            $('#wait').show(); 
+            $('#register-instructor').hide();
+          },
+          url: "/instructors_register",
+          type:"POST",
+          data:{
+            first_name:first_name,
+            insertion,insertion,
+            last_name, last_name,
+            email:email,
+            address:address,
+            zipcode:zipcode,
+            city:city,
+            roll, roll,
+            _token: _token,
+          },
+          complete : function () { 
+            // or hide here
+            // this callback called either success or failed
+            $('#wait').hide();
+            $('#register-instructor').show();
+          },
+          success:function(response){
+            $('.sign-up-container').html(
+                '<div class="succes-message"></div><p class="text-center succes-text">Registratie gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar Instructeuren overzicht</a></p>'
+            );
+          },
+          
+          error: function(response) {
+            $('#firstNameErrorMsg').text(response.responseJSON.errors.first_name);
+            $('#insertionErrorMsg').text(response.responseJSON.errors.insertion);
+            $('#lastNameErrorMsg').text(response.responseJSON.errors.last_name);
+            $('#emailErrorMsg').text(response.responseJSON.errors.email);
+            $('#addressErrorMsg').text(response.responseJSON.errors.address);
+            $('#cityErrorMsg').text(response.responseJSON.errors.zipcode);
+            $('#zipcodeErrorMsg').text(response.responseJSON.errors.city);
+          },
+          });
+        });
+

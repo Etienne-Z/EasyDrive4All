@@ -30,6 +30,10 @@ class InstructorsController extends Controller
         return view('admin.student-register',compact('instructors'));
     }
 
+    public function instructorRegister(){
+        return view('admin.instructor-register');
+    }
+
     public function deleteUser(Request $request)
     {
         $id = $request->id;
@@ -60,10 +64,11 @@ class InstructorsController extends Controller
         $user = $this->createUser($request, $password);
         $id = $user->id;
 
-
         if($request->roll == 0){
             $instructor  = $request->instructor;
             $this->userHasInstructor($id,$instructor);
+        }else{
+            $this->createInstructor($id);
         }
         
         Mail::to($request->email)->send(new RegisterMail($request,$password));
@@ -97,7 +102,14 @@ class InstructorsController extends Controller
         $user->lesson_hours = 0;
         $user->password = Hash::make($password);
         $user->save();
+
         return $user;
+    }
+
+    public function createInstructor($id){
+        $instructor = new instructors();
+        $instructor->User_ID = $id;
+        $instructor->save();
     }
 
 

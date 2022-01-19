@@ -43,6 +43,11 @@ Route::POST('/student_register', [InstructorsController::class, 'register']);
 
 Route::get('/instructors_overview', [InstructorsController::class, 'InstructorOverview']);
 
+Route::get('/instructors_register', [InstructorsController::class, 'InstructorRegister']);
+Route::post('/instructors_register', [InstructorsController::class, 'register']);
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

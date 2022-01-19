@@ -3,12 +3,10 @@ Beste {{$request->first_name}} {{$request->insertion}} {{$request->last_name}},
 
 Hierbij uw inlog gegevens
 
-E-Mail: {{$request->email}}
+E-Mail: {{$request->email}} <br>
 Wachtwoord: {{$password}}
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+
 
 Thanks,<br>
 {{ config('app.name') }}
