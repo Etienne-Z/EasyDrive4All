@@ -50,40 +50,21 @@ class InstructorsController extends Controller
             'email' => 'required|email',
             'address' => 'required',
             'city' => 'required',
-            'zipcode' => 'required'
+            'zipcode' => 'required',
+            'instructor' => 'required_if:roll,==,0',
         ]);
-
         $password = $this->password_maker();
-
-        $user = new User();
-        $user->first_name = $request->first_name;
-        $user->insertion = $request->insertion;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->address = $request->address;
-        $user->city = $request->city;
-        $user->zipcode = $request->zipcode;
-        $user->role = $request->roll;
-        $user->sick = 0;
-        $user->lesson_hours = 0;
-        $user->password = Hash::make($password);
-        $user->save();
-
-
-
-        dd($request->instructor);
+        $user = $this->createUser($request, $password);
         $id = $user->id;
-        // $instructor  = intval($request->instructor);
 
 
-        // $instructor_has_users = new instructor_has_users();
-        // $instructor_has_users->User_ID = $id;
-        // $instructor_has_users->Instructor_ID = $instructor_id;
-
-        // $this->userHasInstructor($id,$instructor);
-
-        // Mail::to($request->email)->send(new RegisterMail($request,$password));
-        return redirect()->back();
+        if($request->roll == 0){
+            $instructor  = $request->instructor;
+            $this->userHasInstructor($id,$instructor);
+        }
+        
+        Mail::to($request->email)->send(new RegisterMail($request,$password));
+        return response()->json(['success'=>'Successfully']);
     }
 
     public function password_maker(){
@@ -98,6 +79,26 @@ class InstructorsController extends Controller
         $new->Instructor_ID = $instructor_id;
         $new->save();
     }
+
+    public function createUser($request, $password){
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->insertion = $request->insertion;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->city = $request->city;
+        $user->zipcode = $request->zipcode;
+        $user->role = $request->roll;
+        $user->sick = 0;
+        $user->lesson_hours = 0;
+        $user->password = Hash::make($password);
+        $user->save();
+        return $user;
+    }
+
+
+
 
 
 }
