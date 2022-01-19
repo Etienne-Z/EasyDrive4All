@@ -6,9 +6,6 @@ Hierbij uw inlog gegevens
 E-Mail: {{$request->email}}
 Wachtwoord: {{$password}}
 
-
-The body of your message.
-
 @component('mail::button', ['url' => ''])
 Button Text
 @endcomponent

@@ -133,7 +133,12 @@ $('#contact-form-id').on('submit',function(e){
         let city = $('#city').val();
         let zipcode = $('#zipcode').val();
         let roll = $('#roll').val();
-        let instructor = $("instructor option:selected" ).val()
+        
+        if(roll > 0){
+          var instructor = 0;
+        }else{
+          var instructor = $("#instructor").find(':selected').val();
+        }
         console.log(instructor);
         let _token  = $('meta[name="csrf-token"]').attr('content');
     
@@ -166,7 +171,7 @@ $('#contact-form-id').on('submit',function(e){
           },
           success:function(response){
             $('.sign-up-container').html(
-                '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p>'
+                '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
             );
           },
           

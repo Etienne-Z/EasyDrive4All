@@ -42,12 +42,15 @@ class InstructorsController extends Controller
         return redirect()->back();
     }
 
+
+
+    
     public function register(Request $request){
         $request->validate([
             'first_name' => 'required',
             'insertion',
             'last_name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'address' => 'required',
             'city' => 'required',
             'zipcode' => 'required',

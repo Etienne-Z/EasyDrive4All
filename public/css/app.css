@@ -11299,6 +11299,15 @@ textarea.form-control-lg {
   margin-bottom: 25px;
 }
 
+.link-ajax {
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+}
+.link-ajax:hover {
+  color: white;
+}
+
 .navbar-expand-md {
   background-color: #F6BE3B;
 }
