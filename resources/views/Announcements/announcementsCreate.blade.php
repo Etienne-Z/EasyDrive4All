@@ -5,7 +5,7 @@
 <div class="container sign-up-container mb-5" id="SubFormCon">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="/createannouncement" id="createAnnouncement"  method="POST">
+            <form id="createAnnouncement">
                 <div class="col-md">
                     <strong>Titel:</strong>
                     <div id="titleErrorMsg" class="alert"></div>

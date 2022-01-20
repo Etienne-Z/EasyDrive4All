@@ -30,13 +30,15 @@ class AnnouncementsController extends Controller
         return view('Announcements/announcementsCreate');
     }
 
-    public function createAnnouncement(){
-        $announcement = new User();
+    public function createAnnouncement(Request $request){
+        $announcement = new Announcements;
         $announcement->title = $request->title;
         $announcement->role = $request->role;
         $announcement->description = $request->description;
+        dd($request);
         $announcement->save();
 
         return $announcement;
+        return response()->json(['success'=>'Successfully']);
     }
 }

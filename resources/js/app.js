@@ -249,3 +249,52 @@ $('#contact-form-id').on('submit',function(e){
           });
         });
 
+
+
+          // Announcement Page 
+          $('#createAnnouncement').on('submit',function(e){
+            e.preventDefault();
+            let title = $('#title').val();
+            let description = $('#description').val();
+            let role = $('#role').val();
+            console.log(title);
+            console.log(description);
+            console.log(role);
+            let _token  = $('meta[name="csrf-token"]').attr('content');
+        
+        
+            $.ajax({
+              beforeSend : function () {  
+                // before send, show the loading gif
+                $('#wait').show(); 
+                $('#createAnnouncement').hide();
+              },
+              url: "/createannouncement",
+              type:"POST",
+              data:{
+                title: title,
+                description: description,
+                role: role,
+                _token: _token,
+              },
+              complete : function () { 
+                // or hide here
+                // this callback called either success or failed
+                $('#wait').hide();
+                $('#createAnnouncement').show();
+              },
+              success:function(response){
+                $('.sign-up-container').html(
+                    '<div class="succes-message"></div><p class="text-center succes-text">Mededeling aanmaken is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/createannouncement"><i class="fas fa-arrow-left"></i> Terug naar Mededelingen pagina</a></p>'
+                );
+              },
+              
+              error: function(response) {
+                $('#titleErrorMsg').text(response.responseJSON.errors.title);
+                $('#descriptionErrorMsg').text(response.responseJSON.errors.description);
+                $('#roleErrorMsg').text(response.responseJSON.errors.role);
+              },
+              });
+            });
+    
+    
