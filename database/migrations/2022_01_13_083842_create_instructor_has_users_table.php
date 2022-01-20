@@ -14,12 +14,10 @@ class CreateInstructorHasUsersTable extends Migration
     public function up()
     {
         Schema::create('instructor_has_users', function (Blueprint $table) {
-            $table->foreignId('User_ID')->constrained('users')->onDelete('cascade');;
-            $table->foreignId('Instructor_ID')->constrained('instructors')->onDelete('cascade');;
+            $table->foreignId('User_ID')->constrained('users');
+            $table->foreignId('Instructor_ID')->constrained('instructors');
             $table->timestamps();
         });
-
-      
     }
 
     /**

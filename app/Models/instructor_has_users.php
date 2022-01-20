@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class instructor_has_users extends Model
 {
-    use HasFactory;
 
+    protected $primaryKey = 'User_ID';
+
+    use HasFactory;
     protected $fillable = [
         'User_ID',
         'Instructor_ID'

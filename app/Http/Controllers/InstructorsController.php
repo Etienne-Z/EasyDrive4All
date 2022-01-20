@@ -43,28 +43,10 @@ class InstructorsController extends Controller
             foreach($lessen as $les){
                 $les->delete();
             }
-        }else{
-            // Zoekt instructor op
-            $instructor = Instructors::Instructor($user->id);
-            // haalt de id op
-            $id = $instructor->first()->id;
-            // dd($id);
-            // Haalt alle lessen op van de instructeur
-            $lessons = lessons::WhereInstructor($id)->get();
-            //Verwijderdt deze
-            foreach($lessons as $lesson){
-                $lesson->delete();
-            }
-            $hasStudents = instructor_has_users::WhereInstructorId($id)->get();
-
-            foreach($hasStudents as $x){
-                dd($x->delete());
-            }
-            // Verwijderd instructor=
-            $instructor->delete();
         }
+        dd('hello world');
 
-        User::WhereId($id)->delete();
+        // User::WhereId($id)->delete();
         return redirect()->back();
     }
 

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-
 use App\Models\User;
 use App\Models\instructors;
 use App\Models\instructor_has_users;
@@ -54,8 +53,19 @@ use App\Mail\RegisterMail;
                 foreach($lessen as $les){
                     $les->delete();
                 }
-            }
+            }else{
+                $instructor = instructors::Instructor($id);
+                $insturctor_has_users = instructor_has_users::WhereInstructorId($instructor->first()->id)->get();
+                $lessons = lessons::WhereInstructor($instructor->first()->id)->get();
 
+                foreach($lessons as $lesson){
+                    $lesson->delete();
+                }
+                foreach($insturctor_has_users as $insturctor_has_user){
+                    $insturctor_has_user->delete();
+                }
+                $instructor->delete();
+            }
             User::WhereId($id)->delete();
             return redirect()->back();
         }

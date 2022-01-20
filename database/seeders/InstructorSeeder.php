@@ -17,20 +17,10 @@ class InstructorSeeder extends Seeder
     {
         for($i = 0; $i<3; $i++){
             $user_ID  = User::all()->random()->id;
-            instructors::
-                insert([
-                    'User_ID' => $user_ID
-                ]);
-             User::
-             WhereStudent($user_ID)
-                ->update(['role' => 1]);
-    }
+            instructors::insert(['User_ID' => $user_ID]);
+            User::WhereID($user_ID)->update(['role' => 1]);
+        }
     instructors::
-    insert([
-        'User_ID' => 27
-    ]);
- User::
- WhereStudent(27)
-    ->update(['role' => 1]);
+    insert(['User_ID' => 27]);User::WhereID(27)->update(['role' => 1]);
     }
 }
