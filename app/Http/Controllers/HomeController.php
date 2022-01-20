@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function landing(){
+        return view('welcome');
+    }
+
+    public function terms_conditions(){
+        return view('terms_conditions');
+    }
 }

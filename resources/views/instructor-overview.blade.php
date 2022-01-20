@@ -3,7 +3,7 @@
 @section('content')
     <div class="overview_header">
         <h1 class="title text-center">Instructeuren</h1>
-        <div class="button-add-user">instructeur toevoegen</div>
+        <a href="/instructors_register" class="button-add-user">instructeur toevoegen</a>
     </div>
     <div class="container">
         <div class="row">
@@ -41,7 +41,6 @@
             <input type="hidden" name='id' id="deleting-user-id">
             @csrf
             <button class="button-yes inline-block">Ja</button>
-
         </form>
         <button id="no-close" onclick="document.getElementById('dialog-delete-user').style.display='none'" class="button-cancel">Nee</button>
     </div>
