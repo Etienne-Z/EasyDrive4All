@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
+use App\Models\Cars;
 use App\Models\User;
 use App\Models\instructors;
 use App\Models\instructor_has_users;
@@ -18,12 +19,10 @@ use App\Mail\RegisterMail;
     class AdminController extends Controller
     {
 
-    // authentication for being logged in
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+        public function carsOverview(){
+            $cars = Cars::get();
+            return view('admin.cars-overview',compact('cars'));
+        }
 
         public function studentOverview(){
             $students = User::WhereStudent()->get();

@@ -66,6 +66,9 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/instructors_overview', [AdminController::class, 'InstructorOverview']);
         Route::get('/instructors_register', [AdminController::class, 'InstructorRegister']);
         Route::post('/instructors_register', [AdminController::class, 'register']);
+
+        //Cars overview for the owner with CRUD actions
+        Route::get('/cars_overview', [AdminController::class, 'CarsOverview']);
     });
 });
 
