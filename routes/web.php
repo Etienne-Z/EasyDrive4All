@@ -37,7 +37,12 @@ Route::post('/contact', [ContactController::class,'contactForm']);
 Route::get('/lessons', [LessonsController::class, 'index']);
 
 Route::get('/students_overview', [InstructorsController::class, 'studentOverview']);
-Route::get('/announcements', [AnnouncementsController::class, 'index']);
+
+// Announcements Routes
+Route::get('/studentannouncements', [AnnouncementsController::class, 'studentIndex']);
+Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
+Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
+
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
 
