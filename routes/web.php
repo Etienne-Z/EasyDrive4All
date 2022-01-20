@@ -61,11 +61,15 @@ Route::group(['middleware' => ['auth']], function(){
         Route::POST('/students_overview', [AdminController::class, 'deleteUser']);
         Route::get('/student_register', [AdminController::class, 'studentRegister']);
         Route::POST('/student_register', [AdminController::class, 'register']);
-
+        Route::get('/student_change/{id}', [AdminController::class, 'changeStudent']);
+        Route::post('/student_change', [AdminController::class, 'updateUser']);
+        
         //Instructor overview for the owner with CRUD actions
         Route::get('/instructors_overview', [AdminController::class, 'InstructorOverview']);
         Route::get('/instructors_register', [AdminController::class, 'InstructorRegister']);
         Route::post('/instructors_register', [AdminController::class, 'register']);
+        
+
     });
 });
 

@@ -249,3 +249,66 @@ $('#contact-form-id').on('submit',function(e){
           });
         });
 
+
+
+
+
+          $('#changeStudent').on('submit',function(e){
+            e.preventDefault();
+            let user_id = $('user_id');
+            let first_name = $('#first_name').val()
+            let insertion = $('#insertion').val();
+            let last_name = $('#last_name').val();
+            let email = $('#email').val();
+            let address = $('#address').val();
+            let city = $('#city').val();
+            let zipcode = $('#zipcode').val();
+            var instructor = $("#instructor").find(':selected').val();
+            let _token  = $('meta[name="csrf-token"]').attr('content');
+      
+            console.log(user_id);
+
+
+            $.ajax({
+              beforeSend : function () {  
+                // before send, show the loading gif
+                console.log("hier nu die wel");
+                $('#wait').show(); 
+                $('#changeStudent').hide();
+              },
+              url: "/student_change",
+              type:"POST",
+              data:{
+                user_id:user_id,
+                first_name:first_name,
+                insertion,insertion,
+                last_name, last_name,
+                email:email,
+                address:address,
+                zipcode:zipcode,
+                instructor:instructor,
+                city:city,
+                
+                _token: _token,
+              },
+              complete : function () { 
+                // or hide here
+                // this callback called either success or failed
+                $('#wait').hide();
+                $('#changeStudent').show();
+              },
+              success:function(response){
+                $('.sign-up-container').html(
+                    '<div class="succes-message"></div><p class="text-center succes-text">Registratie gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar Instructeuren overzicht</a></p>'
+                );
+              },
+              
+              error: function(response) {
+                // console.log(response);
+              },
+              });
+            });
+    
+    
+    
+    

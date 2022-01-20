@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Instructor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,6 +25,7 @@ use App\Mail\RegisterMail;
     }
 
 
+
         public function studentOverview(){
             $students = User::WhereStudent()->get();
             return view('student-overview',compact('students'));
@@ -37,6 +39,13 @@ use App\Mail\RegisterMail;
         public function studentRegister(){
             $instructors = Instructors::Name()->get();
             return view('admin.student-register',compact('instructors'));
+        }
+
+        public function changeStudent($id){
+            $user =  User::WhereId($id)->first();
+            $instructors = Instructors::Name()->get();
+            $instructor_has_user = instructor_has_users::WhereUser($user->id)->first()->Instructor_ID;
+            return view('admin.change-student',compact(['user','instructors','instructor_has_user']));
         }
 
         public function instructorRegister(){
@@ -123,7 +132,6 @@ use App\Mail\RegisterMail;
             $user->lesson_hours = 0;
             $user->password = Hash::make($password);
             $user->save();
-
             return $user;
         }
 
@@ -131,6 +139,55 @@ use App\Mail\RegisterMail;
             $instructor = new instructors();
             $instructor->User_ID = $id;
             $instructor->save();
+        }
+
+        public function updateUser(Request $request){
+            $request->validate([
+                'first_name' => 'required',
+                'insertion',
+                'last_name' => 'required',
+                'email' => 'required|email',
+                'address' => 'required',
+                'city' => 'required',
+                'zipcode' => 'required',
+            ]);
+            $user = User::WhereId($request->user_id)->first();
+            $email_check = User::Email($request->email)->first();
+            $check = $this->emailUniqueCheck($user->user_id, $email_check);
+            $user->first_name = $request->first_name;
+            $user->insertion = $request->insertion;
+            $user->last_name = $request->last_name;
+
+            if(!$check){
+                return back()->withErrors(['email.unique', 'Deze email is al in gebruik']);
+            }else{
+                $user->email = $request->email;
+            }
+
+            $this->updateInstructor($user->id,$request->instructor);
+            $user->address = $request->address;
+            $user->city = $request->city;
+            $user->zipcode = $request->zipcode;
+            $user->save();
+            return response()->json(['success'=>'Successfully']);
+        }
+
+        public function emailUniqueCheck($id,$email){
+            if(isset($email)){
+                if($email->id == $id){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return true;
+            }
+        }
+
+        public function updateInstructor($user_id, $instructor_id){
+            $user = instructor_has_users::WhereUser($user_id)->first();
+            $user->Instructor_ID = $instructor_id;
+            $user->save();
         }
     }
 
