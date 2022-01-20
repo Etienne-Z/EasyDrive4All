@@ -5,7 +5,7 @@
         <div class="row">
             <div class="overview_header">
                 <h1 class="title text-center">Mededelingen</h1>
-                <div class="button-add-user">Mededeling toevoegen</div>
+                <a href="/createannouncement" class="button-add-user">Mededeling toevoegen</a>
             </div>
             <table class="announcement-page">
                 <thead>

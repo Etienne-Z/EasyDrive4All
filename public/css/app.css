@@ -11803,3 +11803,7 @@ footer .links-footer a {
 .dashboard .col-lg:hover {
   background-color: #000B24;
 }
+.dashboard .sickform_labels {
+  letter-spacing: 2px;
+  font-size: 10px;
+}

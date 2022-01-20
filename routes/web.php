@@ -38,6 +38,8 @@ Route::group(['middleware' => ['auth']], function(){
 Route::get('/studentannouncements', [AnnouncementsController::class, 'studentIndex']);
 Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
 Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
+Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
+Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
@@ -74,7 +76,6 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
         Route::get('/instructors_register', [AdminController::class, 'InstructorRegister']);
         Route::post('/instructors_register', [AdminController::class, 'register']);
     });
-});
 
 // Register form for new users
 Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');

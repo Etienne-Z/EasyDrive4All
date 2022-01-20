@@ -26,4 +26,17 @@ class AnnouncementsController extends Controller
         return view('Announcements/adminAnnouncements', compact('announcements'));
     }
 
+    public function announcementForm(){
+        return view('Announcements/announcementsCreate');
+    }
+
+    public function createAnnouncement(){
+        $announcement = new User();
+        $announcement->title = $request->title;
+        $announcement->role = $request->role;
+        $announcement->description = $request->description;
+        $announcement->save();
+
+        return $announcement;
+    }
 }
