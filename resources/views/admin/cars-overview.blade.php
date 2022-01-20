@@ -6,7 +6,7 @@
     <a href="/cars_register" class="button-add-user">Auto toevoegen</a>
 </div>
 
-<div class="container sign-up-container mb-5" id="SubFormCon">
+<div class="container sign-up-container car-overview-container mb-5" id="SubFormCon">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <table class="overview">
