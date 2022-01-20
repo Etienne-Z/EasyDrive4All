@@ -34,4 +34,8 @@ class instructors extends Model
     public function scopeInstructors($query){
         return $query->select('Users')->where('Instructors.id','==','users.id');
     }
+
+    public function scopeInstructor($query,$id){
+        return $query->where('User_ID','=',$id);
+    }
 }
