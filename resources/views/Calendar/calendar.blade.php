@@ -16,134 +16,45 @@
 <div class="container">
     <div id="calendar"></div>
 </div>
-   
-<script>
+<!-- <div id="modal" class="w-50 text-center lesson-form-container">
+            @if(Auth::user()->instructor)
+                <h2 class="text-center mb-2">Les toevoegen</h2>
+                <form action="/lesson/create" method="POST">
+                    <div class="form-group">
+                        <label for="student">Leerling</label>
+                        <select class="form-control text-center" id="student" name="student">
+                            @foreach ($students as $student)
+                                <option value="{{$student->id}}">{{$student->first_name . " " . $student->insertion . " " . $student->last_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Starttijd</label>
+                        <input class="form-control" type="datetime-local" id="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="Type">Examens</label>
+                        <select class="form-select" name="type" id="type">
+                            <option value="0">Nee</option>
+                            <option value="1">Ja</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adres</label>
+                        <input type="text" class="form-control" id="address" name="address">
+                        <label for="city">Stad</label>
+                        <input type="text" class="form-control" id="city" name="city">
+                    </div>
+                    <div class="form-group">
+                        <label for="goal">Doel</label>
+                        <input type="text" class="form-control" id="goal" name="goal">
+                    </div>
+                    @csrf
+                    <button>Les aanmaken</button>
+                </form>
+            @endif
+        </div> -->
 
-$(document).ready(function () {
-
-    $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    var calendar = $('#calendar').fullCalendar({
-        editable:true,
-        header:{
-            left:'prev,next today',
-            center:'title',
-            right:'month,agendaWeek,agendaDay'
-        },
-        events:'/calender',
-        selectable:true,
-        selectHelper: true,
-        select:function(starting_time, finishing_time)
-        {
-            var title = prompt('Event Title:');
-
-            if(title)
-            {
-                var start = $.fullCalendar.formatDate(starting_time, 'Y-MM-DD HH:mm:ss');
-
-                var end = $.fullCalendar.formatDate(finishing_time, 'Y-MM-DD HH:mm:ss');
-
-                $.ajax({
-                    url:"/calender/action",
-                    type:"POST",
-                    data:{
-                        User_ID: User_ID,
-    				    Instructor_ID: Instructor_ID,
-    				    pickup_address:pickup_address,
-                        pickup_city:pickup_city,
-                        starting_time:starting_time,
-                        finishing_time:finishing_time,
-                        type: 'add'
-                    },
-                    success:function(data)
-                    {
-                        calendar.fullCalendar('refetchEvents');
-                        alert("Les succesvol aangemaakt");
-                    }
-                })
-            }
-        },
-        editable:true,
-        eventResize: function(event, delta)
-        {
-            var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
-            var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
-            var title = event.title;
-            var id = event.id;
-            $.ajax({
-                url:"/full-calender/action",
-                type:"POST",
-                data:{
-                    User_ID: User_ID,
-    				Instructor_ID: Instructor_ID,
-    				pickup_address:pickup_address,
-                    pickup_city:pickup_city,
-                    starting_time:starting_time,
-                    finishing_time:finishing_time,
-                    id: id,
-                    type: 'update'
-                },
-                success:function(response)
-                {
-                    calendar.fullCalendar('refetchEvents');
-                    alert("Les succesvol aangepast");
-                }
-            })
-        },
-        eventDrop: function(lesson, delta)
-        {
-            var start = $.fullCalendar.formatDate(lesson.start, 'Y-MM-DD HH:mm:ss');
-            var end = $.fullCalendar.formatDate(lesson.end, 'Y-MM-DD HH:mm:ss');
-            var title = lesson.title;
-            var id = lesson.id;
-            $.ajax({
-                url:"/calender/action",
-                type:"POST",
-                data:{
-                    title: title,
-                    start: start,
-                    end: end,
-                    id: id,
-                    type: 'update'
-                },
-                success:function(response)
-                {
-                    calendar.fullCalendar('refetchEvents');
-                    alert("Les succesvol aangepast");
-                }
-            })
-        },
-
-        eventClick:function(lesson)
-        {
-            if(confirm("Are you sure you want to remove it?"))
-            {
-                var id = lesson.id;
-                $.ajax({
-                    url:"/full-calender/action",
-                    type:"POST",
-                    data:{
-                        id:id,
-                        type:"delete"
-                    },
-                    success:function(response)
-                    {
-                        calendar.fullCalendar('refetchEvents');
-                        alert("Les succesvol verwijderd");
-                    }
-                })
-            }
-        }
-    });
-
-});
-  
-</script>
-  
 </body>
 </html>
 

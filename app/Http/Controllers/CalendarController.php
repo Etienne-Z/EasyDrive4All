@@ -15,6 +15,7 @@ class CalendarController extends Controller
     		$data = Lessons::whereDate('starting_time', '>=', $request->start)
                        ->whereDate('finishing_time',   '<=', $request->end)
                        ->get(['id', 'User_ID', 'Instructor_ID', 'pickup_address', 'pickup_city', 'starting_time', 'finishing_time']);
+					   
             return response()->json($data);
     	}
     	return view('Calendar/calendar');
