@@ -264,10 +264,7 @@ $('#contact-form-id').on('submit',function(e){
           let city = $('#city').val();
           let zipcode = $('#zipcode').val();
           var instructor = $("#instructor").find(':selected').val();
-          
-          console.log(instructor);
           let _token  = $('meta[name="csrf-token"]').attr('content');
-      
       
           $.ajax({
             beforeSend : function () {  
@@ -278,6 +275,7 @@ $('#contact-form-id').on('submit',function(e){
             url: "/student_change",
             type:"POST",
             data:{
+              user_id:user_id,
               first_name:first_name,
               insertion,insertion,
               last_name, last_name,
@@ -285,7 +283,6 @@ $('#contact-form-id').on('submit',function(e){
               address:address,
               zipcode:zipcode,
               city:city,
-              user_id:user_id,
               instructor,instructor,
               _token: _token,
             },
@@ -307,7 +304,6 @@ $('#contact-form-id').on('submit',function(e){
             });
           });
 
-
           $('#changeInstructor').on('submit',function(e){
             e.preventDefault();
             let first_name = $('#first_name').val();
@@ -318,19 +314,18 @@ $('#contact-form-id').on('submit',function(e){
             let address = $('#address').val();
             let city = $('#city').val();
             let zipcode = $('#zipcode').val();
-            
             let _token  = $('meta[name="csrf-token"]').attr('content');
-        
         
             $.ajax({
               beforeSend : function () {  
                 // before send, show the loading gif
                 $('#wait').show(); 
-                $('#changeInstructor').hide();
+                $('#changeStudent').hide();
               },
               url: "/instructors_change",
               type:"POST",
               data:{
+                user_id:user_id,
                 first_name:first_name,
                 insertion,insertion,
                 last_name, last_name,
@@ -338,7 +333,6 @@ $('#contact-form-id').on('submit',function(e){
                 address:address,
                 zipcode:zipcode,
                 city:city,
-                user_id:user_id,
                 _token: _token,
               },
               complete : function () { 
@@ -349,19 +343,12 @@ $('#contact-form-id').on('submit',function(e){
               },
               success:function(response){
                 $('.sign-up-container').html(
-                    '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar Instructeuren overzicht</a></p>'
+                    '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar instructeuren overzicht</a></p>'
                 );
               },
               
               error: function(response) {
-                console.log(response)
-                $('#firstNameErrorMsg').text(response.responseJSON.errors.first_name);
-                $('#insertionErrorMsg').text(response.responseJSON.errors.insertion);
-                $('#lastNameErrorMsg').text(response.responseJSON.errors.last_name);
-                $('#emailErrorMsg').text(response.responseJSON.errors.email);
-                $('#addressErrorMsg').text(response.responseJSON.errors.address);
-                $('#cityErrorMsg').text(response.responseJSON.errors.zipcode);
-                $('#zipcodeErrorMsg').text(response.responseJSON.errors.city);
+                console.log(response);
               },
               });
             });

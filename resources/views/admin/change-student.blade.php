@@ -5,7 +5,7 @@
     <div class="container sign-up-container mb-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8 mb-3 mt-5">
-                <form id="changeInstructor" >
+                <form id="changeStudent">
                         <div class="col-md">
                             <strong>Voornaam:</strong><br>
                             <div id="firstNameErrorMsg" class="alert"></div>
@@ -45,7 +45,7 @@
                             <strong>Instructeur:</strong><br>
                             <select name="instructor" id="instructor" class="form-control mb-3" value="Kies de instructeur">
                                 @foreach ($instructors as $instructor)
-                                    <option value="{{$instructor->id}}" @if ($instructor->id == $instructor_has_user) selected @endif >{{$instructor->first_name }} {{$instructor->insertion}} {{ $instructor->last_name }}</option>
+                                    <option value="{{$instructor->id}}" @isset($instructor_has_user) @if ($instructor->id == $instructor_has_user) selected @endif @endisset >{{$instructor->first_name }} {{$instructor->insertion}} {{ $instructor->last_name }}</option>
                                 @endforeach
                             </select>
                         </div>
