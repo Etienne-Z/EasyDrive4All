@@ -5,10 +5,10 @@
         <h1 class="title text-center">Instructeuren</h1>
         <a href="/instructors_register" class="button-add-user">instructeur toevoegen</a>
     </div>
-    <div class="container">
-        <div class="row">
+    <div class="container ">
+        <div class="row table-flow">
 
-            <table class="overview">
+            <table class="overview ">
                 <thead>
                         <td>Voornaam</td>
                         <td>Achternaam</td>

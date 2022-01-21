@@ -37,19 +37,19 @@
     <div class="container about-us-container-white mt-3">
         <div class="row">
             <h2 class="text-center mb-5">Onze instructeurs</h2>
-            <div class="col-md-3 text-center">
+            <div class="col-lg-3 text-center">
                     <img class="instructors" src="image/stock/instructeuren/person_1.jpeg" width="250px">
                     <p class="text-center name-instructor">Henry van Rijn</p>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-lg-3 text-center">
                     <img class="instructors" src="image/stock/instructeuren/person_2.jpeg" width="250px">
                     <p class="text-center name-instructor">Dirk van de broek</p>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-lg-3 text-center">
                     <img class="instructors" src="image/stock/instructeuren/person_3.jpeg" width="250px">
                     <p class="text-center name-instructor">Edah veldmuis</p>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-lg-3 text-center">
                     <img class="instructors" src="image/stock/instructeuren/person_4.jpeg" width="250px">
                     <p class="text-center name-instructor">Albert Heijn</p>
             </div>
