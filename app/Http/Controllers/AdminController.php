@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Instructor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -41,6 +42,7 @@ use App\Mail\RegisterMail;
          * @return Users    All the users
          * @return View     The required view
          */
+
         public function studentOverview(){
             $students = User::WhereStudent()->get();
             return view('student-overview',compact('students'));
@@ -73,6 +75,21 @@ use App\Mail\RegisterMail;
          *
          * @return View     The required view
          */
+        public function changeStudent($id){
+            $user =  User::WhereId($id)->first();
+            $instructors = Instructors::Name()->get();
+            if(isset(instructor_has_users::WhereUser($user->id)->first()->Instructor_ID)){
+                $instructor_has_user = instructor_has_users::WhereUser($user->id)->first()->Instructor_ID;
+                return view('admin.change-student',compact(['user','instructors','instructor_has_user']));
+            }
+            return view('admin.change-student',compact(['user','instructors']));
+        }
+
+        public function changeInstructor($id){
+            $instructor = User::WhereId($id)->first();
+            return view('admin.change-instructor',compact('instructor'));
+        }
+
         public function instructorRegister(){
             return view('admin.instructor-register');
         }
@@ -255,7 +272,6 @@ use App\Mail\RegisterMail;
             $user->lesson_hours = 0;
             $user->password = Hash::make($password);
             $user->save();
-
             return $user;
         }
 
@@ -271,5 +287,60 @@ use App\Mail\RegisterMail;
             $instructor->User_ID = $id;
             $instructor->save();
         }
+
+        public function updateUser(Request $request){
+            $user = User::WhereId($request->user_id)->first();
+            $request->validate([
+                'first_name' => 'required',
+                'insertion',
+                'last_name' => 'required',
+                'email' => 'required|unique:users,email,' . $user->id,
+                'address' => 'required',
+                'city' => 'required',
+                'zipcode' => 'required',
+            ]);
+            $user->first_name = $request->first_name;
+            $user->insertion = $request->insertion;
+            $user->last_name = $request->last_name;
+            $user->email = $request->email;
+            $this->updateUserInstructor($user->id,$request->instructor);
+            $user->address = $request->address;
+            $user->city = $request->city;
+            $user->zipcode = $request->zipcode;
+            $user->save();
+            return response()->json(['success'=>'Successfully']);
+        }
+
+
+
+        public function updateUserInstructor($user_id, $instructor_id){
+            $user = instructor_has_users::WhereUser($user_id)->first();
+            $user->Instructor_ID = $instructor_id;
+            $user->save();
+        }
+
+        public function updateInstructor(Request $request){
+            $user = User::WhereId($request->user_id)->first();
+            $request->validate([
+                'first_name' => 'required',
+                'insertion',
+                'last_name' => 'required',
+                'email' => 'required|unique:users,email,' . $user->id,
+                'address' => 'required',
+                'city' => 'required',
+                'zipcode' => 'required',
+            ]);
+            $user->first_name = $request->first_name;
+            $user->insertion = $request->insertion;
+            $user->last_name = $request->last_name;
+            $user->email = $request->email;
+            $user->address = $request->address;
+            $user->city = $request->city;
+            $user->zipcode = $request->zipcode;
+            $user->save();
+            return response()->json(['success'=>'Successfully']);
+        }
     }
+
+    
 

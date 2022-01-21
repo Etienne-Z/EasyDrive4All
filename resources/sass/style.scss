@@ -83,7 +83,7 @@
     .progress-bar{
         width: 40%;
         height: 20px;
-        background-image: linear-gradient(to right, $blue 63%,white 63%, white 100%);
+        
         margin-left: auto;
         margin-right: auto;
         border: 1px solid black;
@@ -539,8 +539,12 @@ footer{
             background-color: #D7A31A;
         }
     }
+ 
 }
 
+.fa-user-edit{
+    color: $white;
+}
 //dashboard scss inlog
 .dashboard{
     .col-lg{

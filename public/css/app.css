@@ -11369,7 +11369,6 @@ textarea.form-control-lg {
 .progress-container .progress-bar {
   width: 40%;
   height: 20px;
-  background-image: linear-gradient(to right, #14223A 63%, white 63%, white 100%);
   margin-left: auto;
   margin-right: auto;
   border: 1px solid black;
@@ -11782,6 +11781,10 @@ footer .links-footer a {
 }
 .sign-up-container button:hover {
   background-color: #D7A31A;
+}
+
+.fa-user-edit {
+  color: #fff;
 }
 
 .dashboard .col-lg {

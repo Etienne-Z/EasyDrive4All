@@ -81,4 +81,8 @@ class User extends Authenticatable
     public function scopeWhereAdmin($query){
         return $query->where('users.role', '=', 2);
     }
+    
+    public function scopeEmail($query,$email){
+        return $query->where('users.email','=',$email);
+    }
 }
