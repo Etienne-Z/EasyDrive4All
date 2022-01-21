@@ -11682,6 +11682,27 @@ textarea.form-control-lg {
   background-color: #14223A;
   color: white;
 }
+.overview select {
+  background-color: #14223A;
+  color: white;
+  border: none;
+  text-align: center;
+}
+.overview input {
+  background-color: #14223A;
+  color: white;
+  border: none;
+  text-align: center;
+}
+
+.car-overview-container .col-md-8 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.car-overview-container table {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .fa-user-edit, .fa-trash {
   font-size: 45px;
@@ -11779,4 +11800,9 @@ footer .links-footer a {
 }
 .dashboard .col-lg:hover {
   background-color: #000B24;
+}
+
+.sickform_labels {
+  letter-spacing: 2px;
+  font-size: 10px;
 }

@@ -292,7 +292,7 @@
 
 //contact page//
 .contact-form-container{
-    background-color: $blue;
+background-color: $blue;
     color: white;
     padding: 40px 0px;
     .contact-form{
@@ -406,6 +406,7 @@
 }
 //table overviews
 .overview{
+
     td{
         border: 1px solid black;
     }
@@ -422,6 +423,31 @@
     td:nth-child(even){
         background-color:$blue;
         color:white;
+    }
+
+    select{
+        background-color:$blue;
+        color:white;
+        border: none;
+        text-align: center;
+    }
+
+    input{
+        background-color:$blue;
+        color:white;
+        border: none;
+        text-align: center;
+    }
+}
+
+.car-overview-container{
+    .col-md-8{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table{
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -535,10 +561,9 @@ footer{
             background-color: $hover-blue;
         }
     }
-
+}
 // for the font style from the labels of the sick form for instructors
 .sickform_labels {
     letter-spacing: 2px;
     font-size: 10px;
-
 }
