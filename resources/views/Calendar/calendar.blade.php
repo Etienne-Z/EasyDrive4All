@@ -12,14 +12,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
 </head>
 <body>
-  
+
 <div class="container">
     <div id="calendar"></div>
 </div>
-<!-- <div id="modal" class="w-50 text-center lesson-form-container">
+  <div id="modal" style="display:none;" class="w-50 text-center lesson-form-container">
             @if(Auth::user()->instructor)
                 <h2 class="text-center mb-2">Les toevoegen</h2>
-                <form action="/lesson/create" method="POST">
+                <form id="create_lesson" >
+                    <div class="form-group">
+                        <input type="hidden" name="instructor" id="instructor" value="{{Auth::user()->instructor->id}}">
+                    </div>
                     <div class="form-group">
                         <label for="student">Leerling</label>
                         <select class="form-control text-center" id="student" name="student">
@@ -27,10 +30,6 @@
                                 <option value="{{$student->id}}">{{$student->first_name . " " . $student->insertion . " " . $student->last_name}}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Starttijd</label>
-                        <input class="form-control" type="datetime-local" id="date" name="date">
                     </div>
                     <div class="form-group">
                         <label for="Type">Examens</label>
@@ -53,7 +52,7 @@
                     <button>Les aanmaken</button>
                 </form>
             @endif
-        </div> -->
+        </div>
 
 </body>
 </html>

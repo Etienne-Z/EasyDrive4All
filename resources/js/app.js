@@ -1,3 +1,5 @@
+const { start } = require('@popperjs/core');
+
 require('./bootstrap');
 $.ajaxSetup({
     headers: {
@@ -261,12 +263,12 @@ $('#contact-form-id').on('submit',function(e){
             console.log(description);
             console.log(role);
             let _token  = $('meta[name="csrf-token"]').attr('content');
-        
-        
+
+
             $.ajax({
-              beforeSend : function () {  
+              beforeSend : function () {
                 // before send, show the loading gif
-                $('#wait').show(); 
+                $('#wait').show();
                 $('#createAnnouncement').hide();
               },
               url: "/createannouncement",
@@ -277,7 +279,7 @@ $('#contact-form-id').on('submit',function(e){
                 role: role,
                 _token: _token,
               },
-              complete : function () { 
+              complete : function () {
                 // or hide here
                 // this callback called either success or failed
                 $('#wait').hide();
@@ -288,7 +290,7 @@ $('#contact-form-id').on('submit',function(e){
                     '<div class="succes-message"></div><p class="text-center succes-text">Mededeling aanmaken is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/ownerannouncements"><i class="fas fa-arrow-left"></i> Terug naar Mededelingen pagina</a></p>'
                 );
               },
-              
+
               error: function(response) {
                 $('#titleErrorMsg').text(response.responseJSON.errors.title);
                 $('#descriptionErrorMsg').text(response.responseJSON.errors.description);
@@ -309,12 +311,12 @@ $('#contact-form-id').on('submit',function(e){
               console.log(description);
               console.log(role);
               let _token  = $('meta[name="csrf-token"]').attr('content');
-          
-          
+
+
               $.ajax({
-                beforeSend : function () {  
+                beforeSend : function () {
                   // before send, show the loading gif
-                  $('#wait').show(); 
+                  $('#wait').show();
                   $('#editAnnouncement').hide();
                 },
                 url: "/editannouncement/{id}",
@@ -326,7 +328,7 @@ $('#contact-form-id').on('submit',function(e){
                   role: role,
                   _token: _token,
                 },
-                complete : function () { 
+                complete : function () {
                   // or hide here
                   // this callback called either success or failed
                   $('#wait').hide();
@@ -337,7 +339,7 @@ $('#contact-form-id').on('submit',function(e){
                       '<div class="succes-message"></div><p class="text-center succes-text">Mededeling aanpassen is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/ownerannouncements"><i class="fas fa-arrow-left"></i> Terug naar Mededelingen pagina</a></p>'
                   );
                 },
-                
+
                 error: function(response) {
                   console.log(response)
                   $('#titleErrorMsg').text(response.responseJSON.errors.title);
@@ -346,16 +348,13 @@ $('#contact-form-id').on('submit',function(e){
                 },
                 });
               });
-    
-    
+
+
         $('#register-car').on('submit',function(e){
             e.preventDefault();
             let Type = $('#Type').val()
-
             let Brand = $('#Brand').val();
             let License_plate = $('#License_plate').val();
-            console.log(Brand);
-            console.log(License_plate);
             let _token  = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
                 beforeSend : function () {
@@ -399,127 +398,144 @@ $('#contact-form-id').on('submit',function(e){
 
             // CALENDAR PAGE //
             $(document).ready(function () {
-
               $.ajaxSetup({
                   headers:{
                       'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
                   }
               });
-          
-              var calendar = $('#calendar').fullCalendar({
+              var calendar = $('#calendar');
+              var modal = $('#modal');
+              calendar.fullCalendar({
                   editable:true,
                   header:{
                       left:'prev,next today',
                       center:'title',
                       right:'month,agendaWeek,agendaDay'
                   },
-                  events:'/calender',
+                  events:
+                      {
+                    url: "http://127.0.0.1:8000/calender",
+                    success: function(data) {
+                        var events = [];
+                        $(data).each(function() {
+                            if($(this).attr('insertion') !== null){
+                                var fullname = $(this).attr('first_name') + " " +  $(this).attr('insertion') + " " + $(this).attr('last_name')
+                            }else{
+                                var fullname = $(this).attr('first_name') + " " + $(this).attr('last_name')
+                            }
+
+                            events.push({
+                                id: $(this).attr('id'),
+                                title: fullname,
+                                start: $(this).attr('starting_time'),
+                                end: $(this).attr('finishing_time'),
+                                allDay :false
+                            });
+                        });
+                        return events;
+                    },
+                    },
                   selectable:true,
                   selectHelper: true,
                   select:function(starting_time, finishing_time)
                   {
-                      var title = prompt('Event Title:');
-          
-                      if(title)
-                      {
-                          var starting_time = $.fullCalendar.formatDate(starting_time, 'Y-MM-DD HH:mm:ss');
-          
-                          var finishing_time = $.fullCalendar.formatDate(finishing_time, 'Y-MM-DD HH:mm:ss');
-          
+                    var starting_time = $.fullCalendar.formatDate(starting_time, 'Y-MM-DD HH:mm:ss');
+                    var finishing_time = $.fullCalendar.formatDate(finishing_time, 'Y-MM-DD HH:mm:ss');
+                      calendar.hide();
+                      modal.show();
+
+                      $('#create_lesson').on('submit',function(e){
+
+                        e.preventDefault();
+                        let student = $('#student').val();
+                        let instructor = $('#instructor').val();
+                        let lesson_type = $('#type').val();
+                        let address = $('#address').val();
+                        let city = $('#city').val();
+                        let goal = $('#goal').val();
+
                           $.ajax({
-                              url:"/calender/action",
+                              url:"http://127.0.0.1:8000/calender/action",
                               type:"POST",
                               data:{
-                                  User_ID: User_ID,
-                                  Instructor_ID: Instructor_ID,
-                                  pickup_address:pickup_address,
-                                  pickup_city:pickup_city,
-                                  starting_time:starting_time,
+                                  Instructor_ID: instructor,
+                                  Student_ID: student,
+                                  lesson_type: lesson_type,
+                                  pickup_address: address,
+                                  pickup_city: city,
+                                  goal: goal,
+                                  starting_time: starting_time,
                                   finishing_time:finishing_time,
                                   type: 'add'
                               },
-                              success:function(data)
+                              success:function()
                               {
                                   calendar.fullCalendar('refetchEvents');
                                   alert("Les succesvol aangemaakt");
                               }
                           })
-                      }
-                  },
-                  editable:true,
-                  eventResize: function(event, delta)
-                  {
-                      var starting_time = $.fullCalendar.formatDate(event.starting_time, 'Y-MM-DD HH:mm:ss');
-                      var finishing_time = $.fullCalendar.formatDate(event.finishing_time, 'Y-MM-DD HH:mm:ss');
-                      var title = event.title;
-                      var id = event.id;
-                      $.ajax({
-                          url:"/full-calender/action",
-                          type:"POST",
-                          data:{
-                              User_ID: User_ID,
-                      Instructor_ID: Instructor_ID,
-                      pickup_address:pickup_address,
-                              pickup_city:pickup_city,
-                              starting_time:starting_time,
-                              finishing_time:finishing_time,
-                              id: id,
-                              type: 'update'
-                          },
-                          success:function(response)
-                          {
-                              calendar.fullCalendar('refetchEvents');
-                              alert("Les succesvol aangepast");
-                          }
-                      })
-                  },
-                  eventDrop: function(lesson, delta)
-                  {
-                      var starting_time = $.fullCalendar.formatDate(lesson.starting_time, 'Y-MM-DD HH:mm:ss');
-                      var finishing_time = $.fullCalendar.formatDate(lesson.finishing_time, 'Y-MM-DD HH:mm:ss');
-                      var title = lesson.title;
-                      var id = lesson.id;
-                      $.ajax({
-                          url:"/calender/action",
-                          type:"POST",
-                          data:{
-                              User_ID: User_ID,
-                      Instructor_ID: Instructor_ID,
-                      pickup_address:pickup_address,
-                              pickup_city:pickup_city,
-                              starting_time:starting_time,
-                              finishing_time:finishing_time,
-                              id: id,
-                              type: 'update'
-                          },
-                          success:function(response)
-                          {
-                              calendar.fullCalendar('refetchEvents');
-                              alert("Les succesvol aangepast");
-                          }
-                      })
-                  },
-          
-                  eventClick:function(lesson)
-                  {
-                      if(confirm("Are you sure you want to remove it?"))
-                      {
-                          var id = lesson.id;
-                          $.ajax({
-                              url:"/full-calender/action",
-                              type:"POST",
-                              data:{
-                                  id:id,
-                                  type:"delete"
-                              },
-                              success:function(response)
-                              {
-                                  calendar.fullCalendar('refetchEvents');
-                                  alert("Les succesvol verwijderd");
-                              }
-                          })
-                      }
-                  }
-              });
-          
+                        calendar.show();
+                        modal.hide();
+                      });
+                    },
+                    eventResize: function(event){
+                        var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
+                        var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
+                        var id = event.id;
+                        $.ajax({
+                            url:"http://127.0.0.1:8000/calendar/action",
+                            type:"POST",
+                            data:{
+                                id: id,
+                                starting_time: start,
+                                finishing_time: end,
+                                type: 'update'
+                            },
+                            success:function(response){
+                                calendar.fullCalendar('refetchEvents');
+                                alert("Event Updated Successfully");
+                            }
+                        })
+                    },
+                    eventDragStop: function(event){
+                        // Doesnt get new start + end date.
+                        var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
+                        var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
+                        var id = event.id;
+                        $.ajax({
+                            url:"http://127.0.0.1:8000/calendar/action",
+                            type:"POST",
+                            data:{
+                                id: id,
+                                starting_time: start,
+                                finishing_time: end,
+                                type: 'update'
+                            },
+                            success:function(response){
+                                calendar.fullCalendar('refetchEvents');
+                                alert("Event Updated Successfully");
+                            },
+                            error:function(response){
+                                console.log(response);
+                            }
+                        })
+                    },
+                      //Werkt nog niet?
+                    //   eventDrop: function(event, delta){var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');var title = event.title;var id = event.id;
+                    //   $.ajax({
+                    //       url:"/calendar/action",
+                    //       type:"POST",
+                    //       data:{
+                    //           title: title,
+                    //           start: start,
+                    //           end: end,
+                    //           id: id,
+                    //           type: 'update'},
+                    //       success:function(response){
+                    //           calendar.fullCalendar('refetchEvents');alert("Event Updated Successfully");
+                    //         }
+                    //     })
+                    // },
+
+                });
           });

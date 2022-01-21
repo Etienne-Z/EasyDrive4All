@@ -45,8 +45,8 @@ Route::get('/editannouncement/{id}', [AnnouncementsController::class, 'announcem
 Route::put('/editannouncement/{id}', [AnnouncementsController::class, 'updateAnnouncement']);
 
 // Calendar Routes
-Route::get('calendar', [CalendarController::class, 'index']);
-Route::post('calendar/action', [CalendarController::class, 'action']);
+Route::get('/calender', [CalendarController::class, 'index']);
+Route::post('/calendar/action', [CalendarController::class, 'action']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
