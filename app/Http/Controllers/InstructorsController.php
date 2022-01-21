@@ -10,11 +10,13 @@ use App\Models\lessons;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use Illuminate\Support\Facades\Hash;
+Use App\Http\Controllers\HomeController;
 
 class InstructorsController extends Controller
 {
     public function studentOverview(){
         $students = User::WhereStudent()->get();
+
         return view('student-overview',compact('students'));
     }
 
