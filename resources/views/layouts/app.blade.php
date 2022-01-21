@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" type="image/x-icon" href="/image/clean-car-y.png">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -21,13 +21,21 @@
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- Meta tags --}}
+    <meta name="description" content="Easydrive4all is een verkeersschool die gespecialiseerd is in mensen te leren rijden met een fysieke beperking! Onze instructeurs zijn hier speciaal voor opgeleid om te zorgen dat jij veilig de weg op kan!">
+    <meta name="robots" content="home, follow" />
+    <meta name="robots" content="Over ons, follow" />
+    <meta name="robots" content="Inschrijven, follow" />
+    <meta name="robots" content="Contact, follow" />
+    <meta name="robots" content="Lessen, follow" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/image/clean-car.png" alt="" width="50px">
+                    <img src="/image/clean-car.png" alt="Logo EasyDrive4All" width="50px">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -43,8 +51,22 @@
                                     <a class="nav-link" href="/about-us">Over ons</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/inschrijven">Inschrijven</a>
+                            </li>
+                            <li class="nav-item">
                                     <a class="nav-link" href="/contact">Contact</a>
                             </li>
+
+                            @if(Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/lessons">Lessen</a>
+                                </li>
+                                @if(Auth::user()->instructor ?? "")
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/students">Studenten</a>
+                                    </li>
+                                @endif
+                            @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -86,7 +108,7 @@
             @yield('content')
         </main>
     </div>
-    <footer>
+    <footer class="mt-auto">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 links-footer">
@@ -106,7 +128,7 @@
                         0626-123456<br>
                         info@easydrive4all.nl
                     </div>
-                <div class="col-md text-center mt-auto mb-auto"><img src="/image/clean-car.png" width="100px" alt=""></div>
+                <div class="col-md text-center mt-auto mb-auto"><img src="/image/clean-car.png" width="100px" alt="Logo easydrive4all"></div>
 
             </div>
         </div>

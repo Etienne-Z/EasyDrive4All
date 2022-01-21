@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="overview_header">
-        <h1 class="title text-center">Leerlingen</h1>
-        <a href="/student_register" class="button-add-user">Leerling toevoegen</a>
+        <h1 class="title text-center">Instructeuren</h1>
+        <a href="/instructors_register" class="button-add-user">instructeur toevoegen</a>
     </div>
     <div class="container">
         <div class="row">
@@ -17,14 +17,14 @@
                         <td>Verwijderen</td>
                 </thead>
                 <tbody>
-                    @foreach ($students as $student)
+                    @foreach ($instructors as $instructor )
                         <tr>
-                            <td>{{$student->first_name}}</td>
-                            <td>{{$student->insertion}} {{$student->last_name}}</td>
-                            <td>{{$student->email}}</td>
+                            <td>{{$instructor->first_name}}</td>
+                            <td>{{$instructor->insertion}} {{$instructor->last_name}}</td>
+                            <td>{{$instructor->email}}</td>
                             <td class="text-center"><i class="fas fa-user-edit"></i></td>
                             <td class="text-center">
-                                    <button id="delete-user_button" class="delete-button" value="{{$student->id}}"><i class="fas fa-trash"></i></button>
+                                    <button id="delete-user_button" class="delete-button" value="{{$instructor->id}}"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -40,7 +40,6 @@
             <input type="hidden" name='id' id="deleting-user-id">
             @csrf
             <button class="button-yes inline-block">Ja</button>
-
         </form>
         <button id="no-close" onclick="document.getElementById('dialog-delete-user').style.display='none'" class="button-cancel">Nee</button>
     </div>

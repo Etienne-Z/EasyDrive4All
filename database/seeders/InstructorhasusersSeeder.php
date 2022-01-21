@@ -16,7 +16,7 @@ class InstructorhasusersSeeder extends Seeder
      */
     public function run()
     {
-        $users = user::Student()->get();
+        $users = user::WhereStudent()->get();
         foreach($users as $user){
             DB::table('instructor_has_users')->insert([
                 'User_ID' => $user->id,

@@ -55,15 +55,11 @@ class User extends Authenticatable
         return $this->hasOne(Instructors::class);
     }
 
-    public function scopeWhereID($query, $id){
-        return $query->where('users.id', '=', $id);
-    }
+
     public function instructor_has_users()
     {
         return $this->hasOne(instructor_has_users::class);
     }
-
-
 
     /**
      *
@@ -71,19 +67,18 @@ class User extends Authenticatable
      *
      */
 
-    public function scopeStudent($query){
-        return $query->where('users.role', '==', 0);
+    public function scopeWhereStudent($query){
+        return $query->where('users.role', '=', 0);
     }
-
-    public function scopeInstructor($query){
-        return $query->where('users.role', '==', 1);
-    }
-
-    public function scopeAdmin($query){
-        return $query->where('users.role', '==', 2);
-    }
-
-    public function scopeId($query, $id){
+    public function scopeWhereID($query, $id){
         return $query->where('users.id', '=', $id);
+    }
+
+    public function scopeWhereInstructor($query){
+        return $query->where('users.role', '=', 1);
+    }
+
+    public function scopeWhereAdmin($query){
+        return $query->where('users.role', '=', 2);
     }
 }

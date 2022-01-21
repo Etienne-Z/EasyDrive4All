@@ -9,25 +9,29 @@ use Illuminate\Support\Facades\Mail;
 class FormController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * This class manages sign up form
      *
-     * @return void
+     * @copyright  2022 Examen groep 12
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
 
     /**
-     * Show the application dashboard.
+     * Returns the sign up page
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return View     The required view
      */
     public function index()
     {
         return view('subform');
     }
 
+        /**
+         * Sends the sign up mail to the owner
+         *
+         * @param Request   The data that is being send through with the form
+         *
+         * @return Mail     Mails the information of the user towards the owner
+         * @return Json     The json response for the ajax request
+         */
     public function sendMail(Request $request){
         $request->validate([
             'first_name' => 'required',

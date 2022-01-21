@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileController extends Controller
-{
-// authentication for being logged in
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
+     * This class manages the profile page
      *
-     * Returns all the info the company has about the user
-     *
+     * @copyright  2022 Examen groep 12
      */
-
+class ProfileController extends Controller
+{
+        /**
+         * Returns the overview for the logged in user
+         *
+         * @return user_info     All the info of the user
+         * @return View          The required view
+         */
     public function index(){
         // Logged in user
         $user = Auth::user();

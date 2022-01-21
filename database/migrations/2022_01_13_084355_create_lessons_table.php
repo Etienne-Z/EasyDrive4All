@@ -21,7 +21,8 @@ class CreateLessonsTable extends Migration
             $table->string("pickup_city");
             $table->datetime("starting_time");
             $table->datetime("finishing_time");
-            $table->string("lesson_type");
+            $table->boolean("lesson_type")->default(0);
+            $table->string("Goal");
             $table->string("result")->nullable();
             $table->string("comment")->nullable();
             $table->timestamps();

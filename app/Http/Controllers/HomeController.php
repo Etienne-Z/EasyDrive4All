@@ -25,6 +25,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    /**
+     * Returns the landing page for users who are not logged in
+     *
+     * @return View     The required view
+     */
     public function welcome_page(){
         $success_rate =  $this->getExamResults();
         $total_exams = Exams::count();
@@ -38,5 +43,15 @@ class HomeController extends Controller
         $percent = $success_exams / $total_exams * 100;
 
         return $percent;
+    }
+
+
+        /**
+         * Returns the terms and conditions view
+         *
+         * @return View     The required view
+         */
+    public function terms_conditions(){
+        return view('terms_conditions');
     }
 }
