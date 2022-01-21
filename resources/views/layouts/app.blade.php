@@ -32,7 +32,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar">
+        <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/image/clean-car.png" alt="Logo EasyDrive4All" width="50px">
@@ -57,13 +57,20 @@
                                     <a class="nav-link" href="/contact">Contact</a>
                             </li>
 
-                            @if(Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/lessons">Lessen</a>
-                                </li>
-                                @if(Auth::user()->instructor ?? "")
+                            @if(Auth::user() !== null)
+                                @if (Auth::user()->role == 2)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/students">Studenten</a>
+                                        <a class="nav-link" href="/home">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/students_overview">Studenten overzicht</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/instructors_overview">Instructeuren overzicht</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/cars_overview">Auto's overzicht</a>
                                     </li>
                                 @endif
                             @endif

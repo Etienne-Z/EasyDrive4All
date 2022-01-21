@@ -1,0 +1,53 @@
+@media screen and (max-width: 991px) {
+    .contact-form-container .contact-form {
+        textarea{
+        margin-left: auto;
+        margin-right: auto;
+        padding: unset;
+        max-width: none;
+        }
+        button{
+            margin-right: auto;
+        }
+    }
+    .container-contact-gegevens{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 872px) {
+    .overview_header .button-add-user{
+        position: initial;
+    }
+    .table-flow{
+        margin-top: 50px;
+    }
+
+
+}
+@media screen and (max-width: 767px) {
+
+    footer{
+        text-align: center;
+        .col-md{
+            margin-left: 0;
+            margin-right:0;
+        }
+    }
+    .table-flow{
+        overflow: scroll;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title{
+        font-size: 40px;
+        font-weight: 900;
+    }
+    .homepage-container .about-us-homepage{
+        background-color: rgba(255, 255, 255, 0.7);
+        background-image: none;
+    }
+
+}
+
+

@@ -6,7 +6,7 @@
         <a href="/student_register" class="button-add-user">Leerling toevoegen</a>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row table-flow">
 
             <table class="overview">
                 <thead>

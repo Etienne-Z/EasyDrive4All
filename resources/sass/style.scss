@@ -19,11 +19,21 @@
     }
 }
 
-.navbar-expand-md{
+.navbar{
+    z-index: 2;
+}
+.navbar-expand-lg{
     background-color:$oak ;
     a{
         color: #FFFFFF !important;
     }
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url('/image/stock/burger.png');
+}
+
+.navbar-light .navbar-toggler{
+    border: none;
 }
 ///alert messages//
 .alert{

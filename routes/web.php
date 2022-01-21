@@ -21,8 +21,26 @@ use App\Http\Controllers\LessonsController;
 |
 */
 
+// Register form for new users
+Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
+Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
+
+// About us page
+Route::get('/about-us', [AboutUsController::class, 'index']);
+
+// Contactpage
+Route::get('/contact', [ContactController::class,'index']);
+Route::post('/contact', [ContactController::class,'contactForm']);
+
+//Default landing page
+Route::get('/', [HomeController::class,'landing']);
+
+// terms of conditions page for users
+Route::get('/algemene_voorwaarden', [HomeController::class,'terms_conditions']);
+
 
 Auth::routes();
+
 
 Route::group(['middleware' => ['auth']], function(){
 
@@ -82,19 +100,4 @@ Route::group(['middleware' => ['auth']], function(){
     });
 });
 
-// Register form for new users
-Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
-Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
 
-// About us page
-Route::get('/about-us', [AboutUsController::class, 'index']);
-
-// Contactpage
-Route::get('/contact', [ContactController::class,'index']);
-Route::post('/contact', [ContactController::class,'contactForm']);
-
-//Default landing page
-Route::get('/', [HomeController::class,'Landing']);
-
-// terms of conditions page for users
-Route::get('/algemene_voorwaarden', [HomeController::class,'terms_conditions']);
