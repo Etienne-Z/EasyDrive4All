@@ -24,4 +24,10 @@ class Announcements extends Model
         ->where('Announcements.role', '=', 1);
     }
 
+    public function scopeId($query,$id){
+
+        return $query->where('id', '=', $id);
+        
+        }
+
 }

@@ -301,9 +301,10 @@ $('#contact-form-id').on('submit',function(e){
             // Announcement Page Edit
             $('#editAnnouncement').on('submit',function(e){
               e.preventDefault();
+              let id = $('#id').val();
               let title = $('#title').val();
               let description = $('#description').val();
-              let role = $('#role').val();
+              let role = $("#role").find(':selected').val();
               console.log(title);
               console.log(description);
               console.log(role);
@@ -319,6 +320,7 @@ $('#contact-form-id').on('submit',function(e){
                 url: "/editannouncement/{id}",
                 type:"put",
                 data:{
+                  id: id,
                   title: title,
                   description: description,
                   role: role,
@@ -337,6 +339,7 @@ $('#contact-form-id').on('submit',function(e){
                 },
                 
                 error: function(response) {
+                  console.log(response)
                   $('#titleErrorMsg').text(response.responseJSON.errors.title);
                   $('#descriptionErrorMsg').text(response.responseJSON.errors.description);
                   $('#roleErrorMsg').text(response.responseJSON.errors.role);

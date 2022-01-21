@@ -21,9 +21,11 @@
                             <td>{{$announcement->role}}</td>
                             <td>{{$announcement->title}}</td>
                             <td>{{substr($announcement->description,0,80)}}</td>
-                            <td class="text-center"><i class="fas fa-user-edit"></i></td>
                             <td class="text-center">
-                                    <button class="delete-button" value="{{$announcement->id}}"><i class="fas fa-trash"></i></button>
+                                <i class="fas fa-user-edit"></i>
+                            </td>
+                            <td class="text-center">
+                                <button class="delete-button" value="{{$announcement->id}}"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach

@@ -47,23 +47,23 @@ class AnnouncementsController extends Controller
         return response()->json(['success'=>'Successfully']);
     }
 
-    public function announcementEditForm(Announcements $announcement){
+    public function announcementEditForm($id){
+        $announcement = Announcements::Id($id)->first();
         return view('Announcements/announcementsEdit', compact('announcement'));
     }
 
-    public function updateAnnouncement(Request $request, $id){
-        $announcement = Announcements::find($id);
+    public function updateAnnouncement(Request $request){
+        $announcement = Announcements::Id($request->id)->first();
         $request->validate([
             'title' => 'required',
             'role' => 'required',
             'description' => 'required',
         ]);
-        dd($request);
-        $announcement->update([
-            'title' => $request->title,
-            'role' => $request->role,
-            'description' => $request->description
-        ]);
+        // dd($announcement);
+        $announcement->title = $request->title;
+        $announcement->role = $request->role;
+        $announcement->description = $request->description;
+        $announcement->save();
         return response()->json(['success'=>'Successfully']);
     }
 

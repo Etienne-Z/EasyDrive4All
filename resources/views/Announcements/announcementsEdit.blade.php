@@ -6,16 +6,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form id="editAnnouncement">
-           
+                
+                <input type="hidden" name="id" id="id" value="{{$announcement->id}}">
+
+
                 <div class="col-md">
                     <strong>Titel:</strong>
                     <div id="titleErrorMsg" class="alert"></div>
-                    <input type="text" class="form-control mt-3 mb-3"  name="title" id="title" value="{{old('title')}}">{{$announcement->title}}</input>
+                    <input type="text" class="form-control mt-3 mb-3"  name="title" id="title" value="{{old('title') ?? $announcement->title}}">
                 </div>
                 <div class="col-md">
                     <strong>Mededeling:</strong>
                     <div id="descriptionErrorMsg" class="alert"></div>
-                    <input type="text" class="form-control mt-3 mb-3" name="description" id="description"  value="{{old('description')}}">
+                    <textarea rows="10" class="form-control mt-3 mb-3" name="description" id="description"  value="{{old('description') ?? $announcement->description}}"></textarea>
                 </div>
                 <div class="col-md">
                     <strong>Type Mededeling:</strong>
@@ -29,7 +32,6 @@
                     <button class="btn mt-3 mb-3 btn-primary">Pas mededeling aan</button>
                 </div>
                
-                @csrf
             </form>
             <div id="wait"><img src="/image/stock/loading.gif" alt="loading-icon"></div>
         </div>
