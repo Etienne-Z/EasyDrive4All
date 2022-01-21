@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             LessonSeeder::class,
             InstructorhasusersSeeder::class,
             CarsSeeder::class,
-            AnnouncementsSeeder::class
+            AnnouncementsSeeder::class,
+            ExamSeeder::class
         ]);
     }
 }

@@ -19,9 +19,9 @@ use App\Http\Controllers\LessonsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [HomeController::class, 'welcome_page']);
+
 // terms of conditions page for users 
 Route::get('/algemene_voorwaarden', function () {
     return view('terms_conditions');
@@ -52,3 +52,7 @@ Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendM
 // call in sick for instructors 
 Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
 Route::post('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@sendMail');
+
+
+//test route
+Route::get('/examen', 'App\Http\Controllers\HomeController@getExamResults');
