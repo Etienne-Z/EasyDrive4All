@@ -45,7 +45,6 @@ use App\Mail\RegisterMail;
             $user =  User::WhereId($id)->first();
             $instructors = Instructors::Name()->get();
             if(isset(instructor_has_users::WhereUser($user->id)->first()->Instructor_ID)){
-                
                 $instructor_has_user = instructor_has_users::WhereUser($user->id)->first()->Instructor_ID;
                 return view('admin.change-student',compact(['user','instructors','instructor_has_user']));
             }
