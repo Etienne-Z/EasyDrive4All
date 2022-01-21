@@ -380,6 +380,7 @@ background-color: $blue;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    margin-bottom: 5%;
     h1 {
         text-align: center;
     }
@@ -570,4 +571,11 @@ footer{
 .sickform_labels {
     letter-spacing: 2px;
     font-size: 10px;
+}
+// for the succes_rate container on the student overview page for the admin.
+.success_rate_container{
+    width: 30%; 
+    position:absolute; 
+    z-index: 1; 
+    top:143px;
 }

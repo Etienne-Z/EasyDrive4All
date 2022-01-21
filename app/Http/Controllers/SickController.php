@@ -37,7 +37,6 @@ class SickController extends Controller
         $request->validate([
             'reason' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
         ]);
 
         $data = array(

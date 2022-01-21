@@ -13,6 +13,7 @@ class Exams extends Model
     ];
 
     public function scopeExamCompleted($query){
-        return $query->select('ID','Exam_success');
+        return $query->where('Exam_success', 1);
     }
+    
 }

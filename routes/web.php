@@ -86,6 +86,13 @@ Route::group(['middleware' => ['auth']], function(){
 Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
 Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
 
+// call in sick for instructors 
+Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
+Route::post('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@sendMail');
+
+
+//test route
+Route::get('/examen', 'App\Http\Controllers\HomeController@getExamResults');
 // About us page
 Route::get('/about-us', [AboutUsController::class, 'index']);
 
@@ -93,8 +100,8 @@ Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/contact', [ContactController::class,'index']);
 Route::post('/contact', [ContactController::class,'contactForm']);
 
-//Default landing page
-Route::get('/', [HomeController::class,'Landing']);
+// the usual landing page 
+Route::get('/', [HomeController::class, 'welcome_page']);
 
 // terms of conditions page for users
 Route::get('/algemene_voorwaarden', [HomeController::class,'terms_conditions']);

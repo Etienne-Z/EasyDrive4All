@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\instructors;
 use App\Models\instructor_has_users;
 use App\Models\lessons;
+use App\Models\Exams;
 
 use App\Mail\RegisterMail;
 
@@ -45,7 +46,12 @@ use App\Mail\RegisterMail;
 
         public function studentOverview(){
             $students = User::WhereStudent()->get();
-            return view('student-overview',compact('students'));
+            $success_exams = Exams::ExamCompleted()->count();
+            $total_exams = Exams::count();
+    
+            $success_rate = $success_exams / $total_exams * 100;
+            
+            return view('student-overview',compact(['students','success_rate','total_exams']));
         }
 
         /**

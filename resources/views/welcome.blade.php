@@ -15,9 +15,9 @@
     <h2 class="text-center mt-5 mb-2">SLAGINGSPERCENTAGE</h2>
     <div class="row">
         <div class="col">
-            <p class="text-center percentage">63%</p>
-            <div class="progress-bar"></div>
-            <p class="text-center mt-2">15941 Leerlingen zijn geslaagd</p>
+            <p class="text-center percentage">{{ $success_rate }} %</p>
+            <div class="progress-bar" ></div>
+            <p class="text-center mt-2">{{ $total_exams}} Leerlingen zijn geslaagd</p>
         </div>
     </div>
 </div>

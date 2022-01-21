@@ -65,8 +65,8 @@ $('#contact-form-id').on('submit',function(e){
       let city = $('#city').val();
       let zipcode = $('#zipcode').val();
       let _token  = $('meta[name="csrf-token"]').attr('content');
-
-
+  
+  
       $.ajax({
         beforeSend : function () {
           // before send, show the loading gif
@@ -109,8 +109,7 @@ $('#contact-form-id').on('submit',function(e){
         },
         });
       });
-
-      //delet user form invullen en id doorgeven
+      //delete user form invullen en id doorgeven
       $('.delete-button').on('click',function(e){
         e.preventDefault();
         // slaat id op van user
@@ -133,7 +132,7 @@ $('#contact-form-id').on('submit',function(e){
         let city = $('#city').val();
         let zipcode = $('#zipcode').val();
         let roll = $('#roll').val();
-
+        
         if(roll > 0){
           var instructor = 0;
         }else{
@@ -163,14 +162,14 @@ $('#contact-form-id').on('submit',function(e){
             instructor,instructor,
             _token: _token,
           },
-          complete : function () {
+          complete : function () { 
             // or hide here
             // this callback called either success or failed
             $('#wait').hide();
             $('#register').show();
           },
           success:function(response){
-            $('.sign-up-container').html(
+            $('.sign-up-container').html(    
                 '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
             );
           },
@@ -187,7 +186,6 @@ $('#contact-form-id').on('submit',function(e){
           },
           });
         });
-
 
 
 
@@ -225,6 +223,18 @@ $('#contact-form-id').on('submit',function(e){
             roll, roll,
             _token: _token,
           },
+          complete : function () { 
+            // or hide here
+            // this callback called either success or failed
+            $('#wait').hide();
+            $('#register').show();
+          },
+          success:function(response){
+            $('.sign-up-container').html(
+                '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
+            );
+          },
+          
           complete : function () {
             // or hide here
             // this callback called either success or failed
@@ -249,6 +259,49 @@ $('#contact-form-id').on('submit',function(e){
           });
         });
 
+
+
+      $('#ziekmelden').on('submit',function(e){
+        e.preventDefault();
+        let start_date = $('#start_date').val()
+        let end_date = $('#end_date').val()
+        let reason = $('#reason').val()
+        let _token  = $('meta[name="csrf-token"]').attr('content');
+    
+    
+        $.ajax({
+          beforeSend : function () {  
+            // before send, show the loading gif
+            $('#wait').show(); 
+            $('#ziekmelden').hide();
+          },
+          url: "/instructeur/ziekmelding",
+          type:"POST",
+          data:{
+              start_date:start_date,
+              end_date:end_date,
+              reason:reason,
+              _token: _token,
+          },
+          complete : function () { 
+            // or hide here
+            // this callback called either success or failed
+            $('#wait').hide();
+            $('#ziekmelden').show();
+          },
+          success:function(response){
+            $('.sign-up-container').html(
+                '<div class="succes-message"></div><p class="text-center succes-text">U heeft u ziekgemeld</p>'
+            );
+          },
+          
+          error: function(response) {
+            $('#start_dateErrorMsg').text(response.responseJSON.errors.start_date);
+            $('#end_dateErrorMsg').text(response.responseJSON.errors.end_date);
+            $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
+          },
+          });
+        });
         $('#register-car').on('submit',function(e){
             e.preventDefault();
             let Type = $('#Type').val()
