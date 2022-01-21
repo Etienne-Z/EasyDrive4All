@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
+use App\Models\Cars;
 use App\Models\User;
 use App\Models\instructors;
 use App\Models\instructor_has_users;
@@ -18,12 +19,10 @@ use App\Mail\RegisterMail;
     class AdminController extends Controller
     {
 
-    // authentication for being logged in
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+        public function carsOverview(){
+            $cars = Cars::get();
+            return view('admin.cars-overview',compact('cars'));
+        }
 
         public function studentOverview(){
             $students = User::WhereStudent()->get();
@@ -44,6 +43,47 @@ use App\Mail\RegisterMail;
             return view('admin.instructor-register');
         }
 
+        public function DeleteCar(Request $request){
+            Cars::WhereID($request->id)->delete();
+            return redirect()->back();
+        }
+
+        public function UpdateCar(Request $request){
+
+            $request->validate([
+                'id' => 'required',
+                'Type' => 'required',
+                'Brand' => 'required',
+                'License_plate' => 'required'
+            ]);
+            $car = Cars::whereID($request->id)->first();
+            $car->Type = $request->Type;
+            $car->Brand = $request->Brand;
+            $car->License_plate = $request->License_plate;
+            $car->save();
+            return redirect()->back();
+        }
+
+        public function carRegister(){
+            return view('admin.car-register');
+        }
+
+        public function CreateCar(Request $request){
+            $request->validate([
+                'Type' => 'required',
+                'Brand',
+                'License_plate' => 'required'
+            ]);
+
+            $car = new Cars();
+            $car->Type = $request->Type;
+            $car->Brand = $request->Brand;
+            $car->License_plate = $request->License_plate;
+            $car->save();
+
+            return response()->json(['success'=>'Successfully']);
+        }
+
         public function deleteUser(Request $request)
         {
             $id = $request->id;
@@ -54,8 +94,19 @@ use App\Mail\RegisterMail;
                 foreach($lessen as $les){
                     $les->delete();
                 }
-            }
+            }else{
+                $instructor = instructors::Instructor($id);
+                $insturctor_has_users = instructor_has_users::WhereInstructorId($instructor->first()->id)->get();
+                $lessons = lessons::WhereInstructor($instructor->first()->id)->get();
 
+                foreach($lessons as $lesson){
+                    $lesson->delete();
+                }
+                foreach($insturctor_has_users as $insturctor_has_user){
+                    $insturctor_has_user->delete();
+                }
+                $instructor->delete();
+            }
             User::WhereId($id)->delete();
             return redirect()->back();
         }

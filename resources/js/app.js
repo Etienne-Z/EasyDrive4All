@@ -8,7 +8,7 @@ $.ajaxSetup({
 
 $('#contact-form-id').on('submit',function(e){
     e.preventDefault();
-    
+
 
     let voornaam = $('#voornaam').val();
     let tussenvoegsel = $('#tussenvoegsel').val();
@@ -19,10 +19,10 @@ $('#contact-form-id').on('submit',function(e){
 
 
     $.ajax({
-      beforeSend : function () {  
+      beforeSend : function () {
         // before send, show the loading gif
         $('#contact-form-id').hide();
-        $('#wait').show(); 
+        $('#wait').show();
       },
       url: "/contact",
       type:"POST",
@@ -34,7 +34,7 @@ $('#contact-form-id').on('submit',function(e){
         email:email,
         vraag:vraag,
       },
-      complete : function () { 
+      complete : function () {
         // or hide here
         // this callback called either success or failed
         $('#wait').hide();
@@ -65,12 +65,12 @@ $('#contact-form-id').on('submit',function(e){
       let city = $('#city').val();
       let zipcode = $('#zipcode').val();
       let _token  = $('meta[name="csrf-token"]').attr('content');
-  
-  
+
+
       $.ajax({
-        beforeSend : function () {  
+        beforeSend : function () {
           // before send, show the loading gif
-          $('#wait').show(); 
+          $('#wait').show();
           $('#sign-up-form').hide();
         },
         url: "/inschrijven/versturen",
@@ -85,7 +85,7 @@ $('#contact-form-id').on('submit',function(e){
           city:city,
           _token: _token,
         },
-        complete : function () { 
+        complete : function () {
           // or hide here
           // this callback called either success or failed
           $('#wait').hide();
@@ -96,7 +96,7 @@ $('#contact-form-id').on('submit',function(e){
               '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p>'
           );
         },
-        
+
         error: function(response) {
           $('#voornaamErrorMsg').text(response.responseJSON.errors.first_name);
           $('#achternaamErrorMsg').text(response.responseJSON.errors.last_name);
@@ -109,7 +109,7 @@ $('#contact-form-id').on('submit',function(e){
         },
         });
       });
-  
+
       //delet user form invullen en id doorgeven
       $('.delete-button').on('click',function(e){
         e.preventDefault();
@@ -133,7 +133,7 @@ $('#contact-form-id').on('submit',function(e){
         let city = $('#city').val();
         let zipcode = $('#zipcode').val();
         let roll = $('#roll').val();
-        
+
         if(roll > 0){
           var instructor = 0;
         }else{
@@ -141,12 +141,12 @@ $('#contact-form-id').on('submit',function(e){
         }
         console.log(instructor);
         let _token  = $('meta[name="csrf-token"]').attr('content');
-    
-    
+
+
         $.ajax({
-          beforeSend : function () {  
+          beforeSend : function () {
             // before send, show the loading gif
-            $('#wait').show(); 
+            $('#wait').show();
             $('#register').hide();
           },
           url: "/student_register",
@@ -163,7 +163,7 @@ $('#contact-form-id').on('submit',function(e){
             instructor,instructor,
             _token: _token,
           },
-          complete : function () { 
+          complete : function () {
             // or hide here
             // this callback called either success or failed
             $('#wait').hide();
@@ -174,7 +174,7 @@ $('#contact-form-id').on('submit',function(e){
                 '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
             );
           },
-          
+
           error: function(response) {
             $('#firstNameErrorMsg').text(response.responseJSON.errors.first_name);
             $('#insertionErrorMsg').text(response.responseJSON.errors.insertion);
@@ -191,7 +191,7 @@ $('#contact-form-id').on('submit',function(e){
 
 
 
-        
+
 
       $('#register-instructor').on('submit',function(e){
         e.preventDefault();
@@ -204,12 +204,12 @@ $('#contact-form-id').on('submit',function(e){
         let zipcode = $('#zipcode').val();
         let roll = $('#roll').val();
         let _token  = $('meta[name="csrf-token"]').attr('content');
-    
-    
+
+
         $.ajax({
-          beforeSend : function () {  
+          beforeSend : function () {
             // before send, show the loading gif
-            $('#wait').show(); 
+            $('#wait').show();
             $('#register-instructor').hide();
           },
           url: "/instructors_register",
@@ -225,7 +225,7 @@ $('#contact-form-id').on('submit',function(e){
             roll, roll,
             _token: _token,
           },
-          complete : function () { 
+          complete : function () {
             // or hide here
             // this callback called either success or failed
             $('#wait').hide();
@@ -236,7 +236,7 @@ $('#contact-form-id').on('submit',function(e){
                 '<div class="succes-message"></div><p class="text-center succes-text">Registratie gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar Instructeuren overzicht</a></p>'
             );
           },
-          
+
           error: function(response) {
             $('#firstNameErrorMsg').text(response.responseJSON.errors.first_name);
             $('#insertionErrorMsg').text(response.responseJSON.errors.insertion);
@@ -345,3 +345,47 @@ $('#contact-form-id').on('submit',function(e){
               });
     
     
+        $('#register-car').on('submit',function(e){
+            e.preventDefault();
+            let Type = $('#Type').val()
+
+            let Brand = $('#Brand').val();
+            let License_plate = $('#License_plate').val();
+            console.log(Brand);
+            console.log(License_plate);
+            let _token  = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                beforeSend : function () {
+                // before send, show the loading gif
+                $('#wait').show();
+                $('#register-car').hide();
+                },
+                url: "/cars_register",
+                type:"POST",
+                data:{
+                Type:Type,
+                Brand:Brand,
+                License_plate: License_plate,
+                _token: _token,
+                },
+                complete : function () {
+                // or hide here
+                // this callback called either success or failed
+                $('#wait').hide();
+                $('#register-car').show();
+                },
+                success:function(response){
+                $('.sign-up-container').html(
+                    '<div class="succes-message"></div><p class="text-center succes-text">Auto toevoegen gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/cars_overview"><i class="fas fa-arrow-left"></i> Terug naar het wagenpark overzicht</a></p>'
+                );
+                },
+
+                error: function(response) {
+                $('#TypeErrorMsg').text(response.responseJSON.errors.Type);
+                $('#BrandErrorMsg').text(response.responseJSON.errors.Brand);
+                $('#License_plateErrorMsg').text(response.responseJSON.errors.License_plate);
+                },
+                });
+            });
+
+

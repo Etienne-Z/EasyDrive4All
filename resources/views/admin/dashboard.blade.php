@@ -1,7 +1,7 @@
 <h1 class="title text-center">Dasboard</h1>
 <div class="container mt-5 mb-5 dashboard">
     <div class="row">
-        <a href="/" class="col-lg">
+        <a href="/cars_overview" class="col-lg">
             <i class="fas fa-car"></i>
             <p>Wagenpark</p>
         </a>

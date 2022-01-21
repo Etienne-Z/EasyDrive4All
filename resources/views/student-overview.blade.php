@@ -17,8 +17,7 @@
                         <td>Verwijderen</td>
                 </thead>
                 <tbody>
-                    @foreach ($students as $student )
-                    {{-- {{dd($student)}} --}}
+                    @foreach ($students as $student)
                         <tr>
                             <td>{{$student->first_name}}</td>
                             <td>{{$student->insertion}} {{$student->last_name}}</td>

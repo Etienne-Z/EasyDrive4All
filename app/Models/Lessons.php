@@ -50,13 +50,11 @@ class lessons extends Model
      */
 
     public function scopeWhereStudent($query, $student){
-        return $query
-        ->where('Student_ID', '=', $student);
+        return $query->where('Student_ID', '=', $student);
     }
 
     public function scopeWhereInstructor($query, $instructor){
-        return $query
-        ->where('Instructor_ID', '=', $instructor);
+        return $query->where('Instructor_ID', '=', $instructor);
     }
 
     public function scopeWhereId($query, $id){

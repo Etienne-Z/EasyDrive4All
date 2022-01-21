@@ -17,7 +17,7 @@ class CarsSeeder extends Seeder
     {
         for($i = 0; $i <= 3; $i++){
             DB::table('Cars')->insert([
-                'Type' => Str::random(10),
+                'Type' => 0,
                 'Brand' => Str::random(10),
                 'License_plate' => Str::random(10)
             ]);

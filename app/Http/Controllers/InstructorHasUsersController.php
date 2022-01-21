@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\instructor_has_users;
+use App\Models\User;
 
 class InstructorHasUsersController extends Controller
 {
@@ -14,4 +15,6 @@ class InstructorHasUsersController extends Controller
             return view('students', compact('students'));
         }
     }
+
+
 }

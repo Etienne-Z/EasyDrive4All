@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class instructor_has_users extends Model
 {
-    use HasFactory;
 
+    protected $primaryKey = 'User_ID';
+
+    use HasFactory;
     protected $fillable = [
         'User_ID',
         'Instructor_ID'
@@ -38,6 +40,11 @@ class instructor_has_users extends Model
     public function scopeWhereInstructor($query){
         return $query->where('Instructor_ID', '=', Auth::user()->instructor->id);
     }
+
+    public function scopeWhereInstructorId($query,$id){
+        return $query->where('Instructor_ID', '=', $id);
+    }
+
 
     public function scopeName($query){
         return $query
