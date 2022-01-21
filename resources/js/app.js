@@ -251,7 +251,7 @@ $('#contact-form-id').on('submit',function(e){
 
 
 
-          // Announcement Page 
+          // Announcement Page Create
           $('#createAnnouncement').on('submit',function(e){
             e.preventDefault();
             let title = $('#title').val();
@@ -285,7 +285,7 @@ $('#contact-form-id').on('submit',function(e){
               },
               success:function(response){
                 $('.sign-up-container').html(
-                    '<div class="succes-message"></div><p class="text-center succes-text">Mededeling aanmaken is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/createannouncement"><i class="fas fa-arrow-left"></i> Terug naar Mededelingen pagina</a></p>'
+                    '<div class="succes-message"></div><p class="text-center succes-text">Mededeling aanmaken is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/ownerannouncements"><i class="fas fa-arrow-left"></i> Terug naar Mededelingen pagina</a></p>'
                 );
               },
               
@@ -296,5 +296,52 @@ $('#contact-form-id').on('submit',function(e){
               },
               });
             });
+
+
+            // Announcement Page Edit
+            $('#editAnnouncement').on('submit',function(e){
+              e.preventDefault();
+              let title = $('#title').val();
+              let description = $('#description').val();
+              let role = $('#role').val();
+              console.log(title);
+              console.log(description);
+              console.log(role);
+              let _token  = $('meta[name="csrf-token"]').attr('content');
+          
+          
+              $.ajax({
+                beforeSend : function () {  
+                  // before send, show the loading gif
+                  $('#wait').show(); 
+                  $('#editAnnouncement').hide();
+                },
+                url: "/editannouncement/{id}",
+                type:"put",
+                data:{
+                  title: title,
+                  description: description,
+                  role: role,
+                  _token: _token,
+                },
+                complete : function () { 
+                  // or hide here
+                  // this callback called either success or failed
+                  $('#wait').hide();
+                  $('#editAnnouncement').show();
+                },
+                success:function(response){
+                  $('.sign-up-container').html(
+                      '<div class="succes-message"></div><p class="text-center succes-text">Mededeling aanpassen is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/ownerannouncements"><i class="fas fa-arrow-left"></i> Terug naar Mededelingen pagina</a></p>'
+                  );
+                },
+                
+                error: function(response) {
+                  $('#titleErrorMsg').text(response.responseJSON.errors.title);
+                  $('#descriptionErrorMsg').text(response.responseJSON.errors.description);
+                  $('#roleErrorMsg').text(response.responseJSON.errors.role);
+                },
+                });
+              });
     
     

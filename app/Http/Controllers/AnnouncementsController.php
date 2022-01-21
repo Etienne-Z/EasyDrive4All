@@ -31,14 +31,44 @@ class AnnouncementsController extends Controller
     }
 
     public function createAnnouncement(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'role' => 'required',
+            'description' => 'required',
+        ]);
+
         $announcement = new Announcements;
         $announcement->title = $request->title;
         $announcement->role = $request->role;
         $announcement->description = $request->description;
-        dd($request);
+        // dd($request);
         $announcement->save();
 
-        return $announcement;
         return response()->json(['success'=>'Successfully']);
+    }
+
+    public function announcementEditForm(Announcements $announcement){
+        return view('Announcements/announcementsEdit', compact('announcement'));
+    }
+
+    public function updateAnnouncement(Request $request, $id){
+        $announcement = Announcements::find($id);
+        $request->validate([
+            'title' => 'required',
+            'role' => 'required',
+            'description' => 'required',
+        ]);
+        dd($request);
+        $announcement->update([
+            'title' => $request->title,
+            'role' => $request->role,
+            'description' => $request->description
+        ]);
+        return response()->json(['success'=>'Successfully']);
+    }
+
+    public function deleteAnnouncement(Request $request){
+        $id = $request->id;
+        $announcement = Announcement::WhereID($id)->first();
     }
 }

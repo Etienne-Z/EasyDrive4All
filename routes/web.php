@@ -10,6 +10,7 @@ use App\Http\Controllers\InstructorHasUsersController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\AnnouncementsController;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,12 @@ Route::get('/instructorannouncements', [AnnouncementsController::class, 'instruc
 Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
 Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
 Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);
+Route::get('/editannouncement/{id}', [AnnouncementsController::class, 'announcementEditForm']);
+Route::put('/editannouncement/{id}', [AnnouncementsController::class, 'updateAnnouncement']);
+
+// Calendar Routes
+Route::get('calendar', [CalendarController::class, 'index']);
+Route::post('calendar/action', [CalendarController::class, 'action']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
