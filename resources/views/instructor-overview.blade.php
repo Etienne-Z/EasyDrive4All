@@ -23,7 +23,7 @@
                             <td>{{$instructor->first_name}}</td>
                             <td>{{$instructor->insertion}} {{$instructor->last_name}}</td>
                             <td>{{$instructor->email}}</td>
-                            <td class="text-center"><i class="fas fa-user-edit"></i></td>
+                            <td class="text-center"><a href="/instructors_change/{{$instructor->id}}"><i class="fas fa-user-edit"></i></a></td>
                             <td class="text-center">
                                     <button id="delete-user_button" class="delete-button" value="{{$instructor->id}}"><i class="fas fa-trash"></i></button>
                             </td>

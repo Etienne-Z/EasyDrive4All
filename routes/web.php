@@ -68,6 +68,8 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/instructors_overview', [AdminController::class, 'InstructorOverview']);
         Route::get('/instructors_register', [AdminController::class, 'InstructorRegister']);
         Route::post('/instructors_register', [AdminController::class, 'register']);
+        Route::get('/instructors_change/{id}', [AdminController::class, 'changeInstructor']);
+        Route::post('/instructors_change', [AdminController::class, 'updateInstructor']);
         
 
     });
