@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
                 'zipcode' => Str::random(10),
                 'email' => Str::random(10).'@gmail.com',
                 'sick' => 0,
+                'amount_sick' => 0,
                 'lesson_hours' => rand(2,40),
                 'role' => 0,
                 'password' => Hash::make('password')
@@ -38,6 +39,7 @@ class UserSeeder extends Seeder
             'zipcode' => "Postcode0",
             'email' => "leerling0@gmail.com",
             'sick' => 0,
+            'amount_sick' => 0,
             'lesson_hours' => rand(2,40),
             'role' => 0,
             'password' => Hash::make('Leerling0')
@@ -50,6 +52,7 @@ class UserSeeder extends Seeder
             'zipcode' => "Postcode1",
             'email' => "Instructeur1@gmail.com",
             'sick' => 0,
+            'amount_sick' => 0,
             'lesson_hours' => 0,
             'role' => 1,
             'password' => Hash::make('Instructeur1')
@@ -63,6 +66,7 @@ class UserSeeder extends Seeder
             'zipcode' => "Postcode2",
             'email' => "Admin2@gmail.com",
             'sick' => 0,
+            'amount_sick' => 0,
             'lesson_hours' => 0,
             'role' => 2,
             'password' => Hash::make('Admin2')

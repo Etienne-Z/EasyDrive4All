@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('zipcode');
             $table->string('email')->unique();
             $table->boolean('sick');
+            $table->integer('amount_sick');
             $table->string('lesson_hours')->nullable();
             $table->integer('role');
             $table->timestamp('email_verified_at')->nullable();

@@ -41,6 +41,19 @@
                             <div id="zipcodeErrorMsg" class="alert"></div>
                             <input type="text" class="form-control mt-3 mb-3" id="zipcode" name="zipcode" value="{{$instructor->zipcode}}">
                         </div>
+                        <div class="col-md">
+                            <strong>Ziek?:</strong>
+                            <div id="sickErrorMsg" class="alert"></div>
+                            <select name="sick" id="sick" class="form-control mb-3">
+                                <option value="0">Nee</option>
+                                <option value="1">Ja</option>
+                            </select>
+                        </div>
+                        <div class="col-md">
+                            <strong>Aantal keren ziek:</strong><br>
+                            <div id="amount_sickErrorMsg" class="alert"></div>
+                            <input type="text" class="form-control mt-3 mb-3" id="amount_sick" name="amount_sick" value="{{$instructor->amount_sick}}">
+                        </div>
                         <input type="hidden" id="user_id" name="id" value="{{ $instructor->id }}">
                         <div class="col-md text-center">
                             @csrf
