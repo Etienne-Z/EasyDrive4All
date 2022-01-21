@@ -292,7 +292,7 @@
 
 //contact page//
 .contact-form-container{
-    background-color: $blue;
+background-color: $blue;
     color: white;
     padding: 40px 0px;
     .contact-form{
@@ -406,7 +406,7 @@
 }
 //table overviews
 .overview{
-    
+
     td{
         border: 1px solid black;
     }
@@ -424,11 +424,25 @@
         background-color:$blue;
         color:white;
     }
+
+    select{
+        background-color:$blue;
+        color:white;
+        border: none;
+        text-align: center;
+    }
+
+    input{
+        background-color:$blue;
+        color:white;
+        border: none;
+        text-align: center;
+    }
 }
 
 .car-overview-container{
     .col-md-8{
-        margin-left: auto; 
+        margin-left: auto;
         margin-right: auto;
     }
     table{

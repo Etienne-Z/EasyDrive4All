@@ -11682,6 +11682,18 @@ textarea.form-control-lg {
   background-color: #14223A;
   color: white;
 }
+.overview select {
+  background-color: #14223A;
+  color: white;
+  border: none;
+  text-align: center;
+}
+.overview input {
+  background-color: #14223A;
+  color: white;
+  border: none;
+  text-align: center;
+}
 
 .car-overview-container .col-md-8 {
   margin-left: auto;

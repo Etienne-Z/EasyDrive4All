@@ -18,7 +18,6 @@
                 </thead>
                 <tbody>
                     @foreach ($instructors as $instructor )
-                    {{-- {{dd($student)}} --}}
                         <tr>
                             <td>{{$instructor->first_name}}</td>
                             <td>{{$instructor->insertion}} {{$instructor->last_name}}</td>

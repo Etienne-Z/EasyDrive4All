@@ -69,6 +69,10 @@ Route::group(['middleware' => ['auth']], function(){
 
         //Cars overview for the owner with CRUD actions
         Route::get('/cars_overview', [AdminController::class, 'CarsOverview']);
+        Route::post('/cars_overview', [AdminController::class, 'DeleteCar']);
+        Route::get('/cars_register', [AdminController::class, 'CarRegister']);
+        Route::post('/cars_register', [AdminController::class, 'CreateCar']);
+        Route::post('/cars_edit', [AdminController::class, 'UpdateCar']);
     });
 });
 

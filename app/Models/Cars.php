@@ -13,4 +13,9 @@ class Cars extends Model
         'Brand',
         'License_plate'
     ];
+
+    public function scopeWhereId($query, $id){
+        return $query
+        ->where('cars.id', '=', $id);
+    }
 }

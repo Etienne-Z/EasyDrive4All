@@ -43,6 +43,47 @@ use App\Mail\RegisterMail;
             return view('admin.instructor-register');
         }
 
+        public function DeleteCar(Request $request){
+            Cars::WhereID($request->id)->delete();
+            return redirect()->back();
+        }
+
+        public function UpdateCar(Request $request){
+
+            $request->validate([
+                'id' => 'required',
+                'Type' => 'required',
+                'Brand' => 'required',
+                'License_plate' => 'required'
+            ]);
+            $car = Cars::whereID($request->id)->first();
+            $car->Type = $request->Type;
+            $car->Brand = $request->Brand;
+            $car->License_plate = $request->License_plate;
+            $car->save();
+            return redirect()->back();
+        }
+
+        public function carRegister(){
+            return view('admin.car-register');
+        }
+
+        public function CreateCar(Request $request){
+            $request->validate([
+                'Type' => 'required',
+                'Brand',
+                'License_plate' => 'required'
+            ]);
+
+            $car = new Cars();
+            $car->Type = $request->Type;
+            $car->Brand = $request->Brand;
+            $car->License_plate = $request->License_plate;
+            $car->save();
+
+            return response()->json(['success'=>'Successfully']);
+        }
+
         public function deleteUser(Request $request)
         {
             $id = $request->id;
