@@ -71,7 +71,7 @@ use App\Mail\RegisterMail;
         public function CreateCar(Request $request){
             $request->validate([
                 'Type' => 'required',
-                'Brand',
+                'Brand' => 'required',
                 'License_plate' => 'required'
             ]);
 
