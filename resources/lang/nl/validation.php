@@ -1,6 +1,6 @@
 <?php
 
-
+// Translation of the validation errors that we use.
 
 return [
 
@@ -13,7 +13,7 @@ return [
     ],
     'date'          =>  'Dit is niet een geldige datum.',
     'after'         =>  'De datum moet na vandaag zijn.',
-    'date_format'   =>  'De datum komt niet overeen met :format.',
+    'date_format'   =>  'De datum komt niet overeen met een geldige formaat.',
 ];
 
     ?>
