@@ -18,11 +18,13 @@ class CalendarController extends Controller
             if(Auth::user()->instructor){
                 $data = Lessons::
                 Student()
+                ->WhereInstructor(Auth::user()->instructor->id)
                 ->whereDate($start, $end)
                 ->get();
             }else{
                 $data = Lessons::
                 Instructor()
+                ->WhereStudent(Auth::user()->id)
                 ->whereDate($start, $end)
                 ->get();
             }
@@ -54,10 +56,16 @@ class CalendarController extends Controller
     		if($request->type == 'update')
     		{
                 //check date if its later than 24h
-    			$lesson = Lessons::whereId($request->id)->update([
-                    'starting_time'		    =>	$request->starting_time,
-                    'finishing_time'		=>	$request->finishing_time,
-    			]);
+                $old_lesson = Lessons::whereId($request->id)->get();
+                if(strtotime($old_lesson->starting_time) > time() + (60*60*25)){
+                //check if its instructor
+                    if(Auth::user()->instructor){
+                        $lesson = Lessons::whereId($request->id)->update([
+                            'starting_time'		    =>	$request->starting_time,
+                            'finishing_time'		=>	$request->finishing_time,
+                        ]);
+                    }
+                }
     			return response()->json($lesson);
     		}
 

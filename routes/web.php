@@ -23,6 +23,30 @@ use App\Http\Controllers\CalendarController;
 |
 */
 
+// Register form for new users
+Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
+Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
+
+// call in sick for instructors
+Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
+Route::post('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@sendMail');
+
+
+//test route
+Route::get('/examen', 'App\Http\Controllers\HomeController@getExamResults');
+// About us page
+Route::get('/about-us', [AboutUsController::class, 'index']);
+
+// Contactpage
+Route::get('/contact', [ContactController::class,'index']);
+Route::post('/contact', [ContactController::class,'contactForm']);
+
+// the usual landing page
+Route::get('/', [HomeController::class, 'welcome_page']);
+
+// terms of conditions page for users
+Route::get('/algemene_voorwaarden', [HomeController::class,'terms_conditions']);
+
 
 Auth::routes();
 
@@ -58,7 +82,7 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
     Route::post('/lesson/change', [LessonsController::class, 'ChangeLesson']);
 
     //If logged user is instructor
-
+    Route::group(['middleware' => ['Instructor']], function(){
         //lesson create actions
         Route::post('/lesson/result', [LessonsController::class, 'PostResult']);
         Route::post('/lesson/create', [LessonsController::class, 'CreateLesson']);
@@ -95,30 +119,5 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
         Route::post('/cars_edit', [AdminController::class, 'UpdateCar']);
         Route::get('/instructors_change/{id}', [AdminController::class, 'changeInstructor']);
         Route::post('/instructors_change', [AdminController::class, 'updateInstructor']);
-
-
     });
-
-// Register form for new users
-Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
-Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
-
-// call in sick for instructors
-Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
-Route::post('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@sendMail');
-
-
-//test route
-Route::get('/examen', 'App\Http\Controllers\HomeController@getExamResults');
-// About us page
-Route::get('/about-us', [AboutUsController::class, 'index']);
-
-// Contactpage
-Route::get('/contact', [ContactController::class,'index']);
-Route::post('/contact', [ContactController::class,'contactForm']);
-
-// the usual landing page
-Route::get('/', [HomeController::class, 'welcome_page']);
-
-// terms of conditions page for users
-Route::get('/algemene_voorwaarden', [HomeController::class,'terms_conditions']);
+});

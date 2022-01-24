@@ -58,6 +58,17 @@
                             </li>
 
                             @if(Auth::user() !== null)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/lessons">Lessen</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/calender">Kalender</a>
+                                </li>
+                                @if(Auth::user()->role ==  1)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/students">Studenten</a>
+                                    </li>
+                                @endif
                                 @if (Auth::user()->role == 2)
                                     <li class="nav-item">
                                         <a class="nav-link" href="/home">Dashboard</a>
@@ -68,7 +79,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="/instructors_overview">Instructeuren overzicht</a>
                                     </li>
-                                    
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="/cars_overview">Auto's overzicht</a>
                                     </li>
@@ -124,7 +135,7 @@
                     <a href="/login">Login</a><br>
                     <a href="/inschrijven">inschrijven</a><br>
                     <a href="/contact">Contact ons</a><br>
-                    <a href="/algemene-voorwaarden">Algemene voorwaarden</a>
+                    <a href="/algemene_voorwaarden">Algemene voorwaarden</a>
 
                 </div>
                 <div class="col-md-3 contact-footer">

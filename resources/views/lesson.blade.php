@@ -80,14 +80,16 @@
             <h2 class="text-center mb-2">Les wijzigen</h2>
             <form action="/lesson/change" method="POST">
                 <input type="hidden" value="{{$lesson->id}}" name="id">
-                <div class="error">{{ $errors->first('date') }}</div>
-                <div class="form-group">
-                    <label for="date">Datum</label>
-                    @php
-                        $lesson->starting_time = str_replace(' ', 'T', $lesson->starting_time);
-                    @endphp
-                    <input class="form-control" type="datetime-local" id="date" name="date" value="{{$lesson->starting_time}}">
-                </div>
+                @if (Auth::user()->instructor)
+                    <div class="error">{{ $errors->first('date') }}</div>
+                    <div class="form-group">
+                        <label for="date">Datum</label>
+                        @php
+                            $lesson->starting_time = str_replace(' ', 'T', $lesson->starting_time);
+                        @endphp
+                        <input class="form-control" type="datetime-local" id="date" name="date" value="{{$lesson->starting_time}}">
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="address">Adres</label>
                     <input type="text" class="form-control" id="address" name="address" value="{{$lesson->pickup_address}}">
