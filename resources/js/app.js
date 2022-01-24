@@ -429,6 +429,7 @@ $('#contact-form-id').on('submit',function(e){
                                 title: fullname,
                                 start: $(this).attr('starting_time'),
                                 end: $(this).attr('finishing_time'),
+                                url: "http://127.0.0.1:8000/lesson/"+$(this).attr('id'),
                                 allDay :false
                             });
                         });
@@ -497,8 +498,7 @@ $('#contact-form-id').on('submit',function(e){
                             }
                         })
                     },
-                    eventDragStop: function(event){
-                        // Doesnt get new start + end date.
+                    eventDrop: function(event){
                         var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
                         var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
                         var id = event.id;
@@ -520,22 +520,5 @@ $('#contact-form-id').on('submit',function(e){
                             }
                         })
                     },
-                      //Werkt nog niet?
-                    //   eventDrop: function(event, delta){var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');var title = event.title;var id = event.id;
-                    //   $.ajax({
-                    //       url:"/calendar/action",
-                    //       type:"POST",
-                    //       data:{
-                    //           title: title,
-                    //           start: start,
-                    //           end: end,
-                    //           id: id,
-                    //           type: 'update'},
-                    //       success:function(response){
-                    //           calendar.fullCalendar('refetchEvents');alert("Event Updated Successfully");
-                    //         }
-                    //     })
-                    // },
-
                 });
           });
