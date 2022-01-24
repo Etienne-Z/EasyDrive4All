@@ -488,7 +488,7 @@ $('#contact-form-id').on('submit',function(e){
             },
             success:function(response){
               $('.sign-up-container').html(
-                  '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
+                  '<div class="succes-message"></div><p class="text-center succes-text">Student is aangepast</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
               );
             },
 
