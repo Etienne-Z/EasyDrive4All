@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 class="title text-center">Ziekmelding voor instructeurs</h1>
 <div class="container sign-up-container">
-    <h1 class="title text-center">Ziekmelding voor instructeurs</h1>
     <div class="row justify-content-center">
         <div class="w-50 text-center contact-form-container">
                 <form id="ziekmelden" class="contact-form">

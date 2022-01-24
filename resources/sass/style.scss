@@ -187,6 +187,20 @@
     border: none;
     background-color: white;
 }
+
+.delete-button-announce{
+    background-color: rgba(0,0,0,0);
+    border: none;
+    color: white;
+}
+
+.announceButton{
+    background-color: rgba(0,0,0,0);
+    border: none;
+    color: white !important;
+    font-size: 40px;
+}
+
 //photo's about us page
 .team{
     background-image: url('/image/stock/team.jpeg');
@@ -329,20 +343,15 @@
 
 //Announcement Show Page//
 .announcement-show{
-    width: 450px;
+    width: 600px;
     th{
         width: 145px;
     }
     td,th{
-        
         padding: 10px 20px;
         border: 1px solid black;
         letter-spacing: 0.2rem;
         margin-left: 45px;
-    }
-    .announcement-show-block{
-        width: 300px;
-        height: 400px;
     }
     tr:nth-child(odd){
         background-color: $oak !important;
@@ -354,6 +363,11 @@
         background-color:$blue;
         color:white;
     }
+}
+
+.AnnounceCol{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 //contact page//

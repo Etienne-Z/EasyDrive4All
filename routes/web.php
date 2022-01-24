@@ -58,18 +58,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/calender', [CalendarController::class, 'index']);
     Route::post('/calender/action', [CalendarController::class, 'action']);
 
-    // Announcements Routes
-    Route::get('/studentannouncements', [AnnouncementsController::class, 'studentIndex']);
-    Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
-    Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
-    Route::post('/ownerannouncements', [AnnouncementsController::class, 'deleteAnnouncement']);
-    Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
-    Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);
-    Route::get('/editannouncement/{id}', [AnnouncementsController::class, 'announcementEditForm']);
-    Route::put('/editannouncement/{id}', [AnnouncementsController::class, 'updateAnnouncement']);
-
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
+    Route::get('/studentannouncements', [AnnouncementsController::class, 'studentIndex']);
+    Route::get('announcements/{id}', [AnnouncementsController::class, 'getOneAnnouncement']);
 
     //Lessons CRUD actions for instructor & student
     Route::get('/lessons', [LessonsController::class, 'index']);
@@ -85,6 +77,8 @@ Route::group(['middleware' => ['auth']], function(){
 
         //Overview of all students that the instructor has
         Route::get('/students', [InstructorHasUsersController::class, 'index']);
+
+        Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
 
         // call in sick for instructors
         Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
@@ -115,5 +109,13 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post('/cars_edit', [AdminController::class, 'UpdateCar']);
         Route::get('/instructors_change/{id}', [AdminController::class, 'changeInstructor']);
         Route::post('/instructors_change', [AdminController::class, 'updateInstructor']);
+
+        // Announcements Routes
+        Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
+        Route::post('/ownerannouncements', [AnnouncementsController::class, 'deleteAnnouncement']);
+        Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
+        Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);
+        Route::get('/editannouncement/{id}', [AnnouncementsController::class, 'announcementEditForm']);
+        Route::put('/editannouncement/{id}', [AnnouncementsController::class, 'updateAnnouncement']);
     });
 });

@@ -11469,6 +11469,19 @@ textarea.form-control-lg {
   background-color: white;
 }
 
+.delete-button-announce {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: white;
+}
+
+.announceButton {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: white !important;
+  font-size: 40px;
+}
+
 .team {
   background-image: url("/image/stock/team.jpeg");
 }
@@ -11593,7 +11606,7 @@ textarea.form-control-lg {
 }
 
 .announcement-show {
-  width: 450px;
+  width: 600px;
 }
 .announcement-show th {
   width: 145px;
@@ -11604,10 +11617,6 @@ textarea.form-control-lg {
   letter-spacing: 0.2rem;
   margin-left: 45px;
 }
-.announcement-show .announcement-show-block {
-  width: 300px;
-  height: 400px;
-}
 .announcement-show tr:nth-child(odd) {
   background-color: #F6BE3B !important;
   color: #14223A !important;
@@ -11617,6 +11626,11 @@ textarea.form-control-lg {
 .announcement-show tr:nth-child(even) {
   background-color: #14223A;
   color: white;
+}
+
+.AnnounceCol {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-form-container {

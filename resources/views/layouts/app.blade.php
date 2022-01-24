@@ -44,6 +44,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @guest
                             <li class="nav-item">
                                     <a class="nav-link" href="/">Home</a>
                             </li>
@@ -56,20 +57,27 @@
                             <li class="nav-item">
                                     <a class="nav-link" href="/contact">Contact</a>
                             </li>
-
+                        @endif
                             @if(Auth::user() !== null)
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/lessons">Lessen</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/calender">Kalender</a>
-                                </li>
+
                                 @if(Auth::user()->role == 0)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/lessons">Lessen</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/calender">Kalender</a>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/studentannouncements">Mededelingen</a>
                                     </li>
                                 @endif
                                 @if(Auth::user()->role ==  1)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/lessons">Lessen</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/calender">Kalender</a>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/students">Studenten</a>
                                     </li>
@@ -90,6 +98,10 @@
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="/cars_overview">Auto's overzicht</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/ownerannouncements">Mededelingen</a>
                                     </li>
                                 @endif
                             @endif
@@ -114,10 +126,11 @@
                                     <a class="dropdown-item" href="/profile">
                                         <div style="color: black;">Profiel</div>
                                     </a>
-
-                                    <a class="dropdown-item" href="/instructeur/ziekmelding">
-                                        <div style="color: black;">Ziek melden</div>
-                                    </a>
+                                    @if (Auth::user()->role == 2)
+                                        <a class="dropdown-item" href="/instructeur/ziekmelding">
+                                            <div style="color: black;">Ziek melden</div>
+                                        </a>
+                                    @endif
 
                                     {{--  onclick="document.getElementById("logout").className = "logout-dialog-open""  --}}
                                     <a class="dropdown-item"

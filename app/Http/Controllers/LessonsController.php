@@ -91,11 +91,11 @@ class LessonsController extends Controller
          */
     public function ChangeLesson(Request $request){
         // Validation error fix voor engelse tijd
-        if(Auth::user()->instructor){
             $request->merge(["date" => str_replace("/", "-", $request->date)]);
             if(!str_ends_with($request->date, ":00")){
                 $request->merge(['date' => $request->date . ":00"]);
             }
+            
             $request->validate([
                 "id" => "required",
                 "date" => "required|date|date_format:Y-m-d\TH:i:s|after:now",
@@ -119,9 +119,6 @@ class LessonsController extends Controller
             }
             // return redirect back met error message van maken.
             return $this->lesson($request->id);
-        }else{
-            return $this->index();
-        }
 
     }
 
@@ -158,7 +155,7 @@ class LessonsController extends Controller
             "date" => "required|date|date_format:Y-m-d\TH:i|after:now",
             "address" => "required|max:255",
             "city" => "required|max:255",
-            "type" => "required|max:1",
+            "lesson_type" => "required|max:1",
             "goal" => "required|max:255"
         ]);
         $lesson = new lessons();
