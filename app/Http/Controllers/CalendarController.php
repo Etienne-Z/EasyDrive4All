@@ -53,12 +53,11 @@ class CalendarController extends Controller
 
     		if($request->type == 'update')
     		{
-
+                //check date if its later than 24h
     			$lesson = Lessons::whereId($request->id)->update([
                     'starting_time'		    =>	$request->starting_time,
                     'finishing_time'		=>	$request->finishing_time,
     			]);
-                echo $lesson;
     			return response()->json($lesson);
     		}
 
