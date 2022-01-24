@@ -25,7 +25,7 @@
                                 <a href="/editannouncement/{{$announcement->id}}"><i class="fas fa-user-edit"></i>
                             </td>
                             <td class="text-center">
-                                <button id="annoucement_delete_button"class="delete-button" value="{{$announcement->id}}"
+                                <button id="annoucement_delete_button" class="delete-button-announce" value="{{$announcement->id}}"
                                     onclick="document.getElementById('dialog-delete-announcement').style.display='block'"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>

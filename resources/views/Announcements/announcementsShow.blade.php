@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('content')
-<h3 class="text-center subtitle-algemene-voorwaarden">{{$announcement_info["title"]}}</h3>
+
 
 <div class="container">
+<h3 class="text-center subtitle-algemene-voorwaarden">{{$announcement_info["title"]}}</h3>
     <div class="col-md"></div>
-    <div class="col-md-4 mb-5">
-        <table class="announcement-show">
+    <div class="col-md mb-5 ">
+        <table class="announcement-show AnnounceCol">
             <tr>
                 <th >Type Mededeling</th>
                 @if($announcement_info["role"] === 0)

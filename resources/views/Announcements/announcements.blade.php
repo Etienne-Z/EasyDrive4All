@@ -15,7 +15,8 @@
                         <tr>
                             <td>{{$announcement->title}}</td>
                             <td>{{substr($announcement->description,0,100)}}</td>
-                            <td class="text-center">
+                            <td class="text-center announceButton">
+                            
                             <a href="/announcements/{{$announcement->id}}">
                             <i class="fas fa-folder-open"></i>
                             </td>
