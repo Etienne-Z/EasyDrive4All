@@ -276,6 +276,7 @@ $('#contact-form-id').on('submit',function(e){
         e.preventDefault();
         let start_date = $('#start_date').val()
         let end_date = $('#end_date').val()
+        console.log(end_date);
         let reason = $('#reason').val()
         let _token  = $('meta[name="csrf-token"]').attr('content');
 
@@ -307,6 +308,7 @@ $('#contact-form-id').on('submit',function(e){
           },
 
           error: function(response) {
+            console.log(response)
             $('#start_dateErrorMsg').text(response.responseJSON.errors.start_date);
             $('#end_dateErrorMsg').text(response.responseJSON.errors.end_date);
             $('#reasonErrorMsg').text(response.responseJSON.errors.reason);

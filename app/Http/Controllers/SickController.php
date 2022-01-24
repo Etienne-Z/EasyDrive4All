@@ -38,7 +38,7 @@ class SickController extends Controller
             'reason' => 'required',
             'start_date' => 'required',
         ]);
-
+        
         $data = array(
         'first_name' => auth::user()->first_name,
         'reason' => $request->reason,
