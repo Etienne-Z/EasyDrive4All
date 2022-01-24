@@ -91,6 +91,10 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="/cars_overview">Auto's overzicht</a>
                                     </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/ownerannouncements">Mededelingen</a>
+                                    </li>
                                 @endif
                             @endif
                     </ul>

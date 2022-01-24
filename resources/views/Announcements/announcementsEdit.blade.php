@@ -18,7 +18,7 @@
                 <div class="col-md">
                     <strong>Mededeling:</strong>
                     <div id="descriptionErrorMsg" class="alert"></div>
-                    <textarea rows="10" class="form-control mt-3 mb-3" name="description" id="description"  value="{{old('description') ?? $announcement->description}}"></textarea>
+                    <textarea rows="10" class="form-control mt-3 mb-3" name="description" id="description"  value="{{old('description') ?? $announcement->description}}">{{$announcement->description}}</textarea>
                 </div>
                 <div class="col-md">
                     <strong>Type Mededeling:</strong>
