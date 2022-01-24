@@ -411,6 +411,8 @@ $('#contact-form-id').on('submit',function(e){
             let address = $('#address').val();
             let city = $('#city').val();
             let zipcode = $('#zipcode').val();
+            let sick = $('#sick').find(':selected').val();
+            let amount_sick = $('#amount_sick').val();
             let _token  = $('meta[name="csrf-token"]').attr('content');
         
             $.ajax({
@@ -430,6 +432,8 @@ $('#contact-form-id').on('submit',function(e){
                 address:address,
                 zipcode:zipcode,
                 city:city,
+                sick:sick,
+                amount_sick:amount_sick,
                 _token: _token,
               },
               complete : function () { 
@@ -440,7 +444,7 @@ $('#contact-form-id').on('submit',function(e){
               },
               success:function(response){
                 $('.sign-up-container').html(
-                    '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar instructeuren overzicht</a></p>'
+                    '<div class="succes-message"></div><p class="text-center succes-text">Aanpassing is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar instructeuren overzicht</a></p>'
                 );
               },
               

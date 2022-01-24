@@ -332,6 +332,8 @@ use App\Mail\RegisterMail;
                 'address' => 'required',
                 'city' => 'required',
                 'zipcode' => 'required',
+                'sick',
+                'amount_sick'
             ]);
             $user->first_name = $request->first_name;
             $user->insertion = $request->insertion;
@@ -340,6 +342,8 @@ use App\Mail\RegisterMail;
             $user->address = $request->address;
             $user->city = $request->city;
             $user->zipcode = $request->zipcode;
+            $user->sick = $request->sick;
+            $user->amount_sick = $request->amount_sick;
             $user->save();
             return response()->json(['success'=>'Successfully']);
         }

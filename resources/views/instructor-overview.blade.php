@@ -13,6 +13,8 @@
                         <td>Voornaam</td>
                         <td>Achternaam</td>
                         <td>E-mail</td>
+                        <td>Ziek</td>
+                        <td>Aantal keren ziek</td>
                         <td>Aanpassen</td>
                         <td>Verwijderen</td>
                 </thead>
@@ -22,6 +24,12 @@
                             <td>{{$instructor->first_name}}</td>
                             <td>{{$instructor->insertion}} {{$instructor->last_name}}</td>
                             <td>{{$instructor->email}}</td>
+                            @if ($instructor->sick === 0)
+                            <td>Niet ziek</td>
+                            @else
+                            <td>Ziek</td>
+                            @endif
+                            <td>{{$instructor->amount_sick}}</td>
                             <td class="text-center"><a href="/instructors_change/{{$instructor->id}}"><i class="fas fa-user-edit"></i></a></td>
                             <td class="text-center">
                                     <button id="delete-user_button" class="delete-button" value="{{$instructor->id}}"><i class="fas fa-trash"></i></button>
