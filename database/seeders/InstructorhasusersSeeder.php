@@ -23,6 +23,5 @@ class InstructorhasusersSeeder extends Seeder
                 'Instructor_ID' => Instructors::all()->random()->id
             ]);
         }
-
     }
 }

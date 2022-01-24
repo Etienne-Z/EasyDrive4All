@@ -15,12 +15,20 @@ class CarsSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i <= 3; $i++){
-            DB::table('Cars')->insert([
-                'Type' => 0,
-                'Brand' => Str::random(10),
-                'License_plate' => Str::random(10)
-            ]);
-        }
+        DB::table('Cars')->insert([
+            'Type' => 1,
+            'Brand' => "Mercedes",
+            'License_plate' => "12-353-ab"
+        ]);
+        DB::table('Cars')->insert([
+            'Type' => 0,
+            'Brand' => "Tesla",
+            'License_plate' => "12-353-ac"
+        ]);
+        DB::table('Cars')->insert([
+            'Type' => 0,
+            'Brand' => "Tesla",
+            'License_plate' => "12-353-ad"
+        ]);
     }
 }

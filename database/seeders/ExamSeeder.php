@@ -16,19 +16,79 @@ class ExamSeeder extends Seeder
     public function run()
     {
         DB::table('exams')->insert([
-            'exam_success' => '1'  
+            'exam_success' => '1'
         ]);
         DB::table('exams')->insert([
-            'exam_success' => '1'  
+            'exam_success' => '1'
         ]);
         DB::table('exams')->insert([
-            'exam_success' => '0'  
+            'exam_success' => '0'
         ]);
         DB::table('exams')->insert([
-            'exam_success' => '0'  
+            'exam_success' => '0'
         ]);
         DB::table('exams')->insert([
-            'exam_success' => '1'  
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '0'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '0'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '0'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '0'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '0'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '0'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '0'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '0'
+        ]);
+        DB::table('exams')->insert([
+            'exam_success' => '1'
         ]);
     }
 }

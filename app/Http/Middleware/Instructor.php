@@ -17,7 +17,7 @@ class Instructor
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::user()->role = 0){
+        if(!Auth::user()->role == 1){
             abort(403);
         }
         return $next($request);

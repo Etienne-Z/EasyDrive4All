@@ -64,9 +64,17 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/calender">Kalender</a>
                                 </li>
+                                @if(Auth::user()->role == 0)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/studentannouncements">Mededelingen</a>
+                                    </li>
+                                @endif
                                 @if(Auth::user()->role ==  1)
                                     <li class="nav-item">
                                         <a class="nav-link" href="/students">Studenten</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/instructorannouncements">Mededelingen</a>
                                     </li>
                                 @endif
                                 @if (Auth::user()->role == 2)
@@ -105,6 +113,10 @@
 
                                     <a class="dropdown-item" href="/profile">
                                         <div style="color: black;">Profiel</div>
+                                    </a>
+
+                                    <a class="dropdown-item" href="/instructeur/ziekmelding">
+                                        <div style="color: black;">Ziek melden</div>
                                     </a>
 
                                     {{--  onclick="document.getElementById("logout").className = "logout-dialog-open""  --}}
