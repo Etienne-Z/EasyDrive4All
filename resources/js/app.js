@@ -665,6 +665,7 @@ $('#contact-form-id').on('submit',function(e){
                             },
                             success:function(response){
                                 calendar.fullCalendar('refetchEvents');
+                                location.reload();
                                 alert("Event Updated Successfully");
                             }
                         })
@@ -684,6 +685,7 @@ $('#contact-form-id').on('submit',function(e){
                             },
                             success:function(response){
                                 calendar.fullCalendar('refetchEvents');
+                                location.reload();
                                 alert("Event Updated Successfully");
                             },
                             error:function(response){

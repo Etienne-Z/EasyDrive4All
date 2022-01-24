@@ -24,8 +24,8 @@
                         <input class="form-control" type="datetime-local" id="date" name="date">
                     </div>
                     <div class="form-group">
-                        <label for="Type">Examens</label>
-                        <select class="form-select" name="type" id="type">
+                        <label for="lesson_type">Examens</label>
+                        <select class="form-select" name="lesson_type" id="lesson_type">
                             <option value="0">Nee</option>
                             <option value="1">Ja</option>
                           </select>

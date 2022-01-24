@@ -158,7 +158,7 @@ class LessonsController extends Controller
             "date" => "required|date|date_format:Y-m-d\TH:i|after:now",
             "address" => "required|max:255",
             "city" => "required|max:255",
-            "type" => "required|max:1",
+            "lesson_type" => "required|max:1",
             "goal" => "required|max:255"
         ]);
         $lesson = new lessons();
