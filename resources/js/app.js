@@ -1,3 +1,5 @@
+const { start } = require('@popperjs/core');
+
 require('./bootstrap');
 $.ajaxSetup({
     headers: {
@@ -302,14 +304,108 @@ $('#contact-form-id').on('submit',function(e){
           },
           });
         });
+          // Announcement Page Create
+          $('#createAnnouncement').on('submit',function(e){
+            e.preventDefault();
+            let title = $('#title').val();
+            let description = $('#description').val();
+            let role = $('#role').val();
+            console.log(title);
+            console.log(description);
+            console.log(role);
+            let _token  = $('meta[name="csrf-token"]').attr('content');
+
+
+            $.ajax({
+              beforeSend : function () {
+                // before send, show the loading gif
+                $('#wait').show();
+                $('#createAnnouncement').hide();
+              },
+              url: "/createannouncement",
+              type:"POST",
+              data:{
+                title: title,
+                description: description,
+                role: role,
+                _token: _token,
+              },
+              complete : function () {
+                // or hide here
+                // this callback called either success or failed
+                $('#wait').hide();
+                $('#createAnnouncement').show();
+              },
+              success:function(response){
+                $('.sign-up-container').html(
+                    '<div class="succes-message"></div><p class="text-center succes-text">Mededeling aanmaken is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/ownerannouncements"><i class="fas fa-arrow-left"></i> Terug naar Mededelingen pagina</a></p>'
+                );
+              },
+
+              error: function(response) {
+                $('#titleErrorMsg').text(response.responseJSON.errors.title);
+                $('#descriptionErrorMsg').text(response.responseJSON.errors.description);
+                $('#roleErrorMsg').text(response.responseJSON.errors.role);
+              },
+              });
+            });
+
+
+            // Announcement Page Edit
+            $('#editAnnouncement').on('submit',function(e){
+              e.preventDefault();
+              let id = $('#id').val();
+              let title = $('#title').val();
+              let description = $('#description').val();
+              let role = $("#role").find(':selected').val();
+              console.log(title);
+              console.log(description);
+              console.log(role);
+              let _token  = $('meta[name="csrf-token"]').attr('content');
+
+
+              $.ajax({
+                beforeSend : function () {
+                  // before send, show the loading gif
+                  $('#wait').show();
+                  $('#editAnnouncement').hide();
+                },
+                url: "/editannouncement/{id}",
+                type:"put",
+                data:{
+                  id: id,
+                  title: title,
+                  description: description,
+                  role: role,
+                  _token: _token,
+                },
+                complete : function () {
+                  // or hide here
+                  // this callback called either success or failed
+                  $('#wait').hide();
+                  $('#editAnnouncement').show();
+                },
+                success:function(response){
+                  $('.sign-up-container').html(
+                      '<div class="succes-message"></div><p class="text-center succes-text">Mededeling aanpassen is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/ownerannouncements"><i class="fas fa-arrow-left"></i> Terug naar Mededelingen pagina</a></p>'
+                  );
+                },
+
+                error: function(response) {
+                  console.log(response)
+                  $('#titleErrorMsg').text(response.responseJSON.errors.title);
+                  $('#descriptionErrorMsg').text(response.responseJSON.errors.description);
+                  $('#roleErrorMsg').text(response.responseJSON.errors.role);
+                },
+                });
+              });
+
+
         $('#register-car').on('submit',function(e){
             e.preventDefault();
             let Type = $('#Type').val()
-
             let Brand = $('#Brand').val();
             let License_plate = $('#License_plate').val();
-            console.log(Brand);
-            console.log(License_plate);
             let _token  = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
                 beforeSend : function () {
@@ -453,3 +549,130 @@ $('#contact-form-id').on('submit',function(e){
               },
               });
             });
+
+            // CALENDAR PAGE //
+            $(document).ready(function () {
+              $.ajaxSetup({
+                  headers:{
+                      'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+              var calendar = $('#calendar');
+              var modal = $('#modal');
+              calendar.fullCalendar({
+                  editable:true,
+                  header:{
+                      left:'prev,next today',
+                      center:'title',
+                      right:'month,agendaWeek,agendaDay'
+                  },
+                  events:
+                      {
+                    url: "http://127.0.0.1:8000/calender",
+                    success: function(data) {
+                        var events = [];
+                        $(data).each(function() {
+                            if($(this).attr('insertion') !== null){
+                                var fullname = $(this).attr('first_name') + " " +  $(this).attr('insertion') + " " + $(this).attr('last_name')
+                            }else{
+                                var fullname = $(this).attr('first_name') + " " + $(this).attr('last_name')
+                            }
+
+                            events.push({
+                                id: $(this).attr('id'),
+                                title: fullname,
+                                start: $(this).attr('starting_time'),
+                                end: $(this).attr('finishing_time'),
+                                url: "http://127.0.0.1:8000/lesson/"+$(this).attr('id'),
+                                allDay :false
+                            });
+                        });
+                        return events;
+                    },
+                    },
+                  selectable:true,
+                  selectHelper: true,
+                  select:function(starting_time, finishing_time)
+                  {
+                    var starting_time = $.fullCalendar.formatDate(starting_time, 'Y-MM-DD HH:mm:ss');
+                    var finishing_time = $.fullCalendar.formatDate(finishing_time, 'Y-MM-DD HH:mm:ss');
+                      calendar.hide();
+                      modal.show();
+
+                      $('#create_lesson').on('submit',function(e){
+
+                        e.preventDefault();
+                        let student = $('#student').val();
+                        let instructor = $('#instructor').val();
+                        let lesson_type = $('#type').val();
+                        let address = $('#address').val();
+                        let city = $('#city').val();
+                        let goal = $('#goal').val();
+
+                          $.ajax({
+                              url:"http://127.0.0.1:8000/calender/action",
+                              type:"POST",
+                              data:{
+                                  Instructor_ID: instructor,
+                                  Student_ID: student,
+                                  lesson_type: lesson_type,
+                                  pickup_address: address,
+                                  pickup_city: city,
+                                  goal: goal,
+                                  starting_time: starting_time,
+                                  finishing_time:finishing_time,
+                                  type: 'add'
+                              },
+                              success:function()
+                              {
+                                  calendar.fullCalendar('refetchEvents');
+                                  alert("Les succesvol aangemaakt");
+                              }
+                          })
+                        calendar.show();
+                        modal.hide();
+                      });
+                    },
+                    eventResize: function(event){
+                        var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
+                        var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
+                        var id = event.id;
+                        $.ajax({
+                            url:"http://127.0.0.1:8000/calendar/action",
+                            type:"POST",
+                            data:{
+                                id: id,
+                                starting_time: start,
+                                finishing_time: end,
+                                type: 'update'
+                            },
+                            success:function(response){
+                                calendar.fullCalendar('refetchEvents');
+                                alert("Event Updated Successfully");
+                            }
+                        })
+                    },
+                    eventDrop: function(event){
+                        var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
+                        var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
+                        var id = event.id;
+                        $.ajax({
+                            url:"http://127.0.0.1:8000/calendar/action",
+                            type:"POST",
+                            data:{
+                                id: id,
+                                starting_time: start,
+                                finishing_time: end,
+                                type: 'update'
+                            },
+                            success:function(response){
+                                calendar.fullCalendar('refetchEvents');
+                                alert("Event Updated Successfully");
+                            },
+                            error:function(response){
+                                console.log(response);
+                            }
+                        })
+                    },
+                });
+          });

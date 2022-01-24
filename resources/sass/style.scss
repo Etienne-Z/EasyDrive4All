@@ -300,6 +300,32 @@
     }
 }
 
+//Announcement page//
+
+.announcement-page{
+    th{
+        width: 145px;
+    }
+    td,th{
+        padding: 5px 10px;
+        border: 1px solid black;
+        letter-spacing: 0.1rem;
+        margin-left: 45px;
+    }
+    .announcement-block{
+        max-width: 100px;
+    }
+    tr:nth-child(odd){
+        background-color: $oak !important;
+        color: $blue !important;
+        letter-spacing: 1px;
+        font-weight: 900;
+    }
+    tr:nth-child(even){
+        background-color:$blue;
+        color:white;
+    }
+}
 
 //contact page//
 .contact-form-container{

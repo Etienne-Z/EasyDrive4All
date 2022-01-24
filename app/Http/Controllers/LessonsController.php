@@ -171,7 +171,7 @@ class LessonsController extends Controller
         }elseif($request->type == 1){
             $lesson->finishing_time = date("Y-m-d H:i:s", (strtotime($request->date) + 60*60*2));
         }
-        $lesson->lesson_type = $request->type;
+        $lesson->lesson_type = $request->lesson_type;
         $lesson->Goal = $request->goal;
         $lesson->save();
         return $this->index();

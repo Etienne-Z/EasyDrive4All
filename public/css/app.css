@@ -11569,6 +11569,29 @@ textarea.form-control-lg {
   background-color: #D7A31A;
 }
 
+.announcement-page th {
+  width: 145px;
+}
+.announcement-page td, .announcement-page th {
+  padding: 5px 10px;
+  border: 1px solid black;
+  letter-spacing: 0.1rem;
+  margin-left: 45px;
+}
+.announcement-page .announcement-block {
+  max-width: 100px;
+}
+.announcement-page tr:nth-child(odd) {
+  background-color: #F6BE3B !important;
+  color: #14223A !important;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+.announcement-page tr:nth-child(even) {
+  background-color: #14223A;
+  color: white;
+}
+
 .contact-form-container {
   background-color: #14223A;
   color: white;
