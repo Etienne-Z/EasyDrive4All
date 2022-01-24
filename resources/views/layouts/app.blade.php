@@ -61,6 +61,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/lessons">Lessen</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/calender">Kalender</a>
+                                </li>
                                 @if(Auth::user()->role ==  1)
                                     <li class="nav-item">
                                         <a class="nav-link" href="/students">Studenten</a>
