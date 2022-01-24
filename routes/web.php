@@ -55,18 +55,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/profile', [ProfileController::class, 'index']);
 
 
-    // Announcements Routes
-    Route::get('/studentannouncements', [AnnouncementsController::class, 'studentIndex']);
-    Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
-    Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
-    Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
-    Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);
-    Route::get('/editannouncement/{id}', [AnnouncementsController::class, 'announcementEditForm']);
-    Route::put('/editannouncement/{id}', [AnnouncementsController::class, 'updateAnnouncement']);
-
-    // Calendar Routes
-    Route::get('/calender', [CalendarController::class, 'index']);
-    Route::post('/calender/action', [CalendarController::class, 'action']);
+// Announcements Routes
+Route::get('/studentannouncements', [AnnouncementsController::class, 'studentIndex']);
+Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
+Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
+Route::post('/ownerannouncements', [AnnouncementsController::class, 'deleteAnnouncement']);
+Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
+Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);
+Route::get('/editannouncement/{id}', [AnnouncementsController::class, 'announcementEditForm']);
+Route::put('/editannouncement/{id}', [AnnouncementsController::class, 'updateAnnouncement']);
 
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);

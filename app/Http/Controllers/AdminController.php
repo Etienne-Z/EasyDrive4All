@@ -247,20 +247,7 @@ use App\Mail\RegisterMail;
             return $bytes;
         }
 
-        /**
-         * Links a student to an instructor
-         *
-         * @param User_id           The ID of the student
-         * @param Instructor_id     The ID of the instructor
-         *
-         * @return void
-         */
-        public function userHasInstructor($user_id, $instructor_id){
-            $new = new instructor_has_users();
-            $new->User_ID = $user_id;
-            $new->Instructor_ID = $instructor_id;
-            $new->save();
-        }
+
 
         /**
          * Creates an user instance in the database
@@ -334,8 +321,14 @@ use App\Mail\RegisterMail;
 
         public function updateUserInstructor($user_id, $instructor_id){
             $user = instructor_has_users::WhereUser($user_id)->first();
-            $user->Instructor_ID = $instructor_id;
-            $user->save();
+            if(!isset($user)){
+                $this->userHasInstructor($user_id, $instructor_id);
+                return;
+            }else{
+                $user->Instructor_ID = $instructor_id;
+                $user->save();
+                return;
+            }
         }
 
 
@@ -370,6 +363,21 @@ use App\Mail\RegisterMail;
             $user->amount_sick = $request->amount_sick;
             $user->save();
             return response()->json(['success'=>'Successfully']);
+        }
+
+        /**
+         * Links a student to an instructor
+         *
+         * @param User_id           The ID of the student
+         * @param Instructor_id     The ID of the instructor
+         *
+         * @return void
+        */
+        public function userHasInstructor($user_id, $instructor_id){
+            $new = new instructor_has_users();
+            $new->User_ID = $user_id;
+            $new->Instructor_ID = $instructor_id;
+            $new->save();
         }
     }
 
