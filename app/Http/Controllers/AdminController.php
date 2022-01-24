@@ -282,7 +282,7 @@ use App\Mail\RegisterMail;
          * Creates an instructor instance in the database
          *
          * @param id                The user_ID in the database
-         *
+         *  
          * @return void
          */
         public function createInstructor($id){
@@ -314,7 +314,14 @@ use App\Mail\RegisterMail;
             return response()->json(['success'=>'Successfully']);
         }
 
-
+        /**
+         * Update instructor of a student   
+         *
+         * @param user_id user id of the student
+         * @param instructor_id the new id of the students instructor
+         * @return void     The required view
+         * 
+         */
 
         public function updateUserInstructor($user_id, $instructor_id){
             $user = instructor_has_users::WhereUser($user_id)->first();
@@ -322,6 +329,14 @@ use App\Mail\RegisterMail;
             $user->save();
         }
 
+
+        /**
+         * Update information of a instructor  
+         *
+         * @param request sended data from the form 
+         * @return json    The required view
+         * 
+         */
         public function updateInstructor(Request $request){
             $user = User::WhereId($request->user_id)->first();
             $request->validate([
