@@ -210,9 +210,6 @@ use App\Mail\RegisterMail;
          * @return View     The last view
          */
         public function deleteUser(Request $request){
-            $request->validate([
-                'id' => 'required',
-            ]);
             $id = $request->id;
             $user = User::WhereID($id)->first();
             if($user->role == 0){
@@ -221,6 +218,18 @@ use App\Mail\RegisterMail;
                 foreach($lessen as $les){
                     $les->delete();
                 }
+            }else{
+                $instructor = instructors::Instructor($id);
+                $insturctor_has_users = instructor_has_users::WhereInstructorId($instructor->first()->id)->get();
+                $lessons = lessons::WhereInstructor($instructor->first()->id)->get();
+
+                foreach($lessons as $lesson){
+                    $lesson->delete();
+                }
+                foreach($insturctor_has_users as $insturctor_has_user){
+                    $insturctor_has_user->delete();
+                }
+                $instructor->delete();
             }
             User::WhereId($id)->delete();
             return redirect()->back();
