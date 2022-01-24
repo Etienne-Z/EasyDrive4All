@@ -132,7 +132,7 @@
                     <a href="/login">Login</a><br>
                     <a href="/inschrijven">inschrijven</a><br>
                     <a href="/contact">Contact ons</a><br>
-                    <a href="/algemene-voorwaarden">Algemene voorwaarden</a>
+                    <a href="/algemene_voorwaarden">Algemene voorwaarden</a>
 
                 </div>
                 <div class="col-md-3 contact-footer">

@@ -492,7 +492,13 @@ $('#contact-form-id').on('submit',function(e){
             },
             
             error: function(response) {
-              console.log(response);
+              $('#firstNameErrorMsg').text(response.responseJSON.errors.first_name);
+              $('#insertionErrorMsg').text(response.responseJSON.errors.insertion);
+              $('#lastNameErrorMsg').text(response.responseJSON.errors.last_name);
+              $('#emailErrorMsg').text(response.responseJSON.errors.email);
+              $('#addressErrorMsg').text(response.responseJSON.errors.address);
+              $('#cityErrorMsg').text(response.responseJSON.errors.zipcode);
+              $('#zipcodeErrorMsg').text(response.responseJSON.errors.city);
             },
             });
           });
