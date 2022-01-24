@@ -13,10 +13,7 @@
 </head>
 <body>
 
-<div class="container">
-    <div id="calendar"></div>
-</div>
-  <div id="modal" style="display:none;" class="w-50 text-center lesson-form-container">
+  <div id="modal" style="display:none;" class="w-50 text-center lesson-form-container ml-auto mr-auto">
             @if(Auth::user()->instructor)
                 <h2 class="text-center mb-2">Les toevoegen</h2>
                 <form id="create_lesson" >
@@ -54,6 +51,9 @@
             @endif
         </div>
 
+        <div class="container">
+            <div id="calendar"></div>
+        </div>
 </body>
 </html>
 

@@ -270,7 +270,6 @@
 .lesson-form-container{
     color: white;
     background-color: $blue;
-    padding: 30px 0px 40px 0;
     margin-top: 45px;
     label{
         font-weight: 600;
@@ -287,6 +286,7 @@
         display: block;
         margin: 0 auto;
         margin-top: 40px;
+        margin-bottom: 25px;
         padding: 10px 20px;
         letter-spacing: 1px;
         border: none;
@@ -577,7 +577,7 @@ footer{
             background-color: #D7A31A;
         }
     }
- 
+
 }
 
 .fa-user-edit{
@@ -611,8 +611,8 @@ footer{
 }
 // for the succes_rate container on the student overview page for the admin.
 .success_rate_container{
-    width: 30%; 
-    position:absolute; 
-    z-index: 1; 
+    width: 30%;
+    position:absolute;
+    z-index: 1;
     top:143px;
 }

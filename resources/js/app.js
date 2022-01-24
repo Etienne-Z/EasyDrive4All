@@ -67,8 +67,8 @@ $('#contact-form-id').on('submit',function(e){
       let city = $('#city').val();
       let zipcode = $('#zipcode').val();
       let _token  = $('meta[name="csrf-token"]').attr('content');
-  
-  
+
+
       $.ajax({
         beforeSend : function () {
           // before send, show the loading gif
@@ -134,7 +134,7 @@ $('#contact-form-id').on('submit',function(e){
         let city = $('#city').val();
         let zipcode = $('#zipcode').val();
         let roll = $('#roll').val();
-        
+
         if(roll > 0){
           var instructor = 0;
         }else{
@@ -164,14 +164,14 @@ $('#contact-form-id').on('submit',function(e){
             instructor,instructor,
             _token: _token,
           },
-          complete : function () { 
+          complete : function () {
             // or hide here
             // this callback called either success or failed
             $('#wait').hide();
             $('#register').show();
           },
           success:function(response){
-            $('.sign-up-container').html(    
+            $('.sign-up-container').html(
                 '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
             );
           },
@@ -225,7 +225,7 @@ $('#contact-form-id').on('submit',function(e){
             roll, roll,
             _token: _token,
           },
-          complete : function () { 
+          complete : function () {
             // or hide here
             // this callback called either success or failed
             $('#wait').hide();
@@ -236,7 +236,7 @@ $('#contact-form-id').on('submit',function(e){
                 '<div class="succes-message"></div><p class="text-center succes-text">Uw vraag is verstuurd</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
             );
           },
-          
+
           complete : function () {
             // or hide here
             // this callback called either success or failed
@@ -270,12 +270,12 @@ $('#contact-form-id').on('submit',function(e){
         let end_date = $('#end_date').val()
         let reason = $('#reason').val()
         let _token  = $('meta[name="csrf-token"]').attr('content');
-    
-    
+
+
         $.ajax({
-          beforeSend : function () {  
+          beforeSend : function () {
             // before send, show the loading gif
-            $('#wait').show(); 
+            $('#wait').show();
             $('#ziekmelden').hide();
           },
           url: "/instructeur/ziekmelding",
@@ -286,7 +286,7 @@ $('#contact-form-id').on('submit',function(e){
               reason:reason,
               _token: _token,
           },
-          complete : function () { 
+          complete : function () {
             // or hide here
             // this callback called either success or failed
             $('#wait').hide();
@@ -297,7 +297,7 @@ $('#contact-form-id').on('submit',function(e){
                 '<div class="succes-message"></div><p class="text-center succes-text">U heeft u ziekgemeld</p>'
             );
           },
-          
+
           error: function(response) {
             $('#start_dateErrorMsg').text(response.responseJSON.errors.start_date);
             $('#end_dateErrorMsg').text(response.responseJSON.errors.end_date);
@@ -459,11 +459,11 @@ $('#contact-form-id').on('submit',function(e){
           let zipcode = $('#zipcode').val();
           var instructor = $("#instructor").find(':selected').val();
           let _token  = $('meta[name="csrf-token"]').attr('content');
-      
+
           $.ajax({
-            beforeSend : function () {  
+            beforeSend : function () {
               // before send, show the loading gif
-              $('#wait').show(); 
+              $('#wait').show();
               $('#changeStudent').hide();
             },
             url: "/student_change",
@@ -480,7 +480,7 @@ $('#contact-form-id').on('submit',function(e){
               instructor,instructor,
               _token: _token,
             },
-            complete : function () { 
+            complete : function () {
               // or hide here
               // this callback called either success or failed
               $('#wait').hide();
@@ -491,7 +491,7 @@ $('#contact-form-id').on('submit',function(e){
                   '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
               );
             },
-            
+
             error: function(response) {
               $('#firstNameErrorMsg').text(response.responseJSON.errors.first_name);
               $('#insertionErrorMsg').text(response.responseJSON.errors.insertion);
@@ -517,11 +517,11 @@ $('#contact-form-id').on('submit',function(e){
             let sick = $('#sick').find(':selected').val();
             let amount_sick = $('#amount_sick').val();
             let _token  = $('meta[name="csrf-token"]').attr('content');
-        
+
             $.ajax({
-              beforeSend : function () {  
+              beforeSend : function () {
                 // before send, show the loading gif
-                $('#wait').show(); 
+                $('#wait').show();
                 $('#changeStudent').hide();
               },
               url: "/instructors_change",
@@ -539,7 +539,7 @@ $('#contact-form-id').on('submit',function(e){
                 amount_sick:amount_sick,
                 _token: _token,
               },
-              complete : function () { 
+              complete : function () {
                 // or hide here
                 // this callback called either success or failed
                 $('#wait').hide();
@@ -550,7 +550,7 @@ $('#contact-form-id').on('submit',function(e){
                     '<div class="succes-message"></div><p class="text-center succes-text">Aanpassing is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/instructors_overview"><i class="fas fa-arrow-left"></i> Terug naar instructeuren overzicht</a></p>'
                 );
               },
-              
+
               error: function(response) {
                 console.log(response);
               },
@@ -603,7 +603,6 @@ $('#contact-form-id').on('submit',function(e){
                   {
                     var starting_time = $.fullCalendar.formatDate(starting_time, 'Y-MM-DD HH:mm:ss');
                     var finishing_time = $.fullCalendar.formatDate(finishing_time, 'Y-MM-DD HH:mm:ss');
-                      calendar.hide();
                       modal.show();
 
                       $('#create_lesson').on('submit',function(e){
@@ -636,7 +635,6 @@ $('#contact-form-id').on('submit',function(e){
                                   alert("Les succesvol aangemaakt");
                               }
                           })
-                        calendar.show();
                         modal.hide();
                       });
                     },

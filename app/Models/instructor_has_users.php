@@ -38,7 +38,9 @@ class instructor_has_users extends Model
     }
 
     public function scopeWhereInstructor($query){
-        return $query->where('Instructor_ID', '=', Auth::user()->instructor->id);
+        if(Auth::user()->instructor){
+            return $query->where('Instructor_ID', '=', Auth::user()->instructor->id);
+        }
     }
 
     public function scopeWhereInstructorId($query,$id){
