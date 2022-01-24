@@ -81,7 +81,7 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
     Route::post('/lesson/change', [LessonsController::class, 'ChangeLesson']);
 
     //If logged user is instructor
-
+    Route::group(['middleware' => ['Instructor']], function(){
         //lesson create actions
         Route::post('/lesson/result', [LessonsController::class, 'PostResult']);
         Route::post('/lesson/create', [LessonsController::class, 'CreateLesson']);
@@ -119,3 +119,4 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
         Route::get('/instructors_change/{id}', [AdminController::class, 'changeInstructor']);
         Route::post('/instructors_change', [AdminController::class, 'updateInstructor']);
     });
+});
