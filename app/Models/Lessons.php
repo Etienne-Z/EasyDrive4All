@@ -42,6 +42,13 @@ class lessons extends Model
         ->select('users.first_name', 'lessons.id', 'lessons.pickup_address', 'lessons.pickup_city', 'lessons.starting_time', 'lessons.finishing_time', 'lessons.lesson_type', 'lessons.goal', 'lessons.result', 'lessons.comment');
     }
 
+    public function scopeWhereDate($query, $start, $end){
+        return $query
+        ->whereRaw('lessons.starting_time >= \'' .$start. "'")
+        ->whereRaw('lessons.finishing_time <= \''.$end . "'")
+        ->select("lessons.id", "lessons.starting_time", "lessons.finishing_time", "users.first_name" , "users.insertion", "users.last_name");
+    }
+
 
     /**
      *

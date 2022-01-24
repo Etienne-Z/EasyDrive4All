@@ -9,6 +9,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InstructorHasUsersController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\AnnouncementsController;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,14 +34,28 @@ Route::group(['middleware' => ['auth']], function(){
     //Profile of the logged in user
     Route::get('/profile', [ProfileController::class, 'index']);
 
+
+// Announcements Routes
+Route::get('/studentannouncements', [AnnouncementsController::class, 'studentIndex']);
+Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
+Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
+Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
+Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);
+Route::get('/editannouncement/{id}', [AnnouncementsController::class, 'announcementEditForm']);
+Route::put('/editannouncement/{id}', [AnnouncementsController::class, 'updateAnnouncement']);
+
+// Calendar Routes
+Route::get('/calender', [CalendarController::class, 'index']);
+Route::post('/calendar/action', [CalendarController::class, 'action']);
+
+Route::get('/profile', [ProfileController::class, 'index']);
+Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
     //Lessons CRUD actions for instructor & student
-    Route::get('/lessons', [LessonsController::class, 'index']);
     Route::get('/lesson/{id}', [LessonsController::class, 'lesson']);
     Route::post('/lesson/cancel', [LessonsController::class, 'CancelLesson']);
     Route::post('/lesson/change', [LessonsController::class, 'ChangeLesson']);
 
     //If logged user is instructor
-    Route::group(['middleware' => ['Instructor']], function(){
 
         //lesson create actions
         Route::post('/lesson/result', [LessonsController::class, 'PostResult']);
@@ -80,7 +96,6 @@ Route::group(['middleware' => ['auth']], function(){
         
 
     });
-});
 
 // Register form for new users
 Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
