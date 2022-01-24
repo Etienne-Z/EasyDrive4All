@@ -127,7 +127,7 @@ $('#contact-form-id').on('submit',function(e){
       $('#register').on('submit',function(e){
         e.preventDefault();
         let first_name = $('#first_name').val();
-        let insertion = $('#insertion').val();
+        let insertion = $('#insertion ').val();
         let last_name = $('#last_name').val();
         let email = $('#email').val();
         let address = $('#address').val();
@@ -195,7 +195,7 @@ $('#contact-form-id').on('submit',function(e){
 
       $('#register-instructor').on('submit',function(e){
         e.preventDefault();
-        let first_name = $('#first_name').val()
+        let first_name = $('#first_name').val();
         let insertion = $('#insertion').val();
         let last_name = $('#last_name').val();
         let email = $('#email').val();
@@ -257,6 +257,7 @@ $('#contact-form-id').on('submit',function(e){
             $('#addressErrorMsg').text(response.responseJSON.errors.address);
             $('#cityErrorMsg').text(response.responseJSON.errors.zipcode);
             $('#zipcodeErrorMsg').text(response.responseJSON.errors.city);
+            $('#instructorErrorMsg').text(response.responseJSON.errors.instructor);
           },
           });
         });
