@@ -27,10 +27,6 @@ use App\Http\Controllers\CalendarController;
 Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
 Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
 
-// call in sick for instructors
-Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
-Route::post('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@sendMail');
-
 
 //test route
 Route::get('/examen', 'App\Http\Controllers\HomeController@getExamResults');
@@ -64,17 +60,15 @@ Route::get('/studentannouncements', [AnnouncementsController::class, 'studentInd
 Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
 Route::get('/announcements/{id}', [AnnouncementsController::class, 'getOneAnnouncement']);
 Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
+Route::post('/ownerannouncements', [AnnouncementsController::class, 'deleteAnnouncement']);
 Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
 Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);
 Route::get('/editannouncement/{id}', [AnnouncementsController::class, 'announcementEditForm']);
 Route::put('/editannouncement/{id}', [AnnouncementsController::class, 'updateAnnouncement']);
 
-// Calendar Routes
-Route::get('/calender', [CalendarController::class, 'index']);
-Route::post('/calendar/action', [CalendarController::class, 'action']);
+    Route::get('/profile', [ProfileController::class, 'index']);
+    Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
 
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
     //Lessons CRUD actions for instructor & student
     Route::get('/lessons', [LessonsController::class, 'index']);
     Route::get('/lesson/{id}', [LessonsController::class, 'lesson']);

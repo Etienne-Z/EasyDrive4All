@@ -73,6 +73,7 @@ class LessonsController extends Controller
             $lesson = lessons::WhereId($id)->first();
             $lesson->result = $request->result;
             $lesson->comment = $request->comment;
+            $lesson->save();
 
             return $this->lesson($id);
         }else{

@@ -121,6 +121,14 @@ $('#contact-form-id').on('submit',function(e){
         $('#deleting-user-id').val(id);
       });
 
+    // delete annoucement en id doorgeven aan controller
+      $('.delete-button').on('click',function(e){
+        e.preventDefault();
+        // slaat id op van de announcement
+        let id = $(this).attr("value");
+        //zet het id in de form
+        $('#deleting-announcement-id').val(id);
+      });
 
       //Register form
 
@@ -488,7 +496,7 @@ $('#contact-form-id').on('submit',function(e){
             },
             success:function(response){
               $('.sign-up-container').html(
-                  '<div class="succes-message"></div><p class="text-center succes-text">Registratie is gelukt</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
+                  '<div class="succes-message"></div><p class="text-center succes-text">Student is aangepast</p><p class="text-center succes-text"><a class="link-ajax" href="/students_overview"><i class="fas fa-arrow-left"></i> Terug naar Studenten overzicht</a></p>'
               );
             },
 
@@ -567,11 +575,12 @@ $('#contact-form-id').on('submit',function(e){
               var calendar = $('#calendar');
               var modal = $('#modal');
               calendar.fullCalendar({
+                  defaultView: 'agendaWeek',
                   editable:true,
                   header:{
                       left:'prev,next today',
                       center:'title',
-                      right:'month,agendaWeek,agendaDay'
+                      right:'agendaWeek,agendaDay'
                   },
                   events:
                       {
@@ -629,10 +638,13 @@ $('#contact-form-id').on('submit',function(e){
                                   finishing_time:finishing_time,
                                   type: 'add'
                               },
-                              success:function()
-                              {
+                              success:function(){
                                   calendar.fullCalendar('refetchEvents');
+                                  location.reload();
                                   alert("Les succesvol aangemaakt");
+                              },
+                              error:function(data){
+                                  console.log(data);
                               }
                           })
                         modal.hide();
@@ -643,7 +655,7 @@ $('#contact-form-id').on('submit',function(e){
                         var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
                         var id = event.id;
                         $.ajax({
-                            url:"http://127.0.0.1:8000/calendar/action",
+                            url:"http://127.0.0.1:8000/calender/action",
                             type:"POST",
                             data:{
                                 id: id,
@@ -662,7 +674,7 @@ $('#contact-form-id').on('submit',function(e){
                         var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
                         var id = event.id;
                         $.ajax({
-                            url:"http://127.0.0.1:8000/calendar/action",
+                            url:"http://127.0.0.1:8000/calender/action",
                             type:"POST",
                             data:{
                                 id: id,

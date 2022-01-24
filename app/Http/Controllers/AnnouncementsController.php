@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Announcements;
 use Illuminate\Support\Str;
+use SebastianBergmann\Environment\Console;
 
 class AnnouncementsController extends Controller
 {
@@ -79,8 +80,10 @@ class AnnouncementsController extends Controller
         return response()->json(['success'=>'Successfully']);
     }
 
-    public function deleteAnnouncement(Request $request){
+    public function deleteAnnouncement(Request $request){   
         $id = $request->id;
-        $announcement = Announcement::WhereID($id)->first();
+        Announcements::find($id)->delete();
+        return $this->ownerIndex();
+
     }
 }
