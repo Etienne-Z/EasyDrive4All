@@ -121,6 +121,14 @@ $('#contact-form-id').on('submit',function(e){
         $('#deleting-user-id').val(id);
       });
 
+    // delete annoucement en id doorgeven aan controller
+      $('.delete-button').on('click',function(e){
+        e.preventDefault();
+        // slaat id op van de announcement
+        let id = $(this).attr("value");
+        //zet het id in de form
+        $('#deleting-announcement-id').val(id);
+      });
 
       //Register form
 
