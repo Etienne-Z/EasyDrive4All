@@ -39,11 +39,13 @@ class SickController extends Controller
             'start_date' => 'required',
         ]);
 
+       $end_date = isset($request->end_date) ?  $request->end_date : "er is geen eind datum gegeven.";
+
         $data = array(
         'first_name' => auth::user()->first_name,
         'reason' => $request->reason,
         'start_date' => $request->start_date,
-        'end_date' => $request->end_date,
+        'end_date' => $end_date,
 
         );
 

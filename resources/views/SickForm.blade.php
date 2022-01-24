@@ -5,4 +5,4 @@
 {{$data['reason']}}
 <br>
 <b>tijden: </b>
-van {{$data['start_date']}} tot  !isset($date['end_date']) ? {{$data['end_date']}} : "geen eind datum aangegeven".
+van {{$data['start_date']}} tot  {{ $data['end_date']}}.

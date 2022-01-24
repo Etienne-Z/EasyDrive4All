@@ -148,7 +148,6 @@ $('#contact-form-id').on('submit',function(e){
         }else{
           var instructor = $("#instructor").find(':selected').val();
         }
-        console.log(instructor);
         let _token  = $('meta[name="csrf-token"]').attr('content');
 
 
