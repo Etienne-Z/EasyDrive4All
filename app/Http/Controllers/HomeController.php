@@ -30,8 +30,12 @@ class HomeController extends Controller
     public function getExamResults(){
         $success_exams = Exams::ExamCompleted()->count();
         $total_exams = Exams::count();
+        if($success_exams > 0 && $total_exams > 0){
+            $percent = $success_exams / $total_exams * 100;
+        }else{
+            $percent = 0;
+        }
 
-        $percent = $success_exams / $total_exams * 100;
 
         return $percent;
     }
