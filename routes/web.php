@@ -51,6 +51,7 @@ Route::post('/calendar/action', [CalendarController::class, 'action']);
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
     //Lessons CRUD actions for instructor & student
+    Route::get('/lessons', [LessonsController::class, 'index']);
     Route::get('/lesson/{id}', [LessonsController::class, 'lesson']);
     Route::post('/lesson/cancel', [LessonsController::class, 'CancelLesson']);
     Route::post('/lesson/change', [LessonsController::class, 'ChangeLesson']);
@@ -79,7 +80,7 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
         Route::POST('/student_register', [AdminController::class, 'register']);
         Route::get('/student_change/{id}', [AdminController::class, 'changeStudent']);
         Route::post('/student_change', [AdminController::class, 'updateUser']);
-        
+
         //Instructor overview for the owner with CRUD actions
         Route::get('/instructors_overview', [AdminController::class, 'InstructorOverview']);
         Route::get('/instructors_register', [AdminController::class, 'InstructorRegister']);
@@ -93,7 +94,7 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
         Route::post('/cars_edit', [AdminController::class, 'UpdateCar']);
         Route::get('/instructors_change/{id}', [AdminController::class, 'changeInstructor']);
         Route::post('/instructors_change', [AdminController::class, 'updateInstructor']);
-        
+
 
     });
 
@@ -101,7 +102,7 @@ Route::POST('/students_overview', [InstructorsController::class, 'deleteUser']);
 Route::get('/inschrijven', 'App\Http\Controllers\FormController@index');
 Route::post('/inschrijven/versturen', 'App\Http\Controllers\FormController@sendMail');
 
-// call in sick for instructors 
+// call in sick for instructors
 Route::get('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@index');
 Route::post('/instructeur/ziekmelding', 'App\Http\Controllers\SickController@sendMail');
 
@@ -115,7 +116,7 @@ Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/contact', [ContactController::class,'index']);
 Route::post('/contact', [ContactController::class,'contactForm']);
 
-// the usual landing page 
+// the usual landing page
 Route::get('/', [HomeController::class, 'welcome_page']);
 
 // terms of conditions page for users
