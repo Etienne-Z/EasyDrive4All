@@ -25,7 +25,7 @@
                 <div class="col-md">
                     <strong>E-Mail:</strong>
                     <div id="emailErrorMsg" class="alert"></div>
-                    
+
                     <input type="text" class="form-control mt-3 mb-3" name="email" id="email"  value="{{old('email')}}">
                 </div>
                 <div class="col-md">
