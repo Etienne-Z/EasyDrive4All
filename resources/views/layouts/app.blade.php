@@ -86,7 +86,6 @@
                                     </li>
                                 @endif
                                 @if (Auth::user()->role == 2)
-                  
                                     <li class="nav-item">
                                         <a class="nav-link" href="/home">Dashboard</a>
                                     </li>
