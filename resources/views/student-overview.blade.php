@@ -2,11 +2,8 @@
 
 @section('content')
     <div class="overview_header">
-        <div class="success_rate_container">
-            <h4>slagingspercentage</h4>
-            <p>totale examens: {{ $total_exams}} </p>
-            <p>percentage: {{$success_rate}} %</p>   
-        </div>
+     
+        
         <h1 class="title text-center" >Leerlingen</h1>
         <a href="/student_register" class="button-add-user">Leerling toevoegen</a>
     </div>

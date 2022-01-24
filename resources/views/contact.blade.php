@@ -33,11 +33,11 @@
 </div>
 <div class="container container-contact-gegevens mt-5 mb-5">
     <div class="row">
-        <div class="col-lg-6 map">
+        <div class="col-lg-6 mt-5 map">
             <h2 class="mb-5">Wij zijn hier te vinden</h2>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.6800774739654!2d6.103101815403892!3d52.52112857981438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7df3ee6d199eb%3A0x95a482dd5f1f2009!2sHogenkampsweg%2C%208025%20BK%20Zwolle!5e0!3m2!1snl!2snl!4v1642074294771!5m2!1snl!2snl" width="80%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-        <div class="col-lg-6 contact-gegevens">
+        <div class="col-lg-6 mt-5 contact-gegevens">
             <h2 class="mb-5">Contact gegevens</h2>
             <div class="mt-1 mb-1 contact-details">Van Dissselstraat 15</div>
             <div class="mt-1 mb-1 contact-details">6262PN</div>

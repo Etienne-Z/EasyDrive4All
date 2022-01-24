@@ -8,7 +8,7 @@
 
 <div class="container sign-up-container car-overview-container mb-5" id="SubFormCon">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 table-flow">
             <table class="overview">
                 <thead>
                         <td>Type</td>

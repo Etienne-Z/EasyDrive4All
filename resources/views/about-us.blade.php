@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-6 image building "></div>
             <div class="col-md-6 ">
-                <h2>Over de rijschool</h2>
+                <h2 class="about-us-h2">Over de rijschool</h2>
                 <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam fuga dicta itaque iste voluptatem magni maiores fugiat. Dignissimos eum, perferendis inventore ducimus suscipit tempore soluta pariatur mollitia omnis quae aspernatur sint quis maxime dolorem sapiente, quibusdam ut enim. Cum assumenda quis, dolor ipsam molestiae ipsa saepe ea dolorum impedit earum neque, vero optio, adipisci fugiat repudiandae. Impedit tempora sunt, dicta odio ipsum earum laboriosam illo nisi! Molestiae autem, exercitationem architecto obcaecati optio quam neque quod illum labore sapiente impedit ab nostrum corrupti dicta nesciunt quibusdam sint nobis rem similique accusamus accusantium quae ad? Quia quod ullam id repellendus veniam non?</p>
             </div>
         </div>

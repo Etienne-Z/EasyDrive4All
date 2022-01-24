@@ -48,10 +48,7 @@ use App\Mail\RegisterMail;
             $students = User::WhereStudent()->get();
             $success_exams = Exams::ExamCompleted()->count();
             $total_exams = Exams::count();
-    
-            $success_rate = $success_exams / $total_exams * 100;
-            
-            return view('student-overview',compact(['students','success_rate','total_exams']));
+            return view('student-overview',compact(['students','total_exams']));
         }
 
         /**
