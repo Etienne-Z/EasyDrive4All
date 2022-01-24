@@ -26,6 +26,18 @@ class AnnouncementsController extends Controller
         return view('Announcements/adminAnnouncements', compact('announcements'));
     }
 
+    public function getOneAnnouncement($id)
+    {
+        $announcement = Announcements::Id($id)->first();
+        // dd($announcement);
+        $announcement_info = [
+            "title" => $announcement->title,
+            "role" => $announcement->role,
+            "description" => $announcement->description,
+        ];
+        return view('Announcements/announcementsShow', compact('announcement_info'));
+    }
+
     public function announcementForm(){
         return view('Announcements/announcementsCreate');
     }

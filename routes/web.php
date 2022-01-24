@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth']], function(){
 // Announcements Routes
 Route::get('/studentannouncements', [AnnouncementsController::class, 'studentIndex']);
 Route::get('/instructorannouncements', [AnnouncementsController::class, 'instructorIndex']);
+Route::get('/announcements/{id}', [AnnouncementsController::class, 'getOneAnnouncement']);
 Route::get('/ownerannouncements', [AnnouncementsController::class, 'ownerIndex']);
 Route::get('/createannouncement', [AnnouncementsController::class, 'announcementForm']);
 Route::post('/createannouncement', [AnnouncementsController::class, 'createAnnouncement']);

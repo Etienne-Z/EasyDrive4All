@@ -11592,6 +11592,33 @@ textarea.form-control-lg {
   color: white;
 }
 
+.announcement-show {
+  width: 450px;
+}
+.announcement-show th {
+  width: 145px;
+}
+.announcement-show td, .announcement-show th {
+  padding: 10px 20px;
+  border: 1px solid black;
+  letter-spacing: 0.2rem;
+  margin-left: 45px;
+}
+.announcement-show .announcement-show-block {
+  width: 300px;
+  height: 400px;
+}
+.announcement-show tr:nth-child(odd) {
+  background-color: #F6BE3B !important;
+  color: #14223A !important;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+.announcement-show tr:nth-child(even) {
+  background-color: #14223A;
+  color: white;
+}
+
 .contact-form-container {
   background-color: #14223A;
   color: white;
