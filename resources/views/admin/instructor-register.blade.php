@@ -44,6 +44,7 @@
                     <input type="text" class="form-control mt-3 mb-3" name="zipcode" id="zipcode"  value="{{old('zipcode')}}">
                 </div>
                 <div class="col-md">
+                    <div id="instructorErrorMsg" class="alert"></div>
                     <input type="hidden" name="roll" id="roll" value="1">
                 </div>
 
